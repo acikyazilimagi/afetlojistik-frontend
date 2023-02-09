@@ -37,21 +37,21 @@ export const Header: React.FC = () => {
       />
       <Dropdown overlay={menu}>
         <Button type='link'>
-          <Space>
+          <Space className='white-text'>
             {supportedLanguages[currentLocale as SupportedLanguages].flag}
             {supportedLanguages[currentLocale as SupportedLanguages].label}
             <DownOutlined />
           </Space>
         </Button>
       </Dropdown>
-      <Space className='ml-8'>
+      <div className='flex flex-center ml-8'>
         {user?.name && (
-          <Text ellipsis strong>
+          <Text ellipsis strong className='white-text'>
             {user.name}
           </Text>
         )}
         {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
-      </Space>
+      </div>
     </AntdLayout.Header>
   )
 }
