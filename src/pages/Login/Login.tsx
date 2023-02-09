@@ -1,15 +1,16 @@
 import React from 'react'
-import { LoginPageProps, LoginFormTypes, useLogin, useTranslate } from '@pankod/refine-core'
+import { LoginPageProps, useLogin, useTranslate } from '@pankod/refine-core'
 import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps } from 'antd'
+import { LoginFormType } from 'types/login'
 import { LoginTitle } from './LoginTitle'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
 export const Login: React.FC<LoginProps> = ({ providers, rememberMe, renderContent, formProps }) => {
-  const [form] = Form.useForm<LoginFormTypes>()
+  const [form] = Form.useForm<LoginFormType>()
   const translate = useTranslate()
 
-  const { mutate: login, isLoading } = useLogin<LoginFormTypes>()
+  const { mutate: login, isLoading } = useLogin<LoginFormType>()
 
   const renderProviders = () => {
     if (providers && providers.length > 0) {
@@ -46,28 +47,28 @@ export const Login: React.FC<LoginProps> = ({ providers, rememberMe, renderConte
   const CardContent = (
     <Card title={<LoginTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
       {renderProviders()}
-      <Form<LoginFormTypes>
+      <Form<LoginFormType>
         layout='vertical'
         form={form}
         onFinish={(values) => login(values)}
         requiredMark={false}
         initialValues={{
-          remember: false
+          consent: false
         }}
         {...formProps}
       >
         <Form.Item
-          name='email'
-          label={translate('pages.login.fields.email', 'Email')}
+          name='phoneNumber'
+          label={translate('pages.login.fields.phoneNumber', 'Phone Number')}
           rules={[
             { required: true },
             {
-              type: 'email',
-              message: translate('pages.login.errors.validEmail', 'Invalid email address')
+              type: 'number',
+              message: translate('pages.login.errors.phoneNumber', 'Invalid phone number')
             }
           ]}
         >
-          <Input size='large' placeholder={translate('pages.login.fields.email', 'Email')} />
+          <Input type='number' size='large' placeholder={translate('pages.login.fields.phoneNumber', 'Phone Number')} />
         </Form.Item>
         <Form.Item
           name='password'
