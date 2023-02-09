@@ -4,6 +4,7 @@ import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, 
 import { RuleObject } from 'antd/es/form'
 import { LoginFormType } from 'types/login'
 import { LoginTitle } from './LoginTitle'
+//import styles from './Login.module.scss'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
