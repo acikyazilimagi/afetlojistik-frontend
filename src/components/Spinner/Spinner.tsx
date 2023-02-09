@@ -1,7 +1,7 @@
-import './Spinner.scss'
+import styles from './Spinner.module.scss'
 
 export const Spinner = () => (
-  <div className='spinnerContainer'>
-    <div className='purpleYellowSpinner' />
+  <div className={styles.spinnerContainer}>
+    <div className={styles.purpleYellowSpinner} />
   </div>
 )
