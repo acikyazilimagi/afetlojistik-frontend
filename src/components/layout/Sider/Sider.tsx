@@ -9,31 +9,20 @@ import {
   Sider as DefaultSider,
   Button
 } from '@pankod/refine-antd'
-import {
-  useLogout,
-  useTitle,
-  CanAccess,
-  ITreeMenu,
-  useIsExistAuthentication,
-  useRouterContext,
-  useMenu,
-  useRefineContext
-} from '@pankod/refine-core'
+import { useTitle, CanAccess, ITreeMenu, useRouterContext, useMenu, useRefineContext } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
 
 import { Title as DefaultTitle } from '../Title'
 
 import styles from './Sider.module.scss'
 
-const { UnorderedListOutlined, LogoutOutlined, DashboardOutlined, BarsOutlined } = Icons
+const { UnorderedListOutlined, DashboardOutlined, BarsOutlined } = Icons
 const { SubMenu } = Menu
 
-export const Sider: typeof DefaultSider = ({ render }) => {
+export const Sider: typeof DefaultSider = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
-  const isExistAuthentication = useIsExistAuthentication()
   const { Link } = useRouterContext()
-  const { mutate: mutateLogout } = useLogout()
   const Title = useTitle()
   const { t } = useTranslation()
   const { menuItems, selectedKey, defaultOpenKeys } = useMenu()
@@ -87,12 +76,6 @@ export const Sider: typeof DefaultSider = ({ render }) => {
       )
     })
 
-  const logout = isExistAuthentication && (
-    <Menu.Item key='logout' onClick={() => mutateLogout()} icon={<LogoutOutlined />}>
-      {t('logout')}
-    </Menu.Item>
-  )
-
   const dashboard = hasDashboard ? (
     <Menu.Item key='dashboard' className={`${selectedKey === '/' && 'font-bold'}`} icon={<DashboardOutlined />}>
       <Link to='/'>{t('dashboard.title')}</Link>
@@ -102,23 +85,12 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
   const items = renderTreeView(menuItems, selectedKey)
 
-  const renderSider = () => {
-    if (render) {
-      return render({
-        dashboard,
-        items,
-        logout,
-        collapsed
-      })
-    }
-    return (
-      <>
-        {dashboard}
-        {items}
-        {logout}
-      </>
-    )
-  }
+  const renderSider = () => (
+    <>
+      {dashboard}
+      {items}
+    </>
+  )
 
   const renderMenu = () => (
     <Menu
