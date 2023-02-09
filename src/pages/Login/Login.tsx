@@ -6,8 +6,8 @@ import { LoginTitle } from './LoginTitle'
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
 export const Login: React.FC<LoginProps> = ({ providers, rememberMe, renderContent, formProps }) => {
-  const [form] = Form.useForm<LoginFormTypes>()
   const translate = useTranslate()
+  const [form] = Form.useForm<LoginFormTypes>()
 
   const { mutate: login, isLoading } = useLogin<LoginFormTypes>()
 
