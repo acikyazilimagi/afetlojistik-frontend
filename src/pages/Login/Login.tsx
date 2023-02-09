@@ -3,6 +3,7 @@ import { LoginPageProps, useLogin, useTranslate } from '@pankod/refine-core'
 import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps } from 'antd'
 import { LoginFormType } from 'types/login'
 import { LoginTitle } from './LoginTitle'
+import styles from './Login.module.scss'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
@@ -22,18 +23,12 @@ export const Login: React.FC<LoginProps> = ({ providers, rememberMe, renderConte
               type='default'
               block
               icon={provider.icon}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                marginBottom: '8px'
-              }}
               onClick={() =>
                 login({
                   providerName: provider.name
                 })
               }
+              className={styles.loginButton}
             >
               {provider.label}
             </Button>

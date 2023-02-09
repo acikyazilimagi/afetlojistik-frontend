@@ -21,9 +21,10 @@ import {
   useRefineContext
 } from '@pankod/refine-core'
 
-import { Title as DefaultTitle } from '../title'
+import { Title as DefaultTitle } from '../Title'
 
-import { drawerButtonStyles } from './styles'
+import styles from './Sider.module.scss'
+
 const { UnorderedListOutlined, LogoutOutlined, DashboardOutlined, BarsOutlined } = Icons
 const { SubMenu } = Menu
 
@@ -163,7 +164,12 @@ export const Sider: typeof DefaultSider = ({ render }) => {
           </AntdLayout.Sider>
         </AntdLayout>
       </Drawer>
-      <Button style={drawerButtonStyles} size='large' onClick={() => setDrawerOpen(true)} icon={<BarsOutlined />} />
+      <Button
+        className={styles.drawerButtonStyles}
+        size='large'
+        onClick={() => setDrawerOpen(true)}
+        icon={<BarsOutlined />}
+      />
     </>
   )
 
