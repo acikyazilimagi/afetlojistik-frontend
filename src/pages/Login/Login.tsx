@@ -80,7 +80,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
 
   return (
     <Row justify='center' align='middle' className={styles.loginRow}>
-      <Col md={12} lg={8}>
+      <Col md={12} lg={10}>
         {renderContent ? renderContent(CardContent) : CardContent}
       </Col>
     </Row>

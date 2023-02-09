@@ -10,6 +10,7 @@
     "password": "Password",
     "phoneNumber": "Phone Number",
     "signin": "Sign In",
+    "subtitle": "",
     "title": "Sign In To Your Account"
   },
   "logout": "Logout"

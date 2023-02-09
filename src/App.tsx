@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { I18nProvider, Refine } from '@pankod/refine-core'
+import dataProvider, { axiosInstance } from '@pankod/refine-simple-rest'
 import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
 import '@pankod/refine-antd/dist/reset.css'
 import 'scss/style.scss'
 
-import dataProvider from '@pankod/refine-simple-rest'
 // eslint-disable-next-line import/no-unresolved
 import { AntdInferencer } from '@pankod/refine-inferencer/antd'
 import routerProvider from '@pankod/refine-react-router-v6'
@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next'
 import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { Login } from 'pages/Login'
+import { http } from 'utils/axios'
 import { authProvider } from './authProvider'
 
 function App() {
@@ -27,13 +28,13 @@ function App() {
   return (
     <ColorModeContextProvider>
       <Refine
-        dataProvider={dataProvider(process.env.REACT_APP_BACKEND_URL)}
+        dataProvider={dataProvider(process.env.REACT_APP_BACKEND_URL, http as typeof axiosInstance)}
         notificationProvider={notificationProvider}
         ReadyPage={ReadyPage}
         catchAll={<ErrorComponent />}
         resources={[
           {
-            name: 'posts',
+            name: 'trip',
             list: AntdInferencer,
             edit: AntdInferencer,
             show: AntdInferencer,
