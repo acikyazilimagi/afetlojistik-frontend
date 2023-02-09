@@ -1,5 +1,5 @@
 export type LoginFormType = {
-  phoneNumber?: number
+  phone?: number
   password?: string
   consent?: boolean
   providerName?: string

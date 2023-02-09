@@ -1,0 +1,26 @@
+.spinnerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.purpleYellowSpinner {
+  width: 40px;
+  height: 40px;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: #ffd10d #ffd10d #5d3ebc #5d3ebc;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

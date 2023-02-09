@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 
+import { Spinner } from 'components/Spinner'
 import reportWebVitals from './reportWebVitals'
 import App from './App'
 import './i18n'
@@ -10,7 +11,7 @@ const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <React.Suspense fallback='loading'>
+    <React.Suspense fallback={<Spinner />}>
       <App />
     </React.Suspense>
   </React.StrictMode>

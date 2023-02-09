@@ -1,12 +1,18 @@
 import { AuthProvider } from '@pankod/refine-core'
+import { notification } from 'antd'
+import { login } from 'dataProviders'
+import { LoginFormType } from 'types/login'
 
-export const TOKEN_KEY = 'refine-auth'
+export const TOKEN_KEY = 'afet-tms'
 
 export const authProvider: AuthProvider = {
-  login: async ({ phoneNumber, password }) => {
-    if (phoneNumber && password) {
-      localStorage.setItem(TOKEN_KEY, phoneNumber)
-      return Promise.resolve()
+  login: async ({ phone, password }: LoginFormType) => {
+    if (phone && password) {
+      return login({ phone, password })
+        .then(() => {
+          localStorage.setItem(TOKEN_KEY, JSON.stringify(phone))
+        })
+        .catch((error) => notification.error({ message: JSON.stringify(error.message) }))
     }
     return Promise.reject(new Error('username: admin, password: admin'))
   },
@@ -30,8 +36,6 @@ export const authProvider: AuthProvider = {
       return Promise.reject()
     }
 
-    return Promise.resolve({
-      id: 1
-    })
+    return Promise.resolve({ phone: JSON.parse(token) })
   }
 }

@@ -48,7 +48,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
         {...formProps}
       >
         <Form.Item
-          name='phoneNumber'
+          name='phone'
           label={t('login.phoneNumber')}
           rules={[
             { required: true },
@@ -103,7 +103,9 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
         height: '100vh'
       }}
     >
-      <Col md={8}>{renderContent ? renderContent(CardContent) : CardContent}</Col>
+      <Col md={12} lg={8}>
+        {renderContent ? renderContent(CardContent) : CardContent}
+      </Col>
     </Row>
   )
 }

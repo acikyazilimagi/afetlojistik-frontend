@@ -6,9 +6,9 @@
   cursor: pointer;
 
   &-secondary {
-    border-radius: $border-radius-sm;
+    border-radius: $border-radius-xlg;
     display: inline-flex;
-    padding: 4px;
+    padding: 8px 16px;
     align-items: center;
     background-color: $ui-purple150;
     color: $ui-purple300;
