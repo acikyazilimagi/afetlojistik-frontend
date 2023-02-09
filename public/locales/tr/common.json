@@ -9,9 +9,11 @@
   "login": {
     "password": "Şifre",
     "phoneNumber": "Telefon Numarası",
-    "signin": "Girip Yap",
+    "signin": "Giriş Yap",
     "subtitle": "5 Şubat Kahramanmaraş Depremi",
-    "title": "Hesabına Girip Yap"
+    "title": "Hesabına Giriş Yap"
   },
-  "logout": "Oturumu Kapat"
+  "logout": "Oturumu Kapat",
+  "selectCity": "Şehir seçiniz...",
+  "selectDistrict": "İlçe seçiniz..."
 }

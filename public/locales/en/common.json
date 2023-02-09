@@ -13,5 +13,7 @@
     "subtitle": "",
     "title": "Sign In To Your Account"
   },
-  "logout": "Logout"
+  "logout": "Logout",
+  "selectCity": "",
+  "selectDistrict": ""
 }
