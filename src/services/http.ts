@@ -2,7 +2,7 @@ import axios from 'axios'
 import { HttpError } from '@pankod/refine-core'
 import { notification } from 'antd'
 import i18n from 'i18n'
-import { getToken } from './auth'
+import { getToken } from '../utils/auth'
 
 // Error handling with axios interceptors
 export const http = axios.create({ baseURL: process.env.REACT_APP_BACKEND_URL })
@@ -11,6 +11,8 @@ http.interceptors.request.use((config) => {
   const token = getToken()
   // eslint-disable-next-line no-param-reassign
   config.headers.Authorization = token
+  // eslint-disable-next-line no-param-reassign
+  config.headers.token = token
 
   return config
 })

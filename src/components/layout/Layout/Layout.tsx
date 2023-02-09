@@ -3,6 +3,7 @@ import React from 'react'
 import { LayoutProps } from '@pankod/refine-core'
 import { AntdLayout, Grid } from '@pankod/refine-antd'
 
+import { CityDropdown } from 'components/CityDropdown'
 import styles from './Layout.module.scss'
 
 export const Layout: React.FC<LayoutProps> = ({ children, Sider, Header, Footer, OffLayoutArea }) => {
@@ -19,6 +20,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, Sider, Header, Footer,
               padding: breakpoint.sm ? 24 : 12
             }}
           >
+            <CityDropdown />
             {children}
           </div>
           {OffLayoutArea && <OffLayoutArea />}
