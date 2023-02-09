@@ -1,12 +1,13 @@
-import { useTranslate } from '@pankod/refine-core'
 import { Tag, Typography } from 'antd'
-
+import { useTranslation } from 'react-i18next'
 export const LoginTitle = () => {
-  const translate = useTranslate()
+  const { t } = useTranslation()
+
   return (
     <>
-      <Typography.Title level={3}>{translate('pages.login.title', 'Sign in to your account')}</Typography.Title>
-      <Tag>{translate('asdsad')}</Tag>
+      <Typography.Title level={3}>{t('login.title')}</Typography.Title>
+      {/* TODO */}
+      <Tag>{'adfsfa'}</Tag>
     </>
   )
 }
