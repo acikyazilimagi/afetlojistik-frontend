@@ -1,14 +1,13 @@
 import { useContext } from 'react'
 import { useGetLocale, useSetLocale, useGetIdentity } from '@pankod/refine-core'
 import { AntdLayout, Space, Menu, Button, Icons, Dropdown, Avatar, Typography, Switch } from '@pankod/refine-antd'
-import { useTranslation } from 'react-i18next'
 import { ColorModeContext } from 'contexts'
+import { SupportedLanguages, supportedLanguages } from 'constants/languageConstants'
 
 const { DownOutlined } = Icons
 const { Text } = Typography
 
 export const Header: React.FC = () => {
-  const { i18n } = useTranslation()
   const locale = useGetLocale()
   const changeLanguage = useSetLocale()
   const { data: user } = useGetIdentity()
@@ -18,17 +17,9 @@ export const Header: React.FC = () => {
 
   const menu = (
     <Menu selectedKeys={currentLocale ? [currentLocale] : []}>
-      {[...(i18n.languages || [])].sort().map((lang: string) => (
-        <Menu.Item
-          key={lang}
-          onClick={() => changeLanguage(lang)}
-          icon={
-            <span style={{ marginRight: 8 }}>
-              <Avatar size={16} src={`/images/flags/${lang}.svg`} />
-            </span>
-          }
-        >
-          {lang === 'en' ? 'English' : 'German'}
+      {Object.values(supportedLanguages).map((lang) => (
+        <Menu.Item key={lang.value} onClick={() => changeLanguage(lang.value)} icon={lang.flag}>
+          {lang.label}
         </Menu.Item>
       ))}
     </Menu>
@@ -53,8 +44,8 @@ export const Header: React.FC = () => {
       <Dropdown overlay={menu}>
         <Button type='link'>
           <Space>
-            <Avatar size={16} src={`/images/flags/${currentLocale}.svg`} />
-            {currentLocale === 'en' ? 'English' : 'German'}
+            {supportedLanguages[currentLocale as SupportedLanguages].flag}
+            {supportedLanguages[currentLocale as SupportedLanguages].label}
             <DownOutlined />
           </Space>
         </Button>
