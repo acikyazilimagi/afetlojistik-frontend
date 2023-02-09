@@ -4,6 +4,8 @@ import { AntdLayout, Space, Menu, Button, Icons, Dropdown, Avatar, Typography, S
 import { ColorModeContext } from 'contexts'
 import { SupportedLanguages, supportedLanguages } from 'constants/languageConstants'
 
+import styles from './Header.module.scss'
+
 const { DownOutlined } = Icons
 const { Text } = Typography
 
@@ -26,15 +28,7 @@ export const Header: React.FC = () => {
   )
 
   return (
-    <AntdLayout.Header
-      style={{
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        padding: '0px 24px',
-        height: '64px'
-      }}
-    >
+    <AntdLayout.Header className={styles.header}>
       <Switch
         checkedChildren='🌛'
         unCheckedChildren='🔆'
@@ -50,7 +44,7 @@ export const Header: React.FC = () => {
           </Space>
         </Button>
       </Dropdown>
-      <Space style={{ marginLeft: '8px' }}>
+      <Space className='ml-8'>
         {user?.name && (
           <Text ellipsis strong>
             {user.name}

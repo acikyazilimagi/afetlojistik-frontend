@@ -77,9 +77,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
         >
           <Menu.Item
             key={route}
-            style={{
-              fontWeight: isSelected ? 'bold' : 'normal'
-            }}
+            className={`${isSelected && 'font-bold'}`}
             icon={icon ?? (isRoute && <UnorderedListOutlined />)}
           >
             <Link to={route}>{label}</Link>
@@ -96,13 +94,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
   )
 
   const dashboard = hasDashboard ? (
-    <Menu.Item
-      key='dashboard'
-      style={{
-        fontWeight: selectedKey === '/' ? 'bold' : 'normal'
-      }}
-      icon={<DashboardOutlined />}
-    >
+    <Menu.Item key='dashboard' className={`${selectedKey === '/' && 'font-bold'}`} icon={<DashboardOutlined />}>
       <Link to='/'>{t('dashboard.title')}</Link>
       {!collapsed && selectedKey === '/' && <div className='ant-menu-tree-arrow' />}
     </Menu.Item>
@@ -158,7 +150,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
         maskClosable={true}
       >
         <AntdLayout>
-          <AntdLayout.Sider style={{ height: '100vh', overflow: 'hidden' }}>
+          <AntdLayout.Sider className={styles.antdLayoutSider}>
             <RenderToTitle collapsed={false} />
             {renderMenu()}
           </AntdLayout.Sider>

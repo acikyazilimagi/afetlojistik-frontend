@@ -1,0 +1,16 @@
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrappedImage {
+  margin: 0 auto;
+  padding: 12px 0;
+  max-height: 65.5px;
+}
+
+.soloImage {
+  width: 200px;
+  padding: 12px 24px;
+}

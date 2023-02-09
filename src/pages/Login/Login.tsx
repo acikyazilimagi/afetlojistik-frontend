@@ -5,7 +5,7 @@ import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, 
 import { RuleObject } from 'antd/es/form'
 import { LoginFormType } from 'types/login'
 import { LoginTitle } from './LoginTitle'
-//import styles from './Login.module.scss'
+import styles from './Login.module.scss'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
@@ -59,30 +59,13 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
         >
           <Input type='number' size='large' placeholder={t('login.phoneNumber')} />
         </Form.Item>
-        <Form.Item
-          name='password'
-          label={t('login.password')}
-          rules={[{ required: true }]}
-          style={{ marginBottom: '12px' }}
-        >
+        <Form.Item name='password' label={t('login.password')} rules={[{ required: true }]} className='mb-12'>
           <Input type='password' placeholder='●●●●●●●●' size='large' />
         </Form.Item>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginBottom: '12px'
-          }}
-        >
+        <div className={styles.rememberMeWrapper}>
           {rememberMe ?? (
             <Form.Item name='remember' valuePropName='checked' noStyle>
-              <Checkbox
-                style={{
-                  fontSize: '12px'
-                }}
-              >
-                {t('gdprConsent')}
-              </Checkbox>
+              <Checkbox className='font-12'>{t('gdprConsent')}</Checkbox>
             </Form.Item>
           )}
         </div>
@@ -96,13 +79,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
   )
 
   return (
-    <Row
-      justify='center'
-      align='middle'
-      style={{
-        height: '100vh'
-      }}
-    >
+    <Row justify='center' align='middle' className={styles.loginRow}>
       <Col md={12} lg={8}>
         {renderContent ? renderContent(CardContent) : CardContent}
       </Col>
