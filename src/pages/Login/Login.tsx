@@ -1,52 +1,40 @@
 import React from 'react'
 import { LoginPageProps, useLogin, useTranslate } from '@pankod/refine-core'
 import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps } from 'antd'
+import { RuleObject } from 'antd/es/form'
 import { LoginFormType } from 'types/login'
 import { LoginTitle } from './LoginTitle'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
-export const Login: React.FC<LoginProps> = ({ providers, rememberMe, renderContent, formProps }) => {
+const validatePhoneNumber = (
+  rule: RuleObject,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value: any,
+  callback: (error?: string | undefined) => void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  translate: (key: string, options?: any, defaultMessage?: string | undefined) => string
+) => {
+  if (value) {
+    const isValid = /^5(0[5-7]|[3-5]\d)\d{3}\d{4}$/.test(value)
+    if (isValid) {
+      callback()
+    } else {
+      callback(translate('pages.login.errors.phoneNumber', 'Invalid phone number'))
+    }
+  } else {
+    callback()
+  }
+}
+
+export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formProps }) => {
   const translate = useTranslate()
   const [form] = Form.useForm<LoginFormType>()
 
   const { mutate: login, isLoading } = useLogin<LoginFormType>()
 
-  const renderProviders = () => {
-    if (providers && providers.length > 0) {
-      return (
-        <>
-          {providers.map((provider) => (
-            <Button
-              key={provider.name}
-              type='default'
-              block
-              icon={provider.icon}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                marginBottom: '8px'
-              }}
-              onClick={() =>
-                login({
-                  providerName: provider.name
-                })
-              }
-            >
-              {provider.label}
-            </Button>
-          ))}
-        </>
-      )
-    }
-    return null
-  }
-
   const CardContent = (
     <Card title={<LoginTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
-      {renderProviders()}
       <Form<LoginFormType>
         layout='vertical'
         form={form}
@@ -63,8 +51,7 @@ export const Login: React.FC<LoginProps> = ({ providers, rememberMe, renderConte
           rules={[
             { required: true },
             {
-              type: 'number',
-              message: translate('pages.login.errors.phoneNumber', 'Invalid phone number')
+              validator: (rule, value, callback) => validatePhoneNumber(rule, value, callback, translate)
             }
           ]}
         >
