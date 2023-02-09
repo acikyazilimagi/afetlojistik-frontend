@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { HttpError } from '@pankod/refine-core'
+import { notification } from 'antd'
 import i18n from 'i18n'
 import { getToken } from './auth'
 
@@ -22,6 +23,8 @@ http.interceptors.response.use(
       message: error.response?.data?.message ?? i18n.t('errorMessages.unknownError'),
       statusCode: error.response?.status
     }
+
+    notification.error({ message: i18n.t('errorMessages.errorTitle') as string, description: customError.message })
 
     return Promise.reject(customError)
   }

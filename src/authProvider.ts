@@ -1,5 +1,4 @@
 import { AuthProvider } from '@pankod/refine-core'
-import { notification } from 'antd'
 import { login } from 'dataProviders'
 import { LoginFormType } from 'types/login'
 import { getUser, removeUser, setUser } from 'utils/auth'
@@ -12,7 +11,7 @@ export const authProvider: AuthProvider = {
           setUser(response)
           return Promise.resolve()
         })
-        .catch((error) => notification.error({ message: error.message }))
+        .catch(() => {})
     }
     return Promise.reject(new Error('username: admin, password: admin'))
   },
@@ -31,11 +30,11 @@ export const authProvider: AuthProvider = {
   },
   getPermissions: () => Promise.resolve(),
   getUserIdentity: async () => {
-    const token = getUser()
-    if (!token) {
+    const user = getUser()
+    if (!user) {
       return Promise.reject()
     }
 
-    return Promise.resolve(token)
+    return Promise.resolve(user)
   }
 }

@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next'
 import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { Login } from 'pages/Login'
-import { http } from 'utils/axios'
+import { http } from 'utils/http'
 import { authProvider } from './authProvider'
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
         catchAll={<ErrorComponent />}
         resources={[
           {
-            name: 'trip',
+            name: 'trips',
             list: AntdInferencer,
             edit: AntdInferencer,
             show: AntdInferencer,
