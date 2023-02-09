@@ -1,0 +1,38 @@
+@import 'scss/colors.scss';
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover,
+.ant-radio-checked .ant-radio-inner,
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+.ant-radio-input:focus + .ant-radio-inner,
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child,
+.ant-radio:hover .ant-radio-inner {
+  border-color: $purple200;
+}
+.ant-radio-checked:after {
+  border: 1px solid $purple200;
+}
+.ant-radio-inner:after {
+  background-color: $purple200;
+}
+
+.ant-radio-input:focus + .ant-radio-inner,
+.ant-radio-button-wrapper:focus-within {
+  box-shadow: 0 0 0 1px $purple100;
+}
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover,
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled),
+.ant-radio-button-wrapper:hover {
+  color: $purple200;
+}
+.ant-radio-button-wrapper-checked:not(
+    [class*=' ant-radio-button-wrapper-disabled']
+  ).ant-radio-button-wrapper:first-child {
+  border-left-color: $purple200;
+}
+
+.ant-radio-button-wrapper-checked:not(
+    [class*=' ant-radio-button-wrapper-disabled']
+  ).ant-radio-button-wrapper:first-child {
+  border-right-color: $purple200;
+}

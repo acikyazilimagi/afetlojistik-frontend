@@ -1,0 +1,128 @@
+@import 'scss/colors.scss';
+@import 'scss/defaults.scss';
+
+.ant-btn {
+  border-radius: $border-radius-md;
+  border: none !important;
+  font-weight: 600;
+
+  &-secondary {
+    &.ant-btn-default {
+      color: $purple200;
+      background: $ui-purple150 !important;
+    }
+  }
+
+  &-primary {
+    border-color: $ui-purple300 !important;
+    background: $ui-purple300 !important;
+    color: $white;
+    &:disabled {
+      background: $gray200 !important;
+      color: $white300 !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $white;
+      background: $ui-purple200 !important;
+    }
+  }
+
+  &-dangerous {
+    &:not(:disabled) {
+      color: $red !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      background: $ui-purple200 !important;
+    }
+  }
+
+  &-default {
+    background: $btn-default-bg !important;
+    &:disabled {
+      background: $btn-disabled-bg !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $white !important;
+      background: $ui-purple200 !important;
+    }
+  }
+
+  &-link {
+    color: $ui-purple300 !important;
+    transition: 0.2s !important;
+    font-weight: 400 !important;
+    border: none !important;
+    &:disabled {
+      color: $gray200 !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $ui-purple200;
+      font-weight: 600 !important;
+    }
+  }
+
+  &-cancel,
+  &-approve {
+    background: transparent !important;
+    border: 1px solid $ui-gray100 !important;
+    &:hover,
+    &:focus-within,
+    &:focus {
+      border: none !important;
+    }
+  }
+
+  &-approve {
+    color: $green100;
+    &:disabled {
+      background: $btn-disabled-bg !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $white !important;
+      background: $green100 !important;
+    }
+  }
+
+  &-cancel {
+    color: $red;
+    &:disabled {
+      background: $btn-disabled-bg !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $white !important;
+      background: $red !important;
+    }
+  }
+}
+
+.ant-btn {
+  &:focus,
+  &:hover {
+    color: $purple200;
+    border-color: $purple200;
+  }
+  &-primary {
+    border-color: $purple800;
+    background: $purple800;
+    color: $white;
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $white;
+      border-color: $purple200;
+      background: $purple200;
+    }
+  }
+}

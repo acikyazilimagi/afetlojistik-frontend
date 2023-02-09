@@ -1,0 +1,20 @@
+@import 'scss/colors.scss';
+
+.ant-select-focused:not(.ant-select-disabled).ant-select-focused:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: $purple200;
+  box-shadow: 0 0 0 2px rgba(93, 62, 188, 0.2);
+}
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: $purple200;
+}
+
+.ant-select-item-option-selected {
+  background-color: $purple100;
+  &:not(.ant-select-item-option-disabled) .ant-select-item-option-state {
+    color: $gray200;
+  }
+  &:not(.ant-select-item-option-disabled) {
+    background-color: $purple100;
+    font-weight: 400;
+  }
+}

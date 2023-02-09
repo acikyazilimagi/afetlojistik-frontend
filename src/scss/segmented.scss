@@ -1,0 +1,8 @@
+@import 'scss/defaults.scss';
+
+.ant-segmented {
+  border-radius: $border-radius-md;
+  .ant-segmented-item {
+    border-radius: 6px;
+  }
+}

@@ -1,0 +1,7 @@
+@import 'scss/defaults.scss';
+
+.ant-popover {
+  &-inner {
+    border-radius: $border-radius-md;
+  }
+}

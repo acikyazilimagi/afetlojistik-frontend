@@ -1,0 +1,67 @@
+@import 'scss/colors.scss';
+@import 'scss/defaults.scss';
+
+.crud-table {
+  padding: 0 12px 24px 12px !important;
+}
+
+.ant-table {
+  .ant-table-thead {
+    & > tr {
+      & > th {
+        background: $table-header-row-bg;
+        padding: 12px !important;
+        &:first-child {
+          border-top-left-radius: $border-radius-md;
+          border-bottom-left-radius: $border-radius-md;
+        }
+        &:last-child {
+          border-top-right-radius: $border-radius-md;
+          border-bottom-right-radius: $border-radius-md;
+        }
+      }
+    }
+  }
+}
+
+.ant-card.crud-header-card {
+  padding: 24px 12px !important;
+  .ant-card-body {
+    padding: 12px 0;
+  }
+  .ant-card-head {
+    padding: 8px 0 12px 0;
+    .ant-card-extra {
+      padding: 0 !important;
+    }
+  }
+}
+
+.ant-pagination .ant-pagination-item {
+  border-radius: $border-radius-md;
+}
+
+.ant-pagination-item-active a,
+.ant-pagination-item-active:focus-visible a,
+.ant-pagination-item-active:hover a,
+.ant-pagination-item:focus-visible a,
+.ant-pagination-item:hover a {
+  color: $purple200;
+}
+
+.ant-pagination-item-active:focus-visible a,
+.ant-pagination-item-active:focus-visible,
+.ant-pagination-item-active:hover,
+.ant-pagination-item-active:hover a,
+.ant-pagination-item-active {
+  border-color: $purple200;
+}
+
+.ant-table.ant-table-bordered > .ant-table-container > .ant-table-content > table {
+  border-top: none;
+}
+
+.ant-table-container,
+.ant-table-bordered > .ant-table-container > .ant-table-content > table {
+  border-radius: 12px;
+}

@@ -1,0 +1,32 @@
+@import 'scss/colors.scss';
+
+.text-purple {
+  color: $ui-purple300 !important;
+}
+
+.text-yellow {
+  color: $ui-getir-yellow !important;
+}
+
+.text-white {
+  color: $white !important;
+}
+
+.text-gray {
+  color: $gray200 !important;
+}
+
+.text-danger {
+  color: $red300 !important;
+  span {
+    color: $red300 !important;
+  }
+}
+
+.font-bold {
+  font-weight: 600 !important;
+}
+
+.font-bolder {
+  font-weight: 900 !important;
+}

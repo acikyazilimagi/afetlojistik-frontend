@@ -1,0 +1,34 @@
+@import 'scss/defaults.scss';
+
+.ant-collapse {
+  border-radius: $border-radius-md;
+  background-color: white;
+  box-shadow: 0px 3px 12px -1px rgba(28, 52, 84, 0.13), 0px 2px 4px -1px rgba(28, 55, 90, 0.08);
+
+  .ant-collapse-item {
+    border-radius: $border-radius-md;
+
+    .ant-collapse-header-text,
+    .ant-collapse-expand-icon {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .ant-collapse-content {
+      background-color: transparent;
+    }
+    .ant-collapse-content-inactive,
+    .ant-collapse-header {
+      border-radius: $border-radius-md;
+    }
+    &.ant-collapse-item-active {
+      .ant-collapse-header {
+        border-radius: 8px 8px 0 0 !important;
+      }
+    }
+    &.no-border {
+      .ant-collapse-content {
+        border-top: none;
+      }
+    }
+  }
+}

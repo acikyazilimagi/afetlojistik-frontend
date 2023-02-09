@@ -1,54 +1,45 @@
-import React from "react";
+import React from 'react'
 
-import { Refine } from "@pankod/refine-core";
-import {
-  notificationProvider,
-  ReadyPage,
-  ErrorComponent,
-  AuthPage,
-} from "@pankod/refine-antd";
-import "@pankod/refine-antd/dist/reset.css";
+import { I18nProvider, Refine } from '@pankod/refine-core'
+import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
+import '@pankod/refine-antd/dist/reset.css'
+import 'scss/style.scss'
 
-import dataProvider from "@pankod/refine-simple-rest";
-import { AntdInferencer } from "@pankod/refine-inferencer/antd";
-import routerProvider from "@pankod/refine-react-router-v6";
-import { useTranslation } from "react-i18next";
-import { ColorModeContextProvider } from "contexts";
-import {
-  Title,
-  Header,
-  Sider,
-  Footer,
-  Layout,
-  OffLayoutArea,
-} from "components/layout";
-import { authProvider } from "./authProvider";
+import dataProvider from '@pankod/refine-simple-rest'
+// eslint-disable-next-line import/no-unresolved
+import { AntdInferencer } from '@pankod/refine-inferencer/antd'
+import routerProvider from '@pankod/refine-react-router-v6'
+import { useTranslation } from 'react-i18next'
+import { ColorModeContextProvider } from 'contexts'
+import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
+import { Login } from 'pages/Login'
+import { authProvider } from './authProvider'
 
 function App() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation()
 
-  const i18nProvider = {
+  const i18nProvider: I18nProvider = {
     translate: (key: string, params: object) => t(key, params),
     changeLocale: (lang: string) => i18n.changeLanguage(lang),
-    getLocale: () => i18n.language,
-  };
+    getLocale: () => i18n.language
+  }
 
   return (
     <ColorModeContextProvider>
       <Refine
-        dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+        dataProvider={dataProvider(process.env.REACT_APP_BACKEND_URL)}
         notificationProvider={notificationProvider}
         ReadyPage={ReadyPage}
         catchAll={<ErrorComponent />}
         resources={[
           {
-            name: "posts",
+            name: 'posts',
             list: AntdInferencer,
             edit: AntdInferencer,
             show: AntdInferencer,
             create: AntdInferencer,
-            canDelete: true,
-          },
+            canDelete: true
+          }
         ]}
         Title={Title}
         Header={Header}
@@ -58,11 +49,11 @@ function App() {
         OffLayoutArea={OffLayoutArea}
         routerProvider={routerProvider}
         authProvider={authProvider}
-        LoginPage={AuthPage}
+        LoginPage={Login}
         i18nProvider={i18nProvider}
       />
     </ColorModeContextProvider>
-  );
+  )
 }
 
-export default App;
+export default App

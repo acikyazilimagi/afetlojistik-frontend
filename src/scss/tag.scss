@@ -1,0 +1,34 @@
+@import 'scss/defaults.scss';
+@import 'scss/colors.scss';
+
+.ant-tag {
+  border-radius: $border-radius-md;
+  cursor: pointer;
+
+  &-secondary {
+    border-radius: $border-radius-sm;
+    display: inline-flex;
+    padding: 4px;
+    align-items: center;
+    background-color: $ui-purple150;
+    color: $ui-purple300;
+    border: none;
+    &:hover {
+      background-color: $ui-purple200;
+      color: white;
+    }
+  }
+  &.tag-purple {
+    background-color: $ui-purple300;
+    color: $white;
+    &:hover {
+      background-color: $ui-purple200;
+    }
+    .ant-tag-close-icon {
+      color: $white;
+      &:hover {
+        color: $red300;
+      }
+    }
+  }
+}

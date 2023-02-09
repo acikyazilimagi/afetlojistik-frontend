@@ -1,0 +1,17 @@
+@import 'scss/colors.scss';
+.btn {
+  &-purple {
+    background: $purple600;
+    color: $getir-yellow !important;
+    font-weight: 500;
+  }
+
+  &-purple:hover,
+  &-purple:focus,
+  &-purple:active,
+  &-purple.active {
+    color: $white;
+    background-color: $purple900;
+    border-color: $purple800;
+  }
+}

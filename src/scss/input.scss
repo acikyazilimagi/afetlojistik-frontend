@@ -1,0 +1,37 @@
+@import 'scss/defaults.scss';
+@import 'scss/colors.scss';
+
+.ant-input,
+.ant-input-affix-wrapper {
+  border-radius: $border-radius-md;
+}
+
+.ant-input-affix-wrapper-focused:not(.ant-input-affix-wrapper-disabled),
+.ant-input-number-affix-wrapper-focused:not(.ant-input-number-affix-wrapper-disabled),
+.ant-input-number:focus,
+.ant-input-number-focused {
+  border-color: $purple200;
+  box-shadow: 0 0 0 2px rgba(93, 62, 188, 0.2);
+}
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+.ant-input-number-affix-wrapper:not(.ant-input-number-affix-wrapper-disabled):hover {
+  border-color: $purple200;
+}
+.ant-input:hover,
+.ant-input-number:hover,
+.ant-input-number:focus .ant-input:focus,
+.ant-input:focus,
+.ant-input-search .ant-input:focus,
+.ant-input-search .ant-input:hover {
+  border-color: $purple200;
+}
+
+.ant-input-number:focus,
+.ant-input:focus {
+  box-shadow: 0 0 0 2px rgba(93, 62, 188, 0.2);
+}
+
+.ant-input-search .ant-input:focus + .ant-input-group-addon .ant-input-search-button:not(.ant-btn-primary),
+.ant-input-search .ant-input:hover + .ant-input-group-addon .ant-input-search-button:not(.ant-btn-primary) {
+  border-left-color: $purple200;
+}

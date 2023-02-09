@@ -1,0 +1,149 @@
+@import 'scss/colors.scss';
+
+html,
+body {
+  font-family: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: $gray900;
+}
+html {
+  --antd-wave-shadow-color: $purple800;
+}
+::selection {
+  color: $white;
+  background: $purple800;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-sb {
+  justify-content: space-between;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  &:hover {
+    transform: scale(4);
+    transform-origin: left;
+    z-index: 1000;
+    border: 1px solid $getir-yellow;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5d3ebd;
+    background-color: white;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+.red-border {
+  border-color: $red;
+  &:hover {
+    border-color: $red;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.flex-inline {
+  display: inline-flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center-align {
+  align-items: center;
+}
+
+.buttonAnimation {
+  .ant-notification-notice-message {
+    animation: blinker 2s linear infinite;
+  }
+  cursor: pointer;
+  padding: 14px 16px;
+  .ant-notification-notice-message,
+  .ant-notification-notice-description {
+    color: $red;
+    font-size: 16px;
+    font-weight: 700;
+    padding-right: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .ant-notification-notice-description {
+    color: $gray200;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: pre-line;
+  }
+}
+
+.bg-ghost-warning {
+  background-color: $gray100;
+  .expiryDate {
+    color: $red;
+  }
+}
+
+.row-wrapper > .ant-space-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-lightBlue {
+  background-color: $light-blue;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.zero-padding-card {
+  .ant-card-body {
+    padding: 0;
+  }
+}
+
+.full-height {
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.red {
+  color: $red;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.max-width-500 {
+  max-width: 500px;
+}

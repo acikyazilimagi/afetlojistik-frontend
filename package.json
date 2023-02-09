@@ -1,45 +1,84 @@
 {
   "name": "afet-tms",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "author": {
+    "name": "Getir - Stock",
+    "email": "stock.rivendell@getir.com"
+  },
+  "description": "Afet TMS",
+  "main": "src/index.js",
   "private": true,
-  "dependencies": {
-    "@pankod/refine-cli": "^1.2.0",
-    "@pankod/refine-core": "^3.18.0",
-    "@pankod/refine-inferencer": "^2.0.2",
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.23",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.0",
-    "web-vitals": "^1.1.1",
-    "@pankod/refine-simple-rest": "^3.18.0",
-    "@pankod/refine-antd": "^4.7.0",
-    "@pankod/refine-react-router-v6": "^3.18.0",
-    "i18next": "^20.1.0",
-    "react-i18next": "^11.8.11",
-    "i18next-browser-languagedetector": "^6.1.1",
-    "i18next-xhr-backend": "^3.2.2"
+  "engines": {
+    "node": ">=16.13.1",
+    "npm": ">=v8.1.2"
   },
-  "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@types/node": "^12.20.10",
-    "typescript": "^4.7.4"
+  "repository": {
+    "type": "git",
+    "url": "bitbucket:#repo"
   },
+  "homepage": "#documentation",
+  "bugs": "https://github.com/whatever/package/issues",
   "scripts": {
+    "start": "refine start",
     "dev": "refine start",
     "build": "refine build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "refine": "refine"
+    "refine": "refine",
+    "prettier": "npx prettier --write \"src/**/*.{js,jsx,json,ts,tsx,css,scss}\"",
+    "i18n:extract": "npx i18next --config i18next-parser.config.js",
+    "eslint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "madge:circular": "npx madge --circular  src/App.tsx",
+    "prepare": "husky install",
+    "tsc": "npx tsc"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@ant-design/compatible": "^5.1.1",
+    "@ant-design/icons": "^5.0.1",
+    "@pankod/refine-antd": "^4.7.0",
+    "@pankod/refine-cli": "^1.2.0",
+    "@pankod/refine-core": "^3.18.0",
+    "@pankod/refine-inferencer": "^2.0.2",
+    "@pankod/refine-react-router-v6": "^3.18.0",
+    "@pankod/refine-simple-rest": "^3.18.0",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.23",
+    "antd": "^5.2.0",
+    "i18next": "^20.1.0",
+    "i18next-browser-languagedetector": "^6.1.8",
+    "i18next-http-backend": "^2.1.1",
+    "i18next-xhr-backend": "^3.2.2",
+    "lint-staged": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^11.8.11",
+    "react-scripts": "^5.0.0",
+    "sass": "^1.58.0",
+    "web-vitals": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.10",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "dotenv": "^16.0.3",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "i18next-parser": "^7.6.0",
+    "madge": "^6.0.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.7.4"
   },
   "browserslist": {
     "production": [
@@ -51,6 +90,14 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
+      "bash -c tsc --noEmit",
+      "eslint --ext .js,.jsx,.ts,.tsx --fix --cache",
+      "prettier --write",
+      "madge --circular  src/App.tsx"
     ]
   }
 }

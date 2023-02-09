@@ -1,0 +1,27 @@
+@import 'scss/defaults.scss';
+@import 'scss/colors.scss';
+
+.ant-input-affix-wrapper,
+.ant-picker-range {
+  border-radius: $border-radius-md;
+}
+
+.ant-picker-range .ant-picker-active-bar {
+  background: $purple200;
+}
+
+.ant-picker-focused {
+  border-color: $purple200;
+  box-shadow: 0 0 0 2px rgba(93, 62, 188, 0.2);
+}
+.ant-picker:hover,
+.ant-picker-focused {
+  border-color: $purple200;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+  color: $white;
+  background: $purple800;
+}

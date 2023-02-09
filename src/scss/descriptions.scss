@@ -1,0 +1,17 @@
+@import 'scss/defaults.scss';
+@import 'scss/colors.scss';
+
+.ant-descriptions {
+  .ant-descriptions-view {
+    overflow: hidden;
+  }
+  .ant-descriptions-view,
+  .ant-descriptions-row {
+    border-radius: $border-radius-lg;
+  }
+  .ant-descriptions-item-label {
+    overflow: hidden;
+    font-weight: 500;
+    color: $ui-purple300;
+  }
+}

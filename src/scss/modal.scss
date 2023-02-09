@@ -1,0 +1,24 @@
+@import 'scss/defaults.scss';
+@import 'scss/colors.scss';
+
+.ant-modal,
+.ant-modal-content,
+.ant-modal-header {
+  border-radius: $border-radius-md;
+}
+
+.ant-modal {
+  .ant-modal-close-x {
+    .ant-modal-close-icon {
+      transition: all 0.2s ease;
+      padding: 10px;
+      background: $ui-gray250;
+      color: $ui-black200;
+      border-radius: 4px;
+      &:hover {
+        background: $ui-gray200;
+        color: $ui-black100;
+      }
+    }
+  }
+}
