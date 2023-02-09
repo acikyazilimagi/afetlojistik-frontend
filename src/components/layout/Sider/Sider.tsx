@@ -10,7 +10,6 @@ import {
   Button
 } from '@pankod/refine-antd'
 import {
-  useTranslate,
   useLogout,
   useTitle,
   CanAccess,
@@ -20,6 +19,7 @@ import {
   useMenu,
   useRefineContext
 } from '@pankod/refine-core'
+import { useTranslation } from 'react-i18next'
 
 import { Title as DefaultTitle } from '../Title'
 
@@ -35,7 +35,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
   const { Link } = useRouterContext()
   const { mutate: mutateLogout } = useLogout()
   const Title = useTitle()
-  const translate = useTranslate()
+  const { t } = useTranslation()
   const { menuItems, selectedKey, defaultOpenKeys } = useMenu()
   const breakpoint = Grid.useBreakpoint()
   const { hasDashboard } = useRefineContext()
@@ -91,7 +91,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
 
   const logout = isExistAuthentication && (
     <Menu.Item key='logout' onClick={() => mutateLogout()} icon={<LogoutOutlined />}>
-      {translate('buttons.logout', 'Logout')}
+      {t('logout')}
     </Menu.Item>
   )
 
@@ -103,7 +103,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
       }}
       icon={<DashboardOutlined />}
     >
-      <Link to='/'>{translate('dashboard.title', 'Dashboard')}</Link>
+      <Link to='/'>{t('dashboard.title')}</Link>
       {!collapsed && selectedKey === '/' && <div className='ant-menu-tree-arrow' />}
     </Menu.Item>
   ) : null

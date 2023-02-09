@@ -1,5 +1,6 @@
 import React from 'react'
-import { LoginPageProps, useLogin, useTranslate } from '@pankod/refine-core'
+import { LoginPageProps, useLogin } from '@pankod/refine-core'
+import { useTranslation } from 'react-i18next'
 import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps } from 'antd'
 import { RuleObject } from 'antd/es/form'
 import { LoginFormType } from 'types/login'
@@ -14,14 +15,14 @@ const validatePhoneNumber = (
   value: any,
   callback: (error?: string | undefined) => void,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  translate: (key: string, options?: any, defaultMessage?: string | undefined) => string
+  t: (key: string) => string
 ) => {
   if (value) {
     const isValid = /^5(0[5-7]|[3-5]\d)\d{3}\d{4}$/.test(value)
     if (isValid) {
       callback()
     } else {
-      callback(translate('pages.login.errors.phoneNumber', 'Invalid phone number'))
+      callback(t('errors.phoneNumber'))
     }
   } else {
     callback()
@@ -29,8 +30,8 @@ const validatePhoneNumber = (
 }
 
 export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formProps }) => {
-  const translate = useTranslate()
   const [form] = Form.useForm<LoginFormType>()
+  const { t } = useTranslation()
 
   const { mutate: login, isLoading } = useLogin<LoginFormType>()
 
@@ -48,19 +49,19 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
       >
         <Form.Item
           name='phoneNumber'
-          label={translate('pages.login.fields.phoneNumber', 'Phone Number')}
+          label={t('login.phoneNumber')}
           rules={[
             { required: true },
             {
-              validator: (rule, value, callback) => validatePhoneNumber(rule, value, callback, translate)
+              validator: (rule, value, callback) => validatePhoneNumber(rule, value, callback, t)
             }
           ]}
         >
-          <Input type='number' size='large' placeholder={translate('pages.login.fields.phoneNumber', 'Phone Number')} />
+          <Input type='number' size='large' placeholder={t('login.phoneNumber')} />
         </Form.Item>
         <Form.Item
           name='password'
-          label={translate('pages.login.fields.password', 'Password')}
+          label={t('login.password')}
           rules={[{ required: true }]}
           style={{ marginBottom: '12px' }}
         >
@@ -80,14 +81,14 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
                   fontSize: '12px'
                 }}
               >
-                {translate('gdprConsent', 'Remember me')}
+                {t('gdprConsent')}
               </Checkbox>
             </Form.Item>
           )}
         </div>
         <Form.Item>
           <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
-            {translate('pages.login.signin', 'Sign in')}
+            {t('login.signin')}
           </Button>
         </Form.Item>
       </Form>
