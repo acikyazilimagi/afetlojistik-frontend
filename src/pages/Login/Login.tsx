@@ -57,7 +57,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
             }
           ]}
         >
-          <Input type='number' size='large' placeholder={t('login.phoneNumber')} />
+          <Input type='number' size='large' placeholder={'(555) 555 5555'} />
         </Form.Item>
         <Form.Item name='password' label={t('login.password')} rules={[{ required: true }]} className='mb-12'>
           <Input type='password' placeholder='●●●●●●●●' size='large' />
