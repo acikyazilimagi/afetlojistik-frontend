@@ -34,7 +34,7 @@ function App() {
         catchAll={<ErrorComponent />}
         resources={[
           {
-            name: 'trips',
+            name: 'trip',
             list: AntdInferencer,
             edit: AntdInferencer,
             show: AntdInferencer,

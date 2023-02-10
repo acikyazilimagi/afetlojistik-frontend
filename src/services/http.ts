@@ -18,7 +18,7 @@ http.interceptors.request.use((config) => {
 })
 
 http.interceptors.response.use(
-  (response) => response.data.data,
+  (response) => response.data,
   (error) => {
     const customError: HttpError = {
       ...error,
