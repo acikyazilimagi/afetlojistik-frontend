@@ -13,6 +13,8 @@
     "title": "Dashboard"
   },
   "destination": "Destination",
+  "destinationCity": "Destination City",
+  "destinationDistrict": "Destination District",
   "driverName": "Driver Name",
   "errorMessages": {
     "minimumProducts": "Minimum {{value}} products must be added."

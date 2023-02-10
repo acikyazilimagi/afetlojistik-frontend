@@ -13,9 +13,11 @@
     "title": "Panel"
   },
   "destination": "İstikamet",
-  "driverName": "",
+  "destinationCity": "Hedef İl",
+  "destinationDistrict": "Hedef İlçe",
+  "driverName": "Sürücü İsmi",
   "errorMessages": {
-    "minimumProducts": ""
+    "minimumProducts": "En az {{value}} koli eklenmeli"
   },
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
@@ -40,7 +42,7 @@
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
-  "phoneNumber": "",
+  "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
   "plateNumber": "",
   "selectCategory": "Kategori Seç",
