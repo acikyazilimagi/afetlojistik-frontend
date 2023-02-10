@@ -55,11 +55,11 @@
   "tripDetails": "Sefer Detayı",
   "tripNo": "Sefer Numarası",
   "tripStatuses": {
-    "arrived": "",
-    "cancelled": "",
-    "completed": "",
-    "created": "",
-    "onWay": ""
+    "arrived": "Ulaştı",
+    "cancelled": "İptal Edildi",
+    "completed": "Tamamlandı",
+    "created": "Oluşturuldu",
+    "onWay": "Yolda"
   },
   "updatedAt": "",
   "vehicle": "Araç",
