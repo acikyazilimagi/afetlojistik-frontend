@@ -18,7 +18,7 @@ type AdditionalPropsTypes = {
 }
 
 type InputProps<T extends InputMode> = {
-  name: string
+  name: string | string[] | number
   label?: string
   value?: string
   isTouched?: boolean
@@ -60,6 +60,7 @@ export const FormInput = <T extends InputMode = undefined>({
   return (
     <Item
       help={isTouched && errorMessage}
+      className={styles.formItem}
       validateStatus={isTouched && errorMessage ? 'error' : 'success'}
       name={name}
       label={label}
