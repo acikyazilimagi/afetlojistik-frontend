@@ -5,9 +5,13 @@
 }
 
 .wrappedImage {
-  margin: 0 auto;
-  padding: 12px 0;
-  max-height: 65.5px;
+  color: white;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  font-size: 24px;
+  width: 100%;
+  display: block;
 }
 
 .soloImage {
