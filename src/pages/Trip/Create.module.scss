@@ -1,0 +1,9 @@
+.formItem {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px;
+  padding: 0 8px;
+}
+
+.formItem > * {
+  box-shadow: none !important;
+}

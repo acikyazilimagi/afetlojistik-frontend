@@ -136,3 +136,13 @@
   padding: 8px;
   border-radius: 8px;
 }
+
+.ant-form-item-has-success {
+  margin-bottom: 0 !important;
+}
+
+.ant-form-item-label > label {
+  color: $primary-color !important;
+  font-size: 15px !important;
+  font-weight: 600;
+}

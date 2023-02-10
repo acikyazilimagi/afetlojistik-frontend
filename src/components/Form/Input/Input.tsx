@@ -4,6 +4,8 @@ import React, { useMemo } from 'react'
 
 const { Item } = Form
 
+import styles from './Input.module.scss'
+
 interface InputEventHandler extends React.ChangeEventHandler<HTMLInputElement> {
   value: string | number
 }
@@ -21,7 +23,7 @@ type InputProps<T extends InputMode> = {
   value?: string
   isTouched?: boolean
   errorMessage?: string
-  handleChange: (e: InputEventHandler) => void
+  handleChange?: (e: InputEventHandler) => void
   mode?: T
   format?: string
   disabled?: boolean
@@ -65,6 +67,7 @@ export const FormInput = <T extends InputMode = undefined>({
     >
       <BaseInputComponent
         value={value}
+        className={styles.input + ' ' + (disabled && styles.inputDisabled)}
         {...(setDefaultValue && { defaultValue: value })}
         //@ts-ignore
         onChange={handleChange}
