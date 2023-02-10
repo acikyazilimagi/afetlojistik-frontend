@@ -14,6 +14,7 @@ import { FormInput } from 'components/Form'
 import { getProductCategoryList } from 'services'
 import { ProductCategoryType } from 'types/productCategoryType'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
+import { Spinner } from 'components/Spinner'
 
 import styles from './Edit.module.scss'
 
@@ -32,8 +33,12 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   const [fromCity, setFromCity] = useState<string | undefined>()
   const [toCity, setToCity] = useState<string | undefined>()
 
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   useEffect(() => {
-    getProductCategoryList().then(setCategoryList)
+    getProductCategoryList()
+      .then(setCategoryList)
+      .then(() => setIsLoading(false))
   }, [])
 
   const handleFromCityChange = (cityId: string) => {
@@ -50,6 +55,10 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
 
   const handleDistrictChange = (districtId: string) => {
     setFieldValue('fromDistrict', districtId)
+  }
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
