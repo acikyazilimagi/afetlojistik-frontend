@@ -4,7 +4,23 @@
   margin: 0 auto;
 }
 
+.locationContainer {
+  :global(.ant-space-item:not(:nth-child(2))) {
+    flex: 1;
+  }
+}
+
 .contentContainer {
   margin-bottom: 12px;
   justify-content: space-between;
+}
+
+.categorySpace {
+  :global(.ant-space-item:not(:nth-child(3))) {
+    flex: 1;
+    :global(.ant-form-item) {
+      margin: 0;
+      min-width: 130px;
+    }
+  }
 }
