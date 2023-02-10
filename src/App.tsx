@@ -36,8 +36,7 @@ function App() {
             list: TripList,
             edit: Edit,
             show: Detail,
-            create: TripCreate,
-            canDelete: true
+            create: TripCreate
           }
         ]}
         Title={Title}

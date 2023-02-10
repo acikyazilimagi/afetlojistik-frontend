@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CrudFilters, HttpError, IResourceComponentsProps } from '@pankod/refine-core'
-import { useTable, List, Table, Space, EditButton, ShowButton, DeleteButton, DateField, Tag } from '@pankod/refine-antd'
+import { useTable, List, Table, Space, EditButton, ShowButton, DateField, Tag } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { FaTruck, FaIdCard, FaPhone } from 'react-icons/fa'
@@ -84,7 +84,6 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                     tripId={trip._id}
                     isEditing={isEditing}
                     currentStatus={trip.status}
-                    // TODO: Update when endpoint is ready
                     onSubmit={handleUpdate}
                   />
                   <RowEditButton
@@ -151,7 +150,6 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
               <Space>
                 <EditButton hideText size='small' recordItemId={record._id} />
                 <ShowButton hideText size='small' recordItemId={record._id} />
-                <DeleteButton hideText size='small' recordItemId={record._id} />
               </Space>
             )}
           />
