@@ -209,7 +209,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             ]}
           >
             {(fields, { add, remove }, { errors }) => (
-              <>
+              <Space direction='vertical' size={8}>
                 {fields.map(({ key, name, ...restField }, index) => (
                   <Space key={key} className={styles.categorySpace}>
                     <Form.Item
@@ -249,6 +249,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 ))}
                 <Button
                   className='mt-6'
+                  block
                   onClick={() => {
                     add(DEFAULT_PRODUCT_ROW)
                   }}
@@ -257,7 +258,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   {t('addCategory')}
                 </Button>
                 <Form.ErrorList errors={errors} />
-              </>
+              </Space>
             )}
           </Form.List>
         </Form>
