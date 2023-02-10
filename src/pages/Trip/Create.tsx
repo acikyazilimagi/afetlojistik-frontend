@@ -13,6 +13,7 @@ import { ProductCategoryType } from 'types/productCategoryType'
 import { getProductCategoryList } from 'services'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
 import { FormInput } from 'components/Form'
+import { ProductType } from 'types/product'
 import styles from './Create.module.scss'
 
 const DEFAULT_PRODUCT_ROW = {
@@ -49,6 +50,12 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
     setFieldValue('fromDistrict', districtId)
   }
 
+  const handleProductChange = (categoryId: string, index: number) => {
+    const current = [...getFieldValue('products')]
+    current[index] = { categoryId, count: 0 }
+    setFieldValue('products', current)
+  }
+
   return (
     <div className={styles.createWrapper}>
       <Create saveButtonProps={saveButtonProps}>
@@ -78,7 +85,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   }
                 ]}
               >
-                <DistrictDropdown cityId={getFieldValue('fromDistrictId') as string} onChange={handleDistrictChange} />
+                <DistrictDropdown cityId={fromCity} onChange={handleDistrictChange} />
               </Form.Item>
             </Space>
             <ArrowRightOutlined />
@@ -105,7 +112,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   }
                 ]}
               >
-                <DistrictDropdown cityId={getFieldValue('toDistrictId') as string} onChange={handleDistrictChange} />
+                <DistrictDropdown cityId={toCity} onChange={handleDistrictChange} />
               </Form.Item>
             </Space>
           </Space>
@@ -177,19 +184,25 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 value: value ? dayjs(value) : undefined
               })}
             >
-              <div className={styles.dateWrapper}>
-                <DatePicker showTime showSecond={false} />
-              </div>
+              <DatePicker showTime showSecond={false} />
             </Form.Item>
           </div>
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
           <Form.List
             name='products'
+            initialValue={[
+              { categoryId: '', count: 0 },
+              { categoryId: '', count: 0 },
+              { categoryId: '', count: 0 }
+            ]}
             rules={[
               {
-                validator: async (_, names) => {
-                  if (!names || names.length < 2) {
+                validator: async (_, values) => {
+                  if (!values || values.length < 2) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
+                  }
+                  if (values.some((value: ProductType) => value.count <= 0)) {
+                    return Promise.reject(new Error(t('errorMessages.minimumCount')))
                   }
                 }
               }
@@ -207,11 +220,14 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                       ]}
                       {...restField}
                     >
-                      <ProductCategoryDropdown categoryList={categoryList} />
+                      <ProductCategoryDropdown
+                        categoryList={categoryList}
+                        onChange={(value) => handleProductChange(value, index)}
+                      />
                     </Form.Item>
                     <FormInput
-                      name={name}
                       label={t('packageCount')}
+                      name={[name, 'count']}
                       formProps={{
                         ...restField,
                         rules: [

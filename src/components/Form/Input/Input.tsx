@@ -18,7 +18,7 @@ type AdditionalPropsTypes = {
 }
 
 type InputProps<T extends InputMode> = {
-  name: string | string[] | number
+  name: string | (string | number)[] | number
   label?: string
   value?: string
   isTouched?: boolean

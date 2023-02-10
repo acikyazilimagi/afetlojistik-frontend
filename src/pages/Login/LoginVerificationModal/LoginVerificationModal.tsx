@@ -98,7 +98,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
       }
     >
       <Space align='center' direction='vertical' size={16}>
-        <Image src='/assets/otp.svg' preview={false} alt='otp' />
+        <Image src='/images/otp.svg' preview={false} alt='otp' />
         <Typography.Text>{t('auth.sendCodeDescription')}</Typography.Text>
         <Typography.Text strong>{phone}</Typography.Text>
         <Form id='verifyAuthCodeForm' onFinish={handleSubmit} form={form}>
