@@ -10,6 +10,8 @@ import { IconTitle } from 'components/IconTitle'
 import { ContentDisplay } from 'components/ContentDisplay'
 import { convertTimeToDateAndSplit } from 'utils/date'
 
+import { Spinner } from 'components/Spinner'
+
 import styles from './Detail.module.scss'
 
 export const Detail: React.FC<IResourceComponentsProps> = () => {
@@ -19,6 +21,10 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
 
   //@ts-ignore
   const record: TripType = data?.data
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   if (!record) {
     return null
@@ -31,12 +37,12 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
       <Show isLoading={isLoading}>
         <Typography.Title level={3}>{`${t('tripNo')}: ${record?.tripNumber}`}</Typography.Title>
         <IconTitle icon={<FaTruck />} label={t('tripDetails')} />
-        <Space direction='horizontal' className='mb-12'>
+        <Space direction='horizontal' className={styles.contentContainer}>
           <ContentDisplay title={t('originCity')} text={record.fromLocation.cityName} />
           <ArrowRightOutlined />
           <ContentDisplay title={t('destination')} text={record.toLocation.cityName} />
         </Space>
-        <Space direction='horizontal' className='mb-12'>
+        <Space direction='horizontal' className={styles.contentContainer}>
           <ContentDisplay title={t('originDistrict')} text={record.fromLocation.districtName} />
           <ArrowRightOutlined />
           <ContentDisplay title={t('destination')} text={record.toLocation.districtName} />
