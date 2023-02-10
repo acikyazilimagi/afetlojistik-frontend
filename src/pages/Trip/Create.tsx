@@ -192,7 +192,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             rules={[
               {
                 validator: async (_, values) => {
-                  if (!values || values.length < 2) {
+                  if (!values || values.length < 1) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
                   }
                   if (values.some((value: ProductType) => value.count <= 0)) {
@@ -251,7 +251,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 >
                   {t('addCategory')}
                 </Button>
-                <Form.ErrorList errors={errors} />
+                <Form.ErrorList className='text-red' errors={errors} />
               </Space>
             )}
           </Form.List>
