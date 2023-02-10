@@ -28,6 +28,7 @@ http.interceptors.response.use(
 
     if (error.response?.status === 401) {
       removeUser()
+      window.location.reload()
     }
 
     notification.error({ message: i18n.t('errorMessages.errorTitle') as string, description: customError.message })
