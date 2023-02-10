@@ -1,6 +1,14 @@
 {
   "addCategory": "Kategori Ekle",
+  "auth": {
+    "emailAuthentication": "",
+    "resendCode": "",
+    "resendDescription": "",
+    "sendCodeDescription": "",
+    "verifyAndLogin": ""
+  },
   "category": "Kategori",
+  "count": "",
   "dashboard": {
     "title": "Panel"
   },
@@ -9,7 +17,7 @@
   "destinationDistrict": "Hedef İlçe",
   "driverName": "Sürücü İsmi",
   "errorMessages": {
-    "minimumProducts": "Koli adetleri sıfırdan büyük olmalı"
+    "minimumProducts": "En az {{value}} koli eklenmeli"
   },
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
@@ -17,11 +25,12 @@
   "estimatedDepartDate": "Tahmini Çıkış Tarihi",
   "estimatedDepartTime": "Tahmini Çıkış Saati",
   "explicitAddress": "Açık Adres",
+  "filter": "",
+  "filters": "",
   "gdprConsent": "Beni Hatırla",
   "location": "Konum",
   "locationInfo": "Konum Bilgisi",
   "login": {
-    "password": "Şifre",
     "phoneNumber": "Telefon Numarası",
     "signin": "Giriş Yap",
     "subtitle": "5 Şubat Kahramanmaraş Depremi",
@@ -29,17 +38,26 @@
   },
   "logout": "Oturumu Kapat",
   "notes": "Notlar",
+  "openAddress": "",
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
+  "plateNumber": "",
   "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
   "tripContent": "Sefer İçeriği",
   "tripDetails": "Sefer Detayı",
   "tripNo": "Sefer Numarası",
+  "tripStatuses": {
+    "arrived": "",
+    "cancelled": "",
+    "completed": "",
+    "created": "",
+    "onWay": ""
+  },
   "vehicle": "Araç",
   "vehicleInfo": "Araç Bilgisi"
 }

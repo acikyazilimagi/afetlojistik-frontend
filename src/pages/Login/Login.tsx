@@ -1,11 +1,13 @@
-import React from 'react'
-import { LoginPageProps, useLogin } from '@pankod/refine-core'
+import React, { useState } from 'react'
+import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
 import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps } from 'antd'
 import { RuleObject } from 'antd/es/form'
 import { LoginFormType } from 'types/login'
+import { requestAuthCode } from 'services/auth'
 import { LoginTitle } from './LoginTitle'
 import styles from './Login.module.scss'
+import { LoginVerificationModal } from './LoginVerificationModal'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
 
@@ -30,17 +32,30 @@ const validatePhoneNumber = (
 }
 
 export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formProps }) => {
-  const [form] = Form.useForm<LoginFormType>()
   const { t } = useTranslation()
+  const [form] = Form.useForm<LoginFormType>()
+  const { getFieldValue } = form
 
-  const { mutate: login, isLoading } = useLogin<LoginFormType>()
+  const [isLoading, setIsLoading] = useState(false)
+  const { visible, show, close } = useModal({})
+
+  const handlePhoneSubmit = (values: LoginFormType) => {
+    setIsLoading(true)
+    requestAuthCode(values)
+      .then((isSuccess) => {
+        if (isSuccess) {
+          show()
+        }
+      })
+      .finally(() => setIsLoading(false))
+  }
 
   const CardContent = (
     <Card title={<LoginTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
       <Form<LoginFormType>
         layout='vertical'
         form={form}
-        onFinish={(values) => login(values)}
+        onFinish={handlePhoneSubmit}
         requiredMark={false}
         initialValues={{
           consent: false
@@ -57,10 +72,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
             }
           ]}
         >
-          <Input type='number' size='large' placeholder={'(555) 555 5555'} />
-        </Form.Item>
-        <Form.Item name='password' label={t('login.password')} rules={[{ required: true }]} className='mb-12'>
-          <Input type='password' placeholder='●●●●●●●●' size='large' />
+          <Input type='number' size='large' placeholder={'(5XX) XXX XXXX'} />
         </Form.Item>
         <div className={styles.rememberMeWrapper}>
           {rememberMe ?? (
@@ -82,6 +94,12 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
     <Row justify='center' align='middle' className={styles.loginRow}>
       <Col md={12} lg={10}>
         {renderContent ? renderContent(CardContent) : CardContent}
+        <LoginVerificationModal
+          isVisible={visible}
+          phone={getFieldValue('phoneNumber')}
+          onClose={close}
+          onResend={handlePhoneSubmit}
+        />
       </Col>
     </Row>
   )

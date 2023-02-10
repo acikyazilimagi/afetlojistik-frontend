@@ -1,6 +1,14 @@
 {
   "addCategory": "Add Category",
+  "auth": {
+    "emailAuthentication": "",
+    "resendCode": "Resend",
+    "resendDescription": "",
+    "sendCodeDescription": "",
+    "verifyAndLogin": "Verify & Login"
+  },
   "category": "Category",
+  "count": "Count",
   "dashboard": {
     "title": "Dashboard"
   },
@@ -9,7 +17,7 @@
   "destinationDistrict": "Destination District",
   "driverName": "Driver Name",
   "errorMessages": {
-    "minimumProducts": "Package counts must be greater than 1"
+    "minimumProducts": "Minimum {{value}} products must be added."
   },
   "errors": {
     "phoneNumber": "Invalid Phone Number"
@@ -17,11 +25,12 @@
   "estimatedDepartDate": "Estimated Depart Date",
   "estimatedDepartTime": "Estimated Depart Time",
   "explicitAddress": "Explicit Address",
+  "filter": "Filter",
+  "filters": "Filters",
   "gdprConsent": "Remember Me",
   "location": "Location",
   "locationInfo": "Location Info",
   "login": {
-    "password": "Password",
     "phoneNumber": "Phone Number",
     "signin": "Sign In",
     "subtitle": "February 5th Kahramanmaraş Earthquake",
@@ -29,17 +38,26 @@
   },
   "logout": "Logout",
   "notes": "Notes",
+  "openAddress": "Open address",
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
+  "plateNumber": "Plate Number",
   "selectCategory": "Select Category",
   "selectCity": "Choose a city",
   "selectDistrict": "Choose a district",
   "tripContent": "Trip Content",
   "tripDetails": "Trip Details",
   "tripNo": "Trip No",
+  "tripStatuses": {
+    "arrived": "Arrived",
+    "cancelled": "Cancelled",
+    "completed": "Completed",
+    "created": "Created",
+    "onWay": "On Way"
+  },
   "vehicle": "Vehicle",
   "vehicleInfo": "Vehicle Info"
 }

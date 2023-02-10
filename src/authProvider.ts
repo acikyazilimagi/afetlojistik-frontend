@@ -1,12 +1,12 @@
 import { AuthProvider } from '@pankod/refine-core'
-import { login } from 'dataProviders'
-import { LoginFormType } from 'types/login'
+import { verifyAuthCode } from 'services/otp'
+import { VerifyAuthCodeFormType } from 'types/otp'
 import { getUser, removeUser, setUser } from 'utils/auth'
 
 export const authProvider: AuthProvider = {
-  login: async ({ phone, password }: LoginFormType) => {
-    if (phone && password) {
-      return login({ phone, password })
+  login: async ({ phone, otpCode }: VerifyAuthCodeFormType) => {
+    if (phone) {
+      return verifyAuthCode({ phone, otpCode })
         .then((response) => {
           setUser(response)
           return Promise.resolve()
