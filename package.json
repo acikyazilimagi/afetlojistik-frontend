@@ -19,7 +19,7 @@
   "homepage": "#documentation",
   "bugs": "https://github.com/whatever/package/issues",
   "scripts": {
-    "start": "refine start",
+    "start": "PORT=8081 refine start",
     "dev": "refine start",
     "build": "refine build",
     "test": "react-scripts test",
