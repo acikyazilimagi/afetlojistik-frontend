@@ -16,6 +16,7 @@ import { ProductCategoryType } from 'types/productCategoryType'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
 import { Spinner } from 'components/Spinner'
 import { ProductType } from 'types/product'
+import { TripType } from 'types/trip'
 
 import styles from './Edit.module.scss'
 
@@ -25,8 +26,10 @@ const DEFAULT_PRODUCT_ROW = {
 }
 
 export const TripEdit: React.FC<IResourceComponentsProps> = () => {
-  const { formProps, saveButtonProps, form } = useForm()
+  const { formProps, saveButtonProps, form, queryResult } = useForm<TripType>()
   const { t } = useTranslation()
+
+  const data = queryResult?.data?.data
 
   const { setFieldValue, setFieldsValue, getFieldsValue, getFieldValue } = form
 
@@ -34,6 +37,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   const [fromCity, setFromCity] = useState<string | undefined>()
   const [toCity, setToCity] = useState<string | undefined>()
 
+  const [isTouched, setIsTouched] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -51,7 +55,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   const handleToCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setToCity(cityId)
-    setFieldValue('fromDistrictId', undefined)
+    setFieldValue('toDistrictId', undefined)
   }
 
   const handleFromDistrictChange = (districtId: string) => {
@@ -63,8 +67,9 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   }
 
   const handleProductChange = (categoryId: string, index: number) => {
+    setIsTouched(true)
     const current = [...getFieldValue('products')]
-    current[index] = { categoryId, count: 0 }
+    current[index] = { ...current[index], categoryId }
     setFieldValue('products', current)
   }
 
@@ -200,9 +205,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 value: value ? dayjs(value) : undefined
               })}
             >
-              <div className={styles.dateWrapper}>
-                <DatePicker showTime showSecond={false} />
-              </div>
+              <DatePicker showTime showSecond={false} />
             </Form.Item>
           </div>
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
@@ -235,7 +238,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                     >
                       <ProductCategoryDropdown
                         categoryList={categoryList}
-                        // value={fields[index].key}
+                        {...(!isTouched ? { value: data?.products[index].categoryId } : undefined)}
                         onChange={(value) => handleProductChange(value, index)}
                       />
                     </Form.Item>

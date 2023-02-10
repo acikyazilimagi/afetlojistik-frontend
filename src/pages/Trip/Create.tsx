@@ -43,7 +43,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const handleToCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setToCity(cityId)
-    setFieldValue('fromDistrictId', undefined)
+    setFieldValue('toDistrictId', undefined)
   }
 
   const handleFromDistrictChange = (districtId: string) => {
