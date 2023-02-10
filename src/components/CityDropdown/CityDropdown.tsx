@@ -6,17 +6,12 @@ import { SelectProps } from 'antd'
 import { Dropdown } from 'components/ui/Dropdown'
 import { getCityList } from 'services'
 import { CityType } from 'types/city'
-import { DistrictDropdown } from 'components/DistrictDropdown'
 
-type CityDropdownProps = {
-  cityDropdownProps?: SelectProps
-  districtDropdownProps?: SelectProps
-}
-export const CityDropdown: React.FC<CityDropdownProps> = ({ cityDropdownProps, districtDropdownProps }) => {
+type CityDropdownProps = SelectProps & { title?: string }
+export const CityDropdown: React.FC<CityDropdownProps> = ({ ...props }) => {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(true)
   const [cities, setCities] = useState<CityType[]>()
-  const [selectedCityId, setSelectedCityId] = useState<string>()
 
   useEffect(() => {
     getCityList()
@@ -27,18 +22,14 @@ export const CityDropdown: React.FC<CityDropdownProps> = ({ cityDropdownProps, d
   const cityOptions = useMemo(() => cities?.map((city) => ({ label: city.name, value: city._id })), [cities])
 
   return (
-    <>
-      <Dropdown
-        title={t('originCity')}
-        showSearch
-        options={cityOptions}
-        allowClear
-        placeholder={t('selectCity')}
-        loading={isLoading}
-        onChange={setSelectedCityId}
-        {...cityDropdownProps}
-      />
-      <DistrictDropdown cityId={selectedCityId} disabled={!selectedCityId || isLoading} {...districtDropdownProps} />
-    </>
+    <Dropdown
+      title={t('originCity')}
+      showSearch
+      options={cityOptions}
+      allowClear
+      placeholder={t('selectCity')}
+      loading={isLoading}
+      {...props}
+    />
   )
 }

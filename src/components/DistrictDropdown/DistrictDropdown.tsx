@@ -8,6 +8,7 @@ import { getDistrictList } from 'services'
 import { CityType } from 'types/city'
 
 type DistrictDropdownProps = {
+  title?: string
   cityId?: string
 } & SelectProps
 
@@ -33,7 +34,7 @@ export const DistrictDropdown: React.FC<DistrictDropdownProps> = ({ cityId, disa
   return (
     <Dropdown
       title={t('originDistrict')}
-      disabled={disabled}
+      disabled={disabled || isLoading || !cityId}
       showSearch
       options={districtOptions}
       allowClear

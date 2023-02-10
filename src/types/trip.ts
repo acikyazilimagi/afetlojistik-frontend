@@ -21,5 +21,9 @@ export type TripType = {
 
 export type CreateTripFormType = {
   vehicle: VehicleType
-  fromLocation: LocationType
+  fromCityId: string
+  fromDistrictId: string
+  toCityId: string
+  toDistrictId: string
+  products: Omit<ProductType, 'categoryName'>[]
 }

@@ -53,6 +53,10 @@ html {
   }
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .flex-inline {
   display: inline-flex;
 }
