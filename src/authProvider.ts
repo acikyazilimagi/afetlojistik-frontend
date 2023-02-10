@@ -4,9 +4,9 @@ import { VerifyAuthCodeFormType } from 'types/otp'
 import { getUser, removeUser, setUser } from 'utils/auth'
 
 export const authProvider: AuthProvider = {
-  login: async ({ phone, otpCode }: VerifyAuthCodeFormType) => {
+  login: async ({ phone, code }: VerifyAuthCodeFormType) => {
     if (phone) {
-      return verifyAuthCode({ phone, otpCode })
+      return verifyAuthCode({ phone, code })
         .then((response) => {
           setUser(response)
           return Promise.resolve()

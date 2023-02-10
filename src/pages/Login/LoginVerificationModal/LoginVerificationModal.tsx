@@ -67,8 +67,8 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
     })
   }, [form, values])
 
-  const handleOtpChange = (otpCode: string) => {
-    setValues({ ...values, otpCode })
+  const handleOtpChange = (code: string) => {
+    setValues({ ...values, code })
   }
 
   return (
@@ -103,14 +103,14 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
         <Typography.Text strong>{phone}</Typography.Text>
         <Form id='verifyAuthCodeForm' onFinish={handleSubmit} form={form}>
           <OtpInput
-            name='otpCode'
+            name='code'
             formProps={{
               id: 'verifyAuthCodeForm',
               required: true
             }}
-            errorMessage={errors.otpCode}
-            isTouched={touched.otpCode}
-            value={values.otpCode}
+            errorMessage={errors.code}
+            isTouched={touched.code}
+            value={values.code}
             autoFocus
             length={6}
             onChangeValue={handleOtpChange}
