@@ -7,6 +7,10 @@
   "destination": "İstikamet",
   "destinationCity": "Hedef İl",
   "destinationDistrict": "Hedef İlçe",
+  "driverName": "Sürücü İsmi",
+  "errorMessages": {
+    "minimumProducts": "Koli adetleri sıfırdan büyük olmalı"
+  },
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
   },
@@ -28,6 +32,7 @@
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
+  "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
   "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",

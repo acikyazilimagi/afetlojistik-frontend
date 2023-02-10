@@ -4,3 +4,11 @@
   border-radius: $border-radius-lg;
   padding: 32px !important;
 }
+
+.ant-card-actions {
+  .ant-space {
+    display: flex;
+    justify-content: center;
+    margin-right: 0 !important;
+  }
+}

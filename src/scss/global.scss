@@ -4,6 +4,7 @@ html,
 body {
   font-family: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: $gray900;
+  min-width: fit-content;
 }
 html {
   --antd-wave-shadow-color: $purple800;

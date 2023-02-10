@@ -41,14 +41,14 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   }
 
   return (
-    <Create saveButtonProps={saveButtonProps}>
-      <Form {...formProps} form={form} layout='vertical'>
-        <IconTitle icon={<FaTruck />} label={t('location')} />
-        <Space direction='horizontal' className='space-flex-item' align='center'>
-          <div className='flex flex-col'>
+    <div className={styles.createWrapper}>
+      <Create saveButtonProps={saveButtonProps}>
+        <Form {...formProps} form={form} layout='vertical'>
+          <IconTitle icon={<FaTruck />} label={t('location')} />
+          <Space direction='horizontal' className='mb-12 align-center justify-sb'>
             <Form.Item
               className={styles.formItem}
-              label='Vehicle'
+              label={t('originCity')}
               name={'fromCityId'}
               rules={[
                 {
@@ -58,23 +58,9 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             >
               <CityDropdown onChange={handleCityChange} value={getFieldValue('fromCityId')} />
             </Form.Item>
+            <ArrowRightOutlined className='flex flex-center' />
             <Form.Item
-              label='Vehicle'
-              name={'fromDistrictId'}
-              className={styles.formItem}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <DistrictDropdown cityId={getFieldValue('fromDistrictId') as string} onChange={handleDistrictChange} />
-            </Form.Item>
-          </div>
-          <ArrowRightOutlined />
-          <div className='flex flex-col'>
-            <Form.Item
-              label='Vehicle'
+              label={t('destinationCity')}
               name={'toCityId'}
               className={styles.formItem}
               rules={[
@@ -85,8 +71,24 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             >
               <CityDropdown onChange={handleCityChange} value={getFieldValue('toCityId')} />
             </Form.Item>
+          </Space>
+
+          <Space direction='horizontal' className='mb-12 align-center justify-sb'>
             <Form.Item
-              label='Vehicle'
+              label={t('originDistrict')}
+              name={'fromDistrictId'}
+              className={styles.formItem}
+              rules={[
+                {
+                  required: true
+                }
+              ]}
+            >
+              <DistrictDropdown cityId={getFieldValue('fromDistrictId') as string} onChange={handleDistrictChange} />
+            </Form.Item>
+            <ArrowRightOutlined className='flex justify-center' />
+            <Form.Item
+              label={t('destinationDistrict')}
               name={'toDistrictId'}
               className={styles.formItem}
               rules={[
@@ -97,134 +99,145 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             >
               <DistrictDropdown cityId={getFieldValue('toDistrictId') as string} onChange={handleDistrictChange} />
             </Form.Item>
+          </Space>
+
+          <div className='mb-20'>
+            <FormInput
+              name='destinationAddress'
+              label={t('explicitAddress')}
+              formProps={{
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              }}
+            />
           </div>
-        </Space>
-        <FormInput
-          name='destinationAddress'
-          label={t('openAddress')}
-          formProps={{
-            rules: [
+          <div className={styles.truckIcon}>
+            <IconTitle icon={<FaTruck />} label={t('vehicle')} />
+          </div>
+          <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
+            <FormInput
+              label={t('plateNo')}
+              name={['vehicle', 'plateNumber']}
+              formProps={{
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              }}
+            />
+            <FormInput
+              label={t('driverName')}
+              name={['vehicle', 'name']}
+              formProps={{
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              }}
+            />
+            <FormInput
+              label={t('phoneNumber')}
+              name={['vehicle', 'phone']}
+              formProps={{
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              }}
+            />
+          </Space>
+          <div className='mb-12'>
+            <FormInput label={t('notes')} name={'notes'} />
+          </div>
+          <div className='mb-20'>
+            <Form.Item
+              label={t('estimatedDepartDate')}
+              name={'estimatedDepartDate'}
+              className={styles.formItem}
+              rules={[
+                {
+                  required: true
+                }
+              ]}
+              getValueProps={(value) => ({
+                value: value ? dayjs(value) : undefined
+              })}
+            >
+              <div className={styles.dateWrapper}>
+                <DatePicker showTime showSecond={false} />
+              </div>
+            </Form.Item>
+          </div>
+          <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
+          <Form.List
+            name='products'
+            rules={[
               {
-                required: true
-              }
-            ]
-          }}
-        />
-        <IconTitle icon={<FaTruck />} label={t('vehicle')} />
-        <Space direction='horizontal' align='center' className='space-flex-item'>
-          <FormInput
-            label={t('plateNumber')}
-            name={['vehicle', 'plateNumber']}
-            formProps={{
-              rules: [
-                {
-                  required: true
-                }
-              ]
-            }}
-          />
-          <FormInput
-            label={t('driverName')}
-            name={['vehicle', 'name']}
-            formProps={{
-              rules: [
-                {
-                  required: true
-                }
-              ]
-            }}
-          />
-          <FormInput
-            label={t('phoneNumber')}
-            name={['vehicle', 'phone']}
-            formProps={{
-              rules: [
-                {
-                  required: true
-                }
-              ]
-            }}
-          />
-        </Space>
-        <FormInput label={t('notes')} name={'notes'} />
-        <Form.Item
-          label='Estimated Depart Time'
-          name={'estimatedDepartTime'}
-          className={styles.formItem}
-          rules={[
-            {
-              required: true
-            }
-          ]}
-          getValueProps={(value) => ({
-            value: value ? dayjs(value) : undefined
-          })}
-        >
-          <DatePicker showTime showSecond={false} />
-        </Form.Item>
-        <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
-        <Form.List
-          name='products'
-          rules={[
-            {
-              validator: async (_, names) => {
-                if (!names || names.length < 2) {
-                  return Promise.reject(new Error(t('errorMessages.minimumProducts')))
+                validator: async (_, names) => {
+                  if (!names || names.length < 2) {
+                    return Promise.reject(new Error(t('errorMessages.minimumProducts')))
+                  }
                 }
               }
-            }
-          ]}
-        >
-          {(fields, { add, remove }, { errors }) => (
-            <>
-              {fields.map(({ key, name, ...restField }, index) => (
-                <Space key={key} align='center'>
-                  <Form.Item
-                    rules={[
-                      {
-                        required: true
-                      }
-                    ]}
-                    label={t('category')}
-                    {...restField}
-                  >
-                    <ProductCategoryDropdown categoryList={categoryList} />
-                  </Form.Item>
-                  <FormInput
-                    name={name}
-                    label={t('count')}
-                    formProps={{
-                      ...restField,
-                      rules: [
+            ]}
+          >
+            {(fields, { add, remove }, { errors }) => (
+              <>
+                {fields.map(({ key, name, ...restField }, index) => (
+                  <Space key={key} className={styles.categorySpace}>
+                    <Form.Item
+                      rules={[
                         {
                           required: true
                         }
-                      ]
-                    }}
-                    mode='number'
-                  />
-                  <Button
-                    danger
-                    onClick={() => {
-                      remove(index)
-                    }}
-                    icon={<DeleteOutlined />}
-                  />
-                </Space>
-              ))}
-              <Button
-                onClick={() => {
-                  add(DEFAULT_PRODUCT_ROW)
-                }}
-                icon={<PlusOutlined />}
-              >
-                {t('addCategory')}
-              </Button>
-              <Form.ErrorList errors={errors} />
-            </>
-          )}
-        </Form.List>
-      </Form>
-    </Create>
+                      ]}
+                      {...restField}
+                    >
+                      <ProductCategoryDropdown categoryList={categoryList} />
+                    </Form.Item>
+                    <FormInput
+                      name={name}
+                      label={t('packageCount')}
+                      formProps={{
+                        ...restField,
+                        rules: [
+                          {
+                            required: true
+                          }
+                        ]
+                      }}
+                      mode='number'
+                    />
+                    <Button
+                      danger
+                      onClick={() => {
+                        remove(index)
+                      }}
+                      icon={<DeleteOutlined />}
+                    />
+                  </Space>
+                ))}
+                <Button
+                  className='mt-6'
+                  onClick={() => {
+                    add(DEFAULT_PRODUCT_ROW)
+                  }}
+                  icon={<PlusOutlined />}
+                >
+                  {t('addCategory')}
+                </Button>
+                <Form.ErrorList errors={errors} />
+              </>
+            )}
+          </Form.List>
+        </Form>
+      </Create>
+    </div>
   )
 }

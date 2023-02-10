@@ -7,6 +7,10 @@
   "destination": "Destination",
   "destinationCity": "Destination City",
   "destinationDistrict": "Destination District",
+  "driverName": "Driver Name",
+  "errorMessages": {
+    "minimumProducts": "Package counts must be greater than 1"
+  },
   "errors": {
     "phoneNumber": "Invalid Phone Number"
   },
@@ -28,6 +32,7 @@
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
+  "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
   "selectCategory": "Select Category",
   "selectCity": "Choose a city",
