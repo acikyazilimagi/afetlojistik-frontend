@@ -1,6 +1,7 @@
 import { ChangeLogType } from './changeLog'
 import { LocationType } from './location'
 import { ProductType } from './product'
+import { UserType } from './user'
 import { VehicleType } from './vehicle'
 
 export type TripType = {
@@ -10,9 +11,7 @@ export type TripType = {
   vehicle: VehicleType
   fromLocation: LocationType
   toLocation: LocationType
-  //   TODO
-  //   createdBy: UserType
-  createdBy: string
+  createdBy: UserType
   statusChangeLog: ChangeLogType[]
   estimatedDepartTime: string
   products: ProductType[]

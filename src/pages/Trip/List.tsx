@@ -19,6 +19,7 @@ import { TripType } from 'types/trip'
 import { ProductType } from 'types/product'
 import { VehicleType } from 'types/vehicle'
 import { LocationType } from 'types/location'
+import { UserType } from 'types/user'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const { t } = useTranslation()
@@ -30,7 +31,11 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     <List>
       <Table {...tableProps} rowKey='tripNumber'>
         <Table.Column dataIndex='tripNumber' title='Trip Number' />
-        <Table.Column dataIndex='createdBy' title='Created By' />
+        <Table.Column
+          dataIndex='createdBy'
+          title='Created By'
+          render={(value: UserType) => `${value.name} ${value.surname}`}
+        />
         <Table.Column
           dataIndex={['estimatedDepartTime']}
           title='Estimated Depart Time'
