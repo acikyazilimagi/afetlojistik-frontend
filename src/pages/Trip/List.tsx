@@ -94,8 +94,6 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                     onEditChange={setEditingRows}
                     onReset={setEditingRows}
                     isLoading={isUpdating}
-                    // TODO: Update when endpoint is ready
-                    onSave={() => {}}
                   />
                 </>
               )

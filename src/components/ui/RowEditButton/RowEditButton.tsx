@@ -8,7 +8,6 @@ type RowEditButtonProps = {
   editingRowIds: string[]
   isLoading?: boolean
   onEditChange: (updatedEditingRowIds: string[]) => void
-  onSave: () => void
   onReset?: (updatedEditingRowIds: string[]) => void
 }
 
@@ -18,7 +17,6 @@ export const RowEditButton: React.FC<RowEditButtonProps> = ({
   editingRowIds,
   isLoading,
   onEditChange,
-  onSave,
   onReset
 }) => {
   const isEditing = useMemo(() => editingRowIds.includes(recordId), [editingRowIds, recordId])
@@ -59,7 +57,6 @@ export const RowEditButton: React.FC<RowEditButtonProps> = ({
           form={formId}
           htmlType='submit'
           loading={isLoading}
-          onClick={onSave}
           icon={<CheckOutlined />}
           className='ant-btn-approve'
         />

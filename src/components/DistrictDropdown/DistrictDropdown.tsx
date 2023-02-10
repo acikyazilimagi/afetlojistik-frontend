@@ -25,7 +25,10 @@ export const DistrictDropdown: React.FC<DistrictDropdownProps> = ({ cityId, disa
   }, [cityId])
 
   const districtOptions = useMemo(
-    () => districts?.map((district) => ({ label: district.name, value: district._id })),
+    () =>
+      districts
+        ?.map((district) => ({ label: district.name, value: district._id }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
     [districts]
   )
 
