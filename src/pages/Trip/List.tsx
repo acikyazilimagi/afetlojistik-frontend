@@ -4,18 +4,24 @@ import { useTable, List, Table, Space, EditButton, ShowButton, DeleteButton, Dat
 import { useTranslation } from 'react-i18next'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { FaTruck, FaIdCard, FaPhone } from 'react-icons/fa'
-import { TripListFilterPostType, TripListFilterTypes, TripType } from 'types/trip'
+import { EditTripStatusFormType, TripListFilterPostType, TripListFilterTypes, TripType } from 'types/trip'
 import { VehicleType } from 'types/vehicle'
 import { LocationType } from 'types/location'
 import { UserType } from 'types/user'
 import { EditableTripStatusDropdown } from 'components/EditableTripStatusDropdown'
 import { RowEditButton } from 'components/ui/RowEditButton'
+import { updateTripStatus } from 'services/trip'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const { t } = useTranslation()
   const [editingRows, setEditingRows] = useState<string[]>([])
-  const { tableProps, searchFormProps } = useTable<TripListFilterPostType, HttpError, TripListFilterTypes>({
+  const [isUpdating, setIsUpdating] = useState(false)
+  const { tableProps, searchFormProps, tableQueryResult } = useTable<
+    TripListFilterPostType,
+    HttpError,
+    TripListFilterTypes
+  >({
     syncWithLocation: true,
     onSearch: (params) => {
       const filters: CrudFilters = []
@@ -43,6 +49,18 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     }
   })
 
+  const handleUpdate = (values: EditTripStatusFormType) => {
+    setIsUpdating(true)
+    updateTripStatus(values)
+      .then(() => {
+        tableQueryResult.refetch()
+        setEditingRows([])
+      })
+      .finally(() => {
+        setIsUpdating(false)
+      })
+  }
+
   return (
     <List>
       <Space direction='vertical' size={20}>
@@ -67,7 +85,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                     isEditing={isEditing}
                     currentStatus={trip.status}
                     // TODO: Update when endpoint is ready
-                    onSubmit={() => {}}
+                    onSubmit={handleUpdate}
                   />
                   <RowEditButton
                     formId='editTripStatusForm'
@@ -75,6 +93,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                     editingRowIds={editingRows}
                     onEditChange={setEditingRows}
                     onReset={setEditingRows}
+                    isLoading={isUpdating}
                     // TODO: Update when endpoint is ready
                     onSave={() => {}}
                   />
