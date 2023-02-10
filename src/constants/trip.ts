@@ -8,18 +8,21 @@ export enum TripsStatuses {
   Cancelled = 500
 }
 
-export const tripStatusOptions: Record<TripsStatuses, { label: string; value: TripsStatuses }> = {
+export const tripStatusOptions: Record<TripsStatuses, { label: string; value: TripsStatuses; color?: string }> = {
   [TripsStatuses.Created]: {
     label: t('tripStatuses.created'),
-    value: TripsStatuses.Created
+    value: TripsStatuses.Created,
+    color: '#007787'
   },
   [TripsStatuses.OnWay]: {
     label: t('tripStatuses.onWay'),
-    value: TripsStatuses.OnWay
+    value: TripsStatuses.OnWay,
+    color: '#C69A00'
   },
   [TripsStatuses.Arrived]: {
     label: t('tripStatuses.arrived'),
-    value: TripsStatuses.Arrived
+    value: TripsStatuses.Arrived,
+    color: '#008C20'
   },
   [TripsStatuses.Completed]: {
     label: t('tripStatuses.completed'),

@@ -20,6 +20,7 @@ import { ProductType } from 'types/product'
 import { VehicleType } from 'types/vehicle'
 import { LocationType } from 'types/location'
 import { UserType } from 'types/user'
+import { TripsStatuses, tripStatusOptions } from 'constants/trip'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
@@ -64,8 +65,15 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             render={(value: UserType) => `${value.name} ${value.surname}`}
           />
           <Table.Column
+            dataIndex={['status']}
+            title={t('status') as string}
+            render={(value: TripsStatuses) => (
+              <Tag color={tripStatusOptions[value]?.color}>{t(tripStatusOptions[value]?.label)}</Tag>
+            )}
+          />
+          <Table.Column
             dataIndex={['estimatedDepartTime']}
-            title='Estimated Depart Time'
+            title={t('estimatedDepartTime') as string}
             render={(value: string) => <DateField value={value} />}
           />
           <Table.Column

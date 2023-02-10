@@ -15,6 +15,7 @@ export type TripType = {
   toLocation: LocationType
   createdBy: UserType
   statusChangeLog: ChangeLogType[]
+  status: TripsStatuses
   estimatedDepartTime: string
   products: ProductType[]
   createdAt: string
