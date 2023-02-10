@@ -118,9 +118,9 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             dataIndex='actions'
             render={(_, record: TripType) => (
               <Space>
-                <EditButton hideText size='small' recordItemId={record.tripNumber} />
-                <ShowButton hideText size='small' recordItemId={record.tripNumber} />
-                <DeleteButton hideText size='small' recordItemId={record.tripNumber} />
+                <EditButton hideText size='small' recordItemId={record._id} />
+                <ShowButton hideText size='small' recordItemId={record._id} />
+                <DeleteButton hideText size='small' recordItemId={record._id} />
               </Space>
             )}
           />

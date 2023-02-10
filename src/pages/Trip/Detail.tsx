@@ -32,14 +32,14 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
         <Typography.Title level={3}>{`${t('tripNo')}: ${record?.tripNumber}`}</Typography.Title>
         <IconTitle icon={<FaTruck />} label={t('tripDetails')} />
         <Space direction='horizontal' className='mb-12'>
-          <ContentDisplay title={t('originCity')} text={record.fromLocation.cityId} />
+          <ContentDisplay title={t('originCity')} text={record.fromLocation.cityName} />
           <ArrowRightOutlined />
-          <ContentDisplay title={t('destination')} text={record.toLocation.cityId} />
+          <ContentDisplay title={t('destination')} text={record.toLocation.cityName} />
         </Space>
         <Space direction='horizontal' className='mb-12'>
-          <ContentDisplay title={t('originDistrict')} text={record.fromLocation.districtId} />
+          <ContentDisplay title={t('originDistrict')} text={record.fromLocation.districtName} />
           <ArrowRightOutlined />
-          <ContentDisplay title={t('destination')} text={record.toLocation.districtId} />
+          <ContentDisplay title={t('destination')} text={record.toLocation.districtName} />
         </Space>
         <Space direction='horizontal' className='mb-12'>
           <ContentDisplay title={t('explicitAddress')} text={record.toLocation.address} />
@@ -55,7 +55,7 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
           {record.products.map((product) => (
             <Space key={product.categoryId} direction='horizontal' className='mb-12'>
-              <ContentDisplay title={t('category')} text={product.categoryId} />
+              <ContentDisplay title={t('category')} text={product.categoryName} />
               <ContentDisplay title={t('packageCount')} text={product.count.toString()} />
             </Space>
           ))}
