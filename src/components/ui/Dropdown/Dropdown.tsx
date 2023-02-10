@@ -8,7 +8,7 @@ type DropdownProps = SelectProps<any> & {
   title?: string
 }
 export const Dropdown: React.FC<DropdownProps> = ({ title, options, optionClassName, onChange, ...props }) => (
-  <div className={styles.dropdown}>
+  <div className={styles.dropdown} style={{ border: title ? '1px solid #d4d4d4' : 'none' }}>
     <Typography.Title className={styles.title}>{title}</Typography.Title>
     <Select
       optionFilterProp='children'

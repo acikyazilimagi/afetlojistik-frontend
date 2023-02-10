@@ -2,6 +2,12 @@
   border: 1px solid #d9d9d9 !important;
   border-radius: 6px;
   padding: 0 8px;
+  :global(label) {
+    padding-top: 8px;
+  }
+  :global(.ant-form-item-label) {
+    padding-bottom: 0;
+  }
 }
 
 .formItem > * {

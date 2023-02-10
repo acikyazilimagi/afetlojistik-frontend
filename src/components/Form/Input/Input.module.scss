@@ -5,3 +5,20 @@
 .inputDisabled {
   background: transparent !important;
 }
+
+.formItem {
+  border: 1px solid #d4d4d4 !important;
+  border-radius: 6px;
+  padding: 0 8px;
+  margin: 16px 0;
+  :global(label) {
+    padding-top: 8px;
+  }
+  :global(.ant-form-item-label) {
+    padding-bottom: 0;
+  }
+}
+
+.formItem > * {
+  box-shadow: none !important;
+}

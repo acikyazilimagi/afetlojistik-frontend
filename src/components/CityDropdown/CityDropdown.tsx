@@ -1,5 +1,3 @@
-// import styles from './CityDropdown.module.scss'
-
 import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SelectProps } from 'antd'
@@ -23,7 +21,6 @@ export const CityDropdown: React.FC<CityDropdownProps> = ({ ...props }) => {
 
   return (
     <Dropdown
-      title={t('originCity')}
       showSearch
       options={cityOptions}
       allowClear

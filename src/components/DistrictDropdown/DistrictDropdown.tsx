@@ -1,5 +1,3 @@
-// import styles from './CityDropdown.module.scss'
-
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SelectProps } from 'antd'
@@ -33,7 +31,6 @@ export const DistrictDropdown: React.FC<DistrictDropdownProps> = ({ cityId, disa
 
   return (
     <Dropdown
-      title={t('originDistrict')}
       disabled={disabled || isLoading || !cityId}
       showSearch
       options={districtOptions}
