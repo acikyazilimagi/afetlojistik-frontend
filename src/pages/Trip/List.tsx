@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CrudFilters, HttpError, IResourceComponentsProps } from '@pankod/refine-core'
 import { useTable, List, Table, Space, EditButton, ShowButton, DeleteButton, DateField, Tag } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
@@ -8,11 +8,13 @@ import { TripListFilterPostType, TripListFilterTypes, TripType } from 'types/tri
 import { VehicleType } from 'types/vehicle'
 import { LocationType } from 'types/location'
 import { UserType } from 'types/user'
-import { TripsStatuses, tripStatusOptions } from 'constants/trip'
+import { EditableTripStatusDropdown } from 'components/EditableTripStatusDropdown'
+import { RowEditButton } from 'components/ui/RowEditButton'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const { t } = useTranslation()
+  const [editingRows, setEditingRows] = useState<string[]>([])
   const { tableProps, searchFormProps } = useTable<TripListFilterPostType, HttpError, TripListFilterTypes>({
     syncWithLocation: true,
     onSearch: (params) => {
@@ -53,11 +55,32 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             render={(value: UserType) => `${value.name} ${value.surname}`}
           />
           <Table.Column
-            dataIndex={['status']}
+            dataIndex=''
             title={t('status') as string}
-            render={(value: TripsStatuses) => (
-              <Tag color={tripStatusOptions[value]?.color}>{t(tripStatusOptions[value]?.label)}</Tag>
-            )}
+            render={(trip: TripType) => {
+              const isEditing = editingRows.includes(trip._id)
+              return (
+                <>
+                  <EditableTripStatusDropdown
+                    formId='editTripStatusForm'
+                    tripId={trip._id}
+                    isEditing={isEditing}
+                    currentStatus={trip.status}
+                    // TODO: Update when endpoint is ready
+                    onSubmit={() => {}}
+                  />
+                  <RowEditButton
+                    formId='editTripStatusForm'
+                    recordId={trip._id}
+                    editingRowIds={editingRows}
+                    onEditChange={setEditingRows}
+                    onReset={setEditingRows}
+                    // TODO: Update when endpoint is ready
+                    onSave={() => {}}
+                  />
+                </>
+              )
+            }}
           />
           <Table.Column
             dataIndex={['estimatedDepartTime']}
@@ -105,7 +128,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             render={(value: string) => <DateField value={value} />}
           />
           <Table.Column
-            title='Actions'
+            title={t('actions') as string}
             dataIndex='actions'
             render={(_, record: TripType) => (
               <Space>

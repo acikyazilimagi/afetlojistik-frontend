@@ -22,6 +22,11 @@ export type TripType = {
   updatedAt: string
 }
 
+export type EditTripStatusFormType = {
+  tripId?: string
+  status?: TripsStatuses
+}
+
 export type CreateTripFormType = {
   vehicle: VehicleType
   fromCityId: string

@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DefaultOptionType } from 'antd/lib/select'
-import { Dropdown } from '@pankod/refine-antd'
 import { OptionItemType, OptionsType } from 'types/option'
 import { AntDesignSelectType } from 'types/dropdown'
+
+import { AntDropdown } from 'components/AntDropdown'
 
 type GenericDropdownProps<T extends PropertyKey> = {
   options?: OptionsType<T>
@@ -33,13 +34,15 @@ export const GenericDropdown = <T extends PropertyKey>({
   )
 
   return (
-    <Dropdown
+    <AntDropdown
       showSearch
       placeholder={t('selectOption')}
       options={optionList as DefaultOptionType[]}
       {...dropdownProps}
       // @ts-ignore-next-line
       value={formattedValue}
-    />
+    >
+      <></>
+    </AntDropdown>
   )
 }
