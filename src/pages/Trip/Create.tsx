@@ -24,7 +24,7 @@ const DEFAULT_PRODUCT_ROW = {
 export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { t } = useTranslation()
   const { formProps, form, saveButtonProps } = useForm<CreateTripFormType>()
-  const { setFieldValue, setFieldsValue, getFieldsValue, getFieldValue } = form
+  const { setFieldValue, getFieldValue } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
   const [fromCity, setFromCity] = useState<string | undefined>()
@@ -35,15 +35,15 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   }, [])
 
   const handleFromCityChange = (cityId: string) => {
-    setFieldsValue({ ...getFieldsValue(), cityId })
+    setFieldValue(['fromLocation', 'cityId'], cityId)
     setFromCity(cityId)
-    setFieldValue('fromDistrictId', undefined)
+    setFieldValue(['fromLocation', 'districtId'], undefined)
   }
 
   const handleToCityChange = (cityId: string) => {
-    setFieldsValue({ ...getFieldsValue(), cityId })
+    setFieldValue(['toLocation', 'cityId'], cityId)
     setToCity(cityId)
-    setFieldValue('toDistrictId', undefined)
+    setFieldValue(['toLocation', 'districtId'], undefined)
   }
 
   const handleFromDistrictChange = (districtId: string) => {
@@ -70,7 +70,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               <Form.Item
                 className={styles.formItem}
                 label={t('originCity')}
-                name={'fromCityId'}
+                name={['fromLocation', 'cityId']}
                 rules={[
                   {
                     required: true
@@ -81,7 +81,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               </Form.Item>
               <Form.Item
                 label={t('originDistrict')}
-                name={'fromDistrictId'}
+                name={['fromLocation', 'districtId']}
                 className={styles.formItem}
                 rules={[
                   {
@@ -96,7 +96,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             <Space direction='vertical' className='mb-12'>
               <Form.Item
                 label={t('destinationCity')}
-                name={'toCityId'}
+                name={['toLocation', 'cityId']}
                 className={styles.formItem}
                 rules={[
                   {
@@ -108,7 +108,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               </Form.Item>
               <Form.Item
                 label={t('destinationDistrict')}
-                name={'toDistrictId'}
+                name={['toLocation', 'districtId']}
                 className={styles.formItem}
                 rules={[
                   {
@@ -139,7 +139,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
             <FormInput
               label={t('plateNo')}
-              name={['vehicle', 'plateNumber']}
+              name={['vehicle', 'plate', 'truck']}
               formProps={{
                 rules: [
                   {
