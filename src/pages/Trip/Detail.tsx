@@ -3,7 +3,7 @@ import { IResourceComponentsProps, useShow } from '@pankod/refine-core'
 import { Show } from '@pankod/refine-antd'
 import { Typography, Space } from 'antd'
 import { useTranslation } from 'react-i18next'
-import { FaBoxes, FaTruck } from 'react-icons/fa'
+import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { TripType } from 'types/trip'
 import { IconTitle } from 'components/IconTitle'
@@ -36,31 +36,33 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
     <div className={styles.detailWrapper}>
       <Show isLoading={isLoading}>
         <Typography.Title level={3}>{`${t('tripNo')}: ${record?.tripNumber}`}</Typography.Title>
-        <IconTitle icon={<FaTruck />} label={t('tripDetails')} />
-        <Space direction='horizontal' className={styles.contentContainer}>
-          <ContentDisplay title={t('originCity')} text={record.fromLocation.cityName} />
+        <IconTitle icon={<FaRoad />} label={t('location')} />
+        <Space direction='horizontal' className={styles.locationContainer}>
+          <Space direction='vertical' className={styles.contentContainer}>
+            <ContentDisplay title={t('originCity')} text={record.fromLocation.cityName} />
+            <ContentDisplay title={t('originDistrict')} text={record.fromLocation.districtName} />
+          </Space>
           <ArrowRightOutlined />
-          <ContentDisplay title={t('destination')} text={record.toLocation.cityName} />
+          <Space direction='vertical' className={styles.contentContainer}>
+            <ContentDisplay title={t('destinationCity')} text={record.toLocation.cityName} />
+            <ContentDisplay title={t('destinationDistrict')} text={record.toLocation.districtName} />
+          </Space>
         </Space>
-        <Space direction='horizontal' className={styles.contentContainer}>
-          <ContentDisplay title={t('originDistrict')} text={record.fromLocation.districtName} />
-          <ArrowRightOutlined />
-          <ContentDisplay title={t('destination')} text={record.toLocation.districtName} />
-        </Space>
-        <Space direction='horizontal' className='mb-12'>
+        <Space direction='horizontal' className={`mb-12 ${styles.categorySpace}`}>
           <ContentDisplay title={t('explicitAddress')} text={record.toLocation.address} />
         </Space>
+        <IconTitle icon={<FaTruck />} label={t('vehicle')} />
         <Space direction='horizontal' className='mb-12'>
           <ContentDisplay title={t('plateNo')} text={record.vehicle.plateNumber} />
         </Space>
-        <Space direction='horizontal' className='mb-12'>
+        <Space direction='horizontal' className={`mb-12 ${styles.categorySpace}`}>
           <ContentDisplay title={t('estimatedDepartDate')} text={dateAndTime.date} />
           <ContentDisplay title={t('estimatedDepartTime')} text={dateAndTime.time} />
         </Space>
         <div className='mt-12'>
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
           {record.products.map((product) => (
-            <Space key={product.categoryId} direction='horizontal' className='mb-12'>
+            <Space key={product.categoryId} direction='horizontal' className={`mb-12 ${styles.categorySpace}`}>
               <ContentDisplay title={t('category')} text={product.categoryName} />
               <ContentDisplay title={t('packageCount')} text={product.count.toString()} />
             </Space>

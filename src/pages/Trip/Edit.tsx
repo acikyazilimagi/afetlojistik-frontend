@@ -15,6 +15,7 @@ import { getProductCategoryList } from 'services'
 import { ProductCategoryType } from 'types/productCategoryType'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
 import { Spinner } from 'components/Spinner'
+import { ProductType } from 'types/product'
 
 import styles from './Edit.module.scss'
 
@@ -44,17 +45,27 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   const handleFromCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setFromCity(cityId)
-    setFieldValue('fromDistrict', undefined)
+    setFieldValue('fromDistrictId', undefined)
   }
 
   const handleToCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setToCity(cityId)
-    setFieldValue('fromDistrict', undefined)
+    setFieldValue('fromDistrictId', undefined)
   }
 
-  const handleDistrictChange = (districtId: string) => {
-    setFieldValue('fromDistrict', districtId)
+  const handleFromDistrictChange = (districtId: string) => {
+    setFieldValue('fromDistrictId', districtId)
+  }
+
+  const handleToDistrictChange = (districtId: string) => {
+    setFieldValue('toDistrictId', districtId)
+  }
+
+  const handleProductChange = (categoryId: string, index: number) => {
+    const current = [...getFieldValue('products')]
+    current[index] = { categoryId, count: 0 }
+    setFieldValue('products', current)
   }
 
   if (isLoading) {
@@ -90,7 +101,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                   }
                 ]}
               >
-                <DistrictDropdown cityId={getFieldValue('fromDistrictId') as string} onChange={handleDistrictChange} />
+                <DistrictDropdown cityId={fromCity} onChange={handleFromDistrictChange} />
               </Form.Item>
             </Space>
             <ArrowRightOutlined />
@@ -117,7 +128,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                   }
                 ]}
               >
-                <DistrictDropdown cityId={getFieldValue('toDistrictId') as string} onChange={handleDistrictChange} />
+                <DistrictDropdown cityId={toCity} onChange={handleToDistrictChange} />
               </Form.Item>
             </Space>
           </Space>
@@ -199,16 +210,19 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             name='products'
             rules={[
               {
-                validator: async (_, names) => {
-                  if (!names || names.length < 2) {
+                validator: async (_, values) => {
+                  if (!values || values.length < 2) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
+                  }
+                  if (values.some((value: ProductType) => value.count <= 0)) {
+                    return Promise.reject(new Error(t('errorMessages.minimumCount')))
                   }
                 }
               }
             ]}
           >
             {(fields, { add, remove }, { errors }) => (
-              <>
+              <Space direction='vertical' size={8}>
                 {fields.map(({ key, name, ...restField }, index) => (
                   <Space key={key} className={styles.categorySpace}>
                     <Form.Item
@@ -219,12 +233,15 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                       ]}
                       {...restField}
                     >
-                      <ProductCategoryDropdown categoryList={categoryList} />
+                      <ProductCategoryDropdown
+                        categoryList={categoryList}
+                        // value={fields[index].key}
+                        onChange={(value) => handleProductChange(value, index)}
+                      />
                     </Form.Item>
                     <FormInput
-                      // TODO
-                      name={name}
                       label={t('packageCount')}
+                      name={[name, 'count']}
                       formProps={{
                         ...restField,
                         rules: [
@@ -246,6 +263,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 ))}
                 <Button
                   className='mt-6'
+                  block
                   onClick={() => {
                     add(DEFAULT_PRODUCT_ROW)
                   }}
@@ -254,7 +272,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                   {t('addCategory')}
                 </Button>
                 <Form.ErrorList errors={errors} />
-              </>
+              </Space>
             )}
           </Form.List>
         </Form>

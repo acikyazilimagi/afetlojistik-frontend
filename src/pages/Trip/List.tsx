@@ -28,12 +28,12 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           value: statuses
         },
         {
-          field: 'createdAt',
+          field: 'startDate',
           operator: 'gte',
           value: createdAt ? createdAt[0].toISOString() : undefined
         },
         {
-          field: 'createdAt',
+          field: 'endDate',
           operator: 'lte',
           value: createdAt ? createdAt[1].toISOString() : undefined
         }
