@@ -34,13 +34,14 @@ const validatePhoneNumber = (
 export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formProps }) => {
   const { t } = useTranslation()
   const [form] = Form.useForm<LoginFormType>()
-  const { getFieldValue } = form
+  const { visible, show, close } = useModal({})
 
   const [isLoading, setIsLoading] = useState(false)
-  const { visible, show, close } = useModal({})
+  const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
 
   const handlePhoneSubmit = (values: LoginFormType) => {
     setIsLoading(true)
+    setPhoneNumber(values.phone)
     requestAuthCode(values)
       .then((isSuccess) => {
         if (isSuccess) {
@@ -94,12 +95,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
     <Row justify='center' align='middle' className={styles.loginRow}>
       <Col md={12} lg={10}>
         {renderContent ? renderContent(CardContent) : CardContent}
-        <LoginVerificationModal
-          isVisible={visible}
-          phone={getFieldValue('phoneNumber')}
-          onClose={close}
-          onResend={handlePhoneSubmit}
-        />
+        <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} onResend={handlePhoneSubmit} />
       </Col>
     </Row>
   )

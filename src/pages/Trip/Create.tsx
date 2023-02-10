@@ -26,13 +26,22 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { setFieldValue, setFieldsValue, getFieldsValue, getFieldValue } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
+  const [fromCity, setFromCity] = useState<string | undefined>()
+  const [toCity, setToCity] = useState<string | undefined>()
 
   useEffect(() => {
     getProductCategoryList().then(setCategoryList)
   }, [])
 
-  const handleCityChange = (cityId: string) => {
+  const handleFromCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
+    setFromCity(cityId)
+    setFieldValue('fromDistrict', undefined)
+  }
+
+  const handleToCityChange = (cityId: string) => {
+    setFieldsValue({ ...getFieldsValue(), cityId })
+    setToCity(cityId)
     setFieldValue('fromDistrict', undefined)
   }
 
@@ -56,7 +65,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 }
               ]}
             >
-              <CityDropdown onChange={handleCityChange} value={getFieldValue('fromCityId')} />
+              <CityDropdown onChange={handleFromCityChange} value={fromCity} />
             </Form.Item>
             <ArrowRightOutlined className='flex flex-center' />
             <Form.Item
@@ -69,7 +78,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 }
               ]}
             >
-              <CityDropdown onChange={handleCityChange} value={getFieldValue('toCityId')} />
+              <CityDropdown onChange={handleToCityChange} value={toCity} />
             </Form.Item>
           </Space>
 

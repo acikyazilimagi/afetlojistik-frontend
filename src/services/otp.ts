@@ -5,7 +5,7 @@ import { http } from './http'
 
 export const verifyAuthCode = async (data: VerifyAuthCodeFormType): Promise<VerifyAuthCodeResponseType> =>
   http
-    .post('user/verify', {
+    .post(`user/verify/${data.otpCode}`, {
       ...data
     })
     .then(transformResponseData)
