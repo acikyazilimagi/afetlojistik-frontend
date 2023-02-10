@@ -33,13 +33,22 @@ export const dataProvider = (
       query._order = _order.join(',')
     }
 
-    const { data } = await http.get(`${url}?${stringify.stringify(query)}&${stringify.stringify(queryFilters)}`)
+    let finalData = []
+    if (resource === 'trip' && Object.keys(queryFilters).length) {
+      const { data } = await http.post(`${url}/filter`, {
+        ...JSON.parse(JSON.stringify(queryFilters).replace('_gte', '').replace('_lte', ''))
+      })
+      finalData = data
+    } else {
+      const { data } = await http.get(`${url}?${stringify.stringify(query)}&${stringify.stringify(queryFilters)}`)
+      finalData = data
+    }
 
     // const total = +headers['x-total-count']
-    const total = data.length
+    const total = finalData.length
 
     return {
-      data,
+      data: finalData,
       total
     }
   },
