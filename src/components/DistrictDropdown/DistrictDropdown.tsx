@@ -32,6 +32,7 @@ export const DistrictDropdown: React.FC<DistrictDropdownProps> = ({ cityId, disa
 
   return (
     <Dropdown
+      title={t('originDistrict')}
       disabled={disabled}
       showSearch
       options={districtOptions}

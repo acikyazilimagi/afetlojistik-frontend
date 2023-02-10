@@ -1,7 +1,38 @@
+@import 'scss/colors.scss';
+
 :global(.ant-select) {
   width: 100%;
 }
 .maxHeight {
   max-height: 300px;
   overflow: auto;
+}
+
+.select {
+  :global(.ant-select-selector) {
+    border: none !important;
+    border-radius: 0;
+    padding: 0 !important;
+    background: transparent !important;
+    margin-top: -10px !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  :global(.ant-select-arrow) {
+    margin-top: -10px !important;
+  }
+}
+
+.title {
+  font-size: 15px !important;
+  margin-top: 4px;
+  color: $primary-color !important;
+}
+
+.dropdown {
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 0 8px;
 }
