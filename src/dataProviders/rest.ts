@@ -73,7 +73,7 @@ export const dataProvider = (
   },
 
   getOne: async ({ resource, id }) => {
-    const url = `${apiUrl}/${resource}/number/${id}`
+    const url = `${apiUrl}/${resource}/${id}`
 
     const { data } = await http.get(url)
 

@@ -6,14 +6,13 @@ import '@pankod/refine-antd/dist/reset.css'
 import 'scss/style.scss'
 
 // eslint-disable-next-line import/no-unresolved
-import { AntdInferencer } from '@pankod/refine-inferencer/antd'
 import routerProvider from '@pankod/refine-react-router-v6'
 import { useTranslation } from 'react-i18next'
 import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { Login } from 'pages/Login'
 import { dataProvider } from 'dataProviders'
-import { TripCreate, TripList, Detail } from 'pages/Trip'
+import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
 import { authProvider } from './authProvider'
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
           {
             name: 'trip',
             list: TripList,
-            edit: AntdInferencer,
+            edit: Edit,
             show: Detail,
             create: TripCreate,
             canDelete: true
