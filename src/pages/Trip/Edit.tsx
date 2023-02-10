@@ -31,13 +31,15 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
 
   const data = queryResult?.data?.data
 
+  const [products, setProducts] = useState<ProductType[]>(data?.products ?? [])
+  useEffect(() => data && setProducts(data.products), [data])
+
   const { setFieldValue, setFieldsValue, getFieldsValue, getFieldValue } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
   const [fromCity, setFromCity] = useState<string | undefined>()
   const [toCity, setToCity] = useState<string | undefined>()
 
-  const [isTouched, setIsTouched] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -67,9 +69,9 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   }
 
   const handleProductChange = (categoryId: string, index: number) => {
-    setIsTouched(true)
     const current = [...getFieldValue('products')]
     current[index] = { ...current[index], categoryId }
+    setProducts(current)
     setFieldValue('products', current)
   }
 
@@ -80,7 +82,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   return (
     <div className={styles.detailWrapper}>
       <Edit saveButtonProps={saveButtonProps}>
-        <Form {...formProps} form={form} layout='vertical'>
+        <Form {...formProps} form={form} layout='vertical' id='editTripForm'>
           <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>
             <Space direction='vertical' className='mb-12'>
@@ -211,6 +213,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
           <Form.List
             name='products'
+            initialValue={products}
             rules={[
               {
                 validator: async (_, values) => {
@@ -238,7 +241,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                     >
                       <ProductCategoryDropdown
                         categoryList={categoryList}
-                        {...(!isTouched ? { value: data?.products[index].categoryId } : undefined)}
+                        value={products[index]?.categoryId}
                         onChange={(value) => handleProductChange(value, index)}
                       />
                     </Form.Item>
