@@ -1,14 +1,20 @@
 {
-  "createdBy": "Created By",
+  "addCategory": "Add Category",
+  "category": "Category",
   "dashboard": {
     "title": "Dashboard"
   },
   "destination": "Destination",
+  "destinationCity": "Destination City",
+  "destinationDistrict": "Destination District",
   "errors": {
     "phoneNumber": "Invalid Phone Number"
   },
+  "estimatedDepartDate": "Estimated Depart Date",
   "estimatedDepartTime": "Estimated Depart Time",
+  "explicitAddress": "Explicit Address",
   "gdprConsent": "Remember Me",
+  "location": "Location",
   "locationInfo": "Location Info",
   "login": {
     "password": "Password",
@@ -18,11 +24,17 @@
     "title": "Sign In To Your Account"
   },
   "logout": "Logout",
+  "notes": "Notes",
   "originCity": "Origin City",
   "originDistrict": "Origin District",
+  "packageCount": "Package Count",
+  "plateNo": "Plate No",
+  "selectCategory": "Select Category",
   "selectCity": "Choose a city",
   "selectDistrict": "Choose a district",
-  "tripNumber": "Trip Number",
+  "tripContent": "Trip Content",
+  "tripDetails": "Trip Details",
+  "tripNo": "Trip No",
   "vehicle": "Vehicle",
   "vehicleInfo": "Vehicle Info"
 }

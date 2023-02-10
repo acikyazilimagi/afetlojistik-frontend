@@ -13,7 +13,7 @@ import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { Login } from 'pages/Login'
 import { dataProvider } from 'dataProviders'
-import { TripCreate, TripList } from 'pages/Trip'
+import { TripCreate, TripList, Detail } from 'pages/Trip'
 import { authProvider } from './authProvider'
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
             name: 'trip',
             list: TripList,
             edit: AntdInferencer,
-            show: AntdInferencer,
+            show: Detail,
             create: TripCreate,
             canDelete: true
           }
