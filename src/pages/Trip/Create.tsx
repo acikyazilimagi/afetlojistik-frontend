@@ -54,62 +54,61 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
       <Create saveButtonProps={saveButtonProps}>
         <Form {...formProps} form={form} layout='vertical'>
           <IconTitle icon={<FaTruck />} label={t('location')} />
-          <Space direction='horizontal' className='mb-12 align-center justify-sb'>
-            <Form.Item
-              className={styles.formItem}
-              label={t('originCity')}
-              name={'fromCityId'}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <CityDropdown onChange={handleFromCityChange} value={fromCity} />
-            </Form.Item>
-            <ArrowRightOutlined className='flex flex-center' />
-            <Form.Item
-              label={t('destinationCity')}
-              name={'toCityId'}
-              className={styles.formItem}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <CityDropdown onChange={handleToCityChange} value={toCity} />
-            </Form.Item>
+          <Space direction='horizontal' className={styles.locationContainer}>
+            <Space direction='vertical' className='mb-12'>
+              <Form.Item
+                className={styles.formItem}
+                label={t('originCity')}
+                name={'fromCityId'}
+                rules={[
+                  {
+                    required: true
+                  }
+                ]}
+              >
+                <CityDropdown onChange={handleFromCityChange} value={fromCity} />
+              </Form.Item>
+              <Form.Item
+                label={t('originDistrict')}
+                name={'fromDistrictId'}
+                className={styles.formItem}
+                rules={[
+                  {
+                    required: true
+                  }
+                ]}
+              >
+                <DistrictDropdown cityId={getFieldValue('fromDistrictId') as string} onChange={handleDistrictChange} />
+              </Form.Item>
+            </Space>
+            <ArrowRightOutlined />
+            <Space direction='vertical' className='mb-12'>
+              <Form.Item
+                label={t('destinationCity')}
+                name={'toCityId'}
+                className={styles.formItem}
+                rules={[
+                  {
+                    required: true
+                  }
+                ]}
+              >
+                <CityDropdown onChange={handleToCityChange} value={toCity} />
+              </Form.Item>
+              <Form.Item
+                label={t('destinationDistrict')}
+                name={'toDistrictId'}
+                className={styles.formItem}
+                rules={[
+                  {
+                    required: true
+                  }
+                ]}
+              >
+                <DistrictDropdown cityId={getFieldValue('toDistrictId') as string} onChange={handleDistrictChange} />
+              </Form.Item>
+            </Space>
           </Space>
-
-          <Space direction='horizontal' className='mb-12 align-center justify-sb'>
-            <Form.Item
-              label={t('originDistrict')}
-              name={'fromDistrictId'}
-              className={styles.formItem}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <DistrictDropdown cityId={getFieldValue('fromDistrictId') as string} onChange={handleDistrictChange} />
-            </Form.Item>
-            <ArrowRightOutlined className='flex justify-center' />
-            <Form.Item
-              label={t('destinationDistrict')}
-              name={'toDistrictId'}
-              className={styles.formItem}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <DistrictDropdown cityId={getFieldValue('toDistrictId') as string} onChange={handleDistrictChange} />
-            </Form.Item>
-          </Space>
-
           <div className='mb-20'>
             <FormInput
               name='destinationAddress'

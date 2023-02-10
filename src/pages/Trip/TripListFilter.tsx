@@ -17,15 +17,15 @@ export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }
     <Collapse defaultActiveKey={['filters']}>
       <Panel header={t('filters')} key='filters'>
         <Form layout='vertical' {...formProps}>
-          <Form.Item label='Status' name='statuses'>
+          <Form.Item label={t('status')} name='statuses'>
             <Select
               allowClear
               mode='multiple'
               options={Object.values(tripStatusOptions).map((option) => ({ ...option, label: t(option.label) }))}
-              placeholder='Post Status'
+              placeholder={t('statuses')}
             />
           </Form.Item>
-          <Form.Item label='Created At' name='createdAt'>
+          <Form.Item label={t('createdAt')} name='createdAt'>
             <RangePicker />
           </Form.Item>
           <Form.Item>

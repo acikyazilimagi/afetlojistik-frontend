@@ -62,6 +62,7 @@ export const Header: React.FC = () => {
           <Dropdown overlay={logoutMenu} placement='bottomRight'>
             <Text ellipsis strong className='white-text pointer'>
               {user.name + ' ' + user.surname}
+              <DownOutlined className='ml-8' />
             </Text>
           </Dropdown>
         )}
