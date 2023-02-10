@@ -1,14 +1,20 @@
 {
-  "createdBy": "Oluşturan",
+  "addCategory": "Kategori Ekle",
+  "category": "Kategori",
   "dashboard": {
     "title": "Panel"
   },
   "destination": "İstikamet",
+  "destinationCity": "Hedef İl",
+  "destinationDistrict": "Hedef İlçe",
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
   },
-  "estimatedDepartTime": "Tahmini Çıkış Vakti",
+  "estimatedDepartDate": "Tahmini Çıkış Tarihi",
+  "estimatedDepartTime": "Tahmini Çıkış Saati",
+  "explicitAddress": "Açık Adres",
   "gdprConsent": "Beni Hatırla",
+  "location": "Konum",
   "locationInfo": "Konum Bilgisi",
   "login": {
     "password": "Şifre",
@@ -18,11 +24,17 @@
     "title": "Hesabına Giriş Yap"
   },
   "logout": "Oturumu Kapat",
+  "notes": "Notlar",
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
+  "packageCount": "Koli Adedi",
+  "plateNo": "Araç Plakası",
+  "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
-  "tripNumber": "Sefer Numarası",
+  "tripContent": "Sefer İçeriği",
+  "tripDetails": "Sefer Detayı",
+  "tripNo": "Sefer Numarası",
   "vehicle": "Araç",
   "vehicleInfo": "Araç Bilgisi"
 }

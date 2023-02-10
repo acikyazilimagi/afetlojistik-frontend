@@ -60,7 +60,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 }
               ]}
             >
-              <CityDropdown title={t('sourceCity')} onChange={handleCityChange} value={getValue('fromCityId')} />
+              <CityDropdown title={t('originCity')} onChange={handleCityChange} value={getValue('fromCityId')} />
             </Form.Item>
             <Form.Item
               label='Vehicle'
@@ -72,7 +72,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               ]}
             >
               <DistrictDropdown
-                title={t('sourceDistrict')}
+                title={t('originDistrict')}
                 cityId={getValue('fromDistrictId') as string}
                 onChange={handleDistrictChange}
               />
@@ -109,7 +109,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
           </div>
         </Space>
         <Form.Item
-          label={t('openAddress')}
+          label={t('explicitAddress')}
           name={'destinationAddress'}
           rules={[
             {
@@ -197,7 +197,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                         required: true
                       }
                     ]}
-                    label={t('count')}
+                    label={t('packageCount')}
                     {...restField}
                   >
                     <Input type='number' />
