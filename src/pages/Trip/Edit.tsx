@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 import { Space } from 'antd'
 
 import { useTranslation } from 'react-i18next'
-import { FaBoxes, FaTruck } from 'react-icons/fa'
+import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons'
 import { CityDropdown } from 'components/CityDropdown'
 import { IconTitle } from 'components/IconTitle'
@@ -56,7 +56,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
     <div className={styles.detailWrapper}>
       <Edit saveButtonProps={saveButtonProps}>
         <Form {...formProps} form={form} layout='vertical'>
-          <IconTitle icon={<FaTruck />} label={t('location')} />
+          <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>
             <Space direction='vertical' className='mb-12'>
               <Form.Item

@@ -8,7 +8,8 @@
     "verifyAndLogin": ""
   },
   "category": "Kategori",
-  "count": "",
+  "createdAt": "",
+  "createdBy": "",
   "dashboard": {
     "title": "Panel"
   },
@@ -17,6 +18,7 @@
   "destinationDistrict": "Hedef İlçe",
   "driverName": "Sürücü İsmi",
   "errorMessages": {
+    "minimumCount": "",
     "minimumProducts": "En az {{value}} koli eklenmeli"
   },
   "errors": {
@@ -38,16 +40,17 @@
   },
   "logout": "Oturumu Kapat",
   "notes": "Notlar",
-  "openAddress": "",
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
-  "plateNumber": "",
   "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
+  "selectOption": "",
+  "status": "",
+  "statuses": "",
   "tripContent": "Sefer İçeriği",
   "tripDetails": "Sefer Detayı",
   "tripNo": "Sefer Numarası",
@@ -58,6 +61,7 @@
     "created": "",
     "onWay": ""
   },
+  "updatedAt": "",
   "vehicle": "Araç",
   "vehicleInfo": "Araç Bilgisi"
 }

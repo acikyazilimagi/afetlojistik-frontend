@@ -3,7 +3,7 @@ import { IResourceComponentsProps } from '@pankod/refine-core'
 import { Create, Form, useForm, DatePicker, Space, Button } from '@pankod/refine-antd'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
-import { FaBoxes, FaTruck } from 'react-icons/fa'
+import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons'
 import { CityDropdown } from 'components/CityDropdown'
 import { IconTitle } from 'components/IconTitle'
@@ -60,7 +60,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
     <div className={styles.createWrapper}>
       <Create saveButtonProps={saveButtonProps}>
         <Form {...formProps} form={form} layout='vertical'>
-          <IconTitle icon={<FaTruck />} label={t('location')} />
+          <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>
             <Space direction='vertical' className='mb-12'>
               <Form.Item
@@ -144,17 +144,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 ]
               }}
             />
-            <FormInput
-              label={t('driverName')}
-              name={['vehicle', 'name']}
-              formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
-              }}
-            />
+            <FormInput label={t('driverName')} name={['vehicle', 'name']} />
             <FormInput
               label={t('phoneNumber')}
               name={['vehicle', 'phone']}

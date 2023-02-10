@@ -43,7 +43,8 @@
 }
 
 .categorySpace {
-  :global(.ant-space-item) {
+  :global(.ant-space-item:not(:nth-child(3))) {
+    flex: 1;
     :global(.ant-form-item) {
       margin: 0;
       min-width: 130px;

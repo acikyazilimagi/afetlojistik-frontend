@@ -8,7 +8,8 @@
     "verifyAndLogin": "Verify & Login"
   },
   "category": "Category",
-  "count": "Count",
+  "createdAt": "Created At",
+  "createdBy": "Created By",
   "dashboard": {
     "title": "Dashboard"
   },
@@ -17,6 +18,7 @@
   "destinationDistrict": "Destination District",
   "driverName": "Driver Name",
   "errorMessages": {
+    "minimumCount": "Count cannot be zero.",
     "minimumProducts": "Minimum {{value}} products must be added."
   },
   "errors": {
@@ -38,16 +40,17 @@
   },
   "logout": "Logout",
   "notes": "Notes",
-  "openAddress": "Open address",
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
-  "plateNumber": "Plate Number",
   "selectCategory": "Select Category",
   "selectCity": "Choose a city",
   "selectDistrict": "Choose a district",
+  "selectOption": "Select...",
+  "status": "Status",
+  "statuses": "Statuses",
   "tripContent": "Trip Content",
   "tripDetails": "Trip Details",
   "tripNo": "Trip No",
@@ -58,6 +61,7 @@
     "created": "Created",
     "onWay": "On Way"
   },
+  "updatedAt": "Updated At",
   "vehicle": "Vehicle",
   "vehicleInfo": "Vehicle Info"
 }

@@ -5,7 +5,6 @@ import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-
 import '@pankod/refine-antd/dist/reset.css'
 import 'scss/style.scss'
 
-// eslint-disable-next-line import/no-unresolved
 import routerProvider from '@pankod/refine-react-router-v6'
 import { useTranslation } from 'react-i18next'
 import { ColorModeContextProvider } from 'contexts'
