@@ -1,11 +1,12 @@
 {
+  "actions": "İşlemler",
   "addCategory": "Kategori Ekle",
   "auth": {
-    "emailAuthentication": "",
-    "resendCode": "",
-    "resendDescription": "",
-    "sendCodeDescription": "",
-    "verifyAndLogin": ""
+    "emailAuthentication": "E-Mail Doğrulama",
+    "resendCode": "Yeniden Gönder",
+    "resendDescription": "Kodu yeniden gönder",
+    "sendCodeDescription": "Kodu Gönder",
+    "verifyAndLogin": "Doğrulama ve Giriş"
   },
   "category": "Kategori",
   "createdAt": "",
@@ -13,7 +14,6 @@
   "dashboard": {
     "title": "Panel"
   },
-  "destination": "İstikamet",
   "destinationCity": "Hedef İl",
   "destinationDistrict": "Hedef İlçe",
   "driverName": "Sürücü İsmi",
@@ -52,7 +52,6 @@
   "status": "",
   "statuses": "",
   "tripContent": "Sefer İçeriği",
-  "tripDetails": "Sefer Detayı",
   "tripNo": "Sefer Numarası",
   "tripStatuses": {
     "arrived": "Ulaştı",

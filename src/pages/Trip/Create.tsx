@@ -14,6 +14,7 @@ import { getProductCategoryList } from 'services'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
 import { FormInput } from 'components/Form'
 import { ProductType } from 'types/product'
+import { Spinner } from 'components/Spinner'
 import styles from './Create.module.scss'
 
 const DEFAULT_PRODUCT_ROW = {
@@ -25,13 +26,16 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { t } = useTranslation()
   const { formProps, form, saveButtonProps } = useForm<CreateTripFormType>()
   const { setFieldValue, setFieldsValue, getFieldsValue, getFieldValue } = form
+  const [isLoading, setIsLoading] = useState(true)
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
   const [fromCity, setFromCity] = useState<string | undefined>()
   const [toCity, setToCity] = useState<string | undefined>()
 
   useEffect(() => {
-    getProductCategoryList().then(setCategoryList)
+    getProductCategoryList()
+      .then(setCategoryList)
+      .then(() => setIsLoading(false))
   }, [])
 
   const handleFromCityChange = (cityId: string) => {
@@ -58,6 +62,10 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
     const current = [...getFieldValue('products')]
     current[index] = { categoryId, count: 0 }
     setFieldValue('products', current)
+  }
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (

@@ -2,19 +2,24 @@ import React, { useState } from 'react'
 import { CrudFilters, HttpError, IResourceComponentsProps } from '@pankod/refine-core'
 import { useTable, List, Table, Space, EditButton, ShowButton, DeleteButton, DateField, Tag } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
-import { ArrowRightOutlined } from '@ant-design/icons'
+import { ArrowRightOutlined, EditOutlined } from '@ant-design/icons'
+import { Button, Input, Modal } from 'antd'
 import { FaTruck, FaIdCard, FaPhone } from 'react-icons/fa'
-import { TripListFilterPostType, TripListFilterTypes, TripType } from 'types/trip'
+import { EditTripStatusFormType, TripListFilterPostType, TripListFilterTypes, TripType } from 'types/trip'
 import { VehicleType } from 'types/vehicle'
 import { LocationType } from 'types/location'
 import { UserType } from 'types/user'
 import { EditableTripStatusDropdown } from 'components/EditableTripStatusDropdown'
-import { RowEditButton } from 'components/ui/RowEditButton'
+import { useModal } from 'hooks/useModal'
+import { TripsStatuses } from 'constants/trip'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const { t } = useTranslation()
   const [editingRows, setEditingRows] = useState<string[]>([])
+  const [isModalOpen, openModal, closeModal] = useModal({})
+  const [plateNoInput, setPlateNoInput] = useState('')
+
   const { tableProps, searchFormProps } = useTable<TripListFilterPostType, HttpError, TripListFilterTypes>({
     syncWithLocation: true,
     onSearch: (params) => {
@@ -43,6 +48,23 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     }
   })
 
+  const handleEditEnable = (recordId: string) => {
+    // TODO: Enable multiple rows in editing state
+    // const updatedItems = [...editingRowIds]
+    // updatedItems.push(recordId)
+    // onEditChange(updatedItems)
+    setEditingRows([recordId])
+  }
+
+  const saveNewStatus = (values: EditTripStatusFormType) => {
+    if (values.status === TripsStatuses.OnWay) {
+      openModal()
+    }
+
+    // HANDLE REQUEST FOR OTHER STATUSES HERE
+    setEditingRows([])
+  }
+
   return (
     <List>
       <Space direction='vertical' size={20}>
@@ -67,17 +89,16 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                     isEditing={isEditing}
                     currentStatus={trip.status}
                     // TODO: Update when endpoint is ready
-                    onSubmit={() => {}}
+                    onSubmit={saveNewStatus}
+                    setEditingRows={setEditingRows}
                   />
-                  <RowEditButton
-                    formId='editTripStatusForm'
-                    recordId={trip._id}
-                    editingRowIds={editingRows}
-                    onEditChange={setEditingRows}
-                    onReset={setEditingRows}
-                    // TODO: Update when endpoint is ready
-                    onSave={() => {}}
-                  />
+                  {!isEditing && (
+                    <Button
+                      onClick={() => handleEditEnable(trip._id)}
+                      icon={<EditOutlined />}
+                      className='ant-btn-secondary'
+                    />
+                  )}
                 </>
               )
             }}
@@ -140,6 +161,34 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           />
         </Table>
       </Space>
+      <Modal
+        visible={isModalOpen}
+        title={t('enterPlateNo')}
+        onCancel={closeModal}
+        footer={
+          <>
+            <Button
+              type='primary'
+              onClick={() => {
+                // HANDLE REQUEST HERE
+                // eslint-disable-next-line no-console
+                console.log(plateNoInput)
+                setPlateNoInput('')
+                closeModal()
+              }}
+            >
+              {t('save')}
+            </Button>
+          </>
+        }
+      >
+        <Input
+          onChange={(e) => setPlateNoInput(e.target.value)}
+          size='middle'
+          placeholder={t('plateNo')}
+          className='mt-12 mb-12'
+        />
+      </Modal>
     </List>
   )
 }

@@ -1,5 +1,8 @@
-.input {
+.input,
+.input:hover,
+.input:focus {
   border: none !important;
+  box-shadow: none !important;
 }
 
 .inputDisabled {
@@ -16,6 +19,18 @@
   }
   :global(.ant-form-item-label) {
     padding-bottom: 0;
+  }
+
+  :global(
+      .ant-input:hover,
+      .ant-input-number:hover,
+      .ant-input-number:focus .ant-input:focus,
+      .ant-input:focus,
+      .ant-input-search .ant-input:focus,
+      .ant-input-search .ant-input:hover
+    ) {
+    border: none !important;
+    box-shadow: none !important;
   }
 }
 

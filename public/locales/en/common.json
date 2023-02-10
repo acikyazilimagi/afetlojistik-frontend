@@ -1,10 +1,11 @@
 {
+  "actions": "Actions",
   "addCategory": "Add Category",
   "auth": {
-    "emailAuthentication": "",
+    "emailAuthentication": "E-Mail Authentication",
     "resendCode": "Resend",
-    "resendDescription": "",
-    "sendCodeDescription": "",
+    "resendDescription": "Re-send the code",
+    "sendCodeDescription": "Send Code",
     "verifyAndLogin": "Verify & Login"
   },
   "category": "Category",
@@ -13,7 +14,6 @@
   "dashboard": {
     "title": "Dashboard"
   },
-  "destination": "Destination",
   "destinationCity": "Destination City",
   "destinationDistrict": "Destination District",
   "driverName": "Driver Name",
@@ -52,7 +52,6 @@
   "status": "Status",
   "statuses": "Statuses",
   "tripContent": "Trip Content",
-  "tripDetails": "Trip Details",
   "tripNo": "Trip No",
   "tripStatuses": {
     "arrived": "Arrived",

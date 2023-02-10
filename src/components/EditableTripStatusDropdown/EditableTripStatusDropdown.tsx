@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import { GenericDropdown } from 'components/GenericDropdown'
 import { TripsStatuses, tripStatusOptions } from 'constants/trip'
+import { RowEditButton } from 'components/ui/RowEditButton'
 import { EditTripStatusFormType } from 'types/trip'
 import { editTripStatusInitialValues, validationSchema } from './formHelper'
 import styles from './EditableTripStatusDropdown.module.scss'
@@ -14,20 +15,24 @@ type EditableTripStatusDropdownProps = {
   tripId: string
   currentStatus: TripsStatuses
   onSubmit: (values: EditTripStatusFormType) => void
+  setEditingRows: React.Dispatch<React.SetStateAction<string[]>>
 }
 export const EditableTripStatusDropdown: React.FC<EditableTripStatusDropdownProps> = ({
   isEditing,
   formId,
   tripId,
   currentStatus,
-  onSubmit
+  onSubmit,
+  setEditingRows
 }) => {
   const { t } = useTranslation()
   const [form] = Form.useForm()
   const formik = useFormik({
     initialValues: editTripStatusInitialValues,
     validationSchema,
-    onSubmit,
+    onSubmit: (values) => {
+      onSubmit(values)
+    },
     enableReinitialize: true,
     validateOnChange: true
   })
@@ -60,15 +65,24 @@ export const EditableTripStatusDropdown: React.FC<EditableTripStatusDropdownProp
   const color = tripStatusOptions[currentStatus].color
   if (isEditing) {
     return (
-      <Form className={styles.form} id={formId} form={form} onFinish={handleSubmit}>
-        <Form.Item
-          name='status'
-          validateStatus={touched.status && errors.status ? 'error' : undefined}
-          help={touched.status && errors.status}
-        >
-          <GenericDropdown value={values.status} options={tripStatusOptions} onChange={handleStatusChange} />
-        </Form.Item>
-      </Form>
+      <>
+        <Form className={styles.form} id={formId} form={form}>
+          <Form.Item
+            name='status'
+            validateStatus={touched.status && errors.status ? 'error' : undefined}
+            help={touched.status && errors.status}
+          >
+            <GenericDropdown value={values.status} options={tripStatusOptions} onChange={handleStatusChange} />
+          </Form.Item>
+        </Form>
+        <RowEditButton
+          formId='editTripStatusForm'
+          onEditChange={setEditingRows}
+          onReset={setEditingRows}
+          // TODO: Update when endpoint is ready
+          handleSubmit={handleSubmit}
+        />
+      </>
     )
   }
   return <Tag color={color}>{label}</Tag>
