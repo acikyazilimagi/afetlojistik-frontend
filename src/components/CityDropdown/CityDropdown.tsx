@@ -29,6 +29,7 @@ export const CityDropdown: React.FC<CityDropdownProps> = ({ cityDropdownProps, d
   return (
     <>
       <Dropdown
+        title={t('originCity')}
         showSearch
         options={cityOptions}
         allowClear
