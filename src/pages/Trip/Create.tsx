@@ -37,17 +37,21 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const handleFromCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setFromCity(cityId)
-    setFieldValue('fromDistrict', undefined)
+    setFieldValue('fromDistrictId', undefined)
   }
 
   const handleToCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setToCity(cityId)
-    setFieldValue('fromDistrict', undefined)
+    setFieldValue('fromDistrictId', undefined)
   }
 
-  const handleDistrictChange = (districtId: string) => {
-    setFieldValue('fromDistrict', districtId)
+  const handleFromDistrictChange = (districtId: string) => {
+    setFieldValue('fromDistrictId', districtId)
+  }
+
+  const handleToDistrictChange = (districtId: string) => {
+    setFieldValue('toDistrictId', districtId)
   }
 
   const handleProductChange = (categoryId: string, index: number) => {
@@ -85,7 +89,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   }
                 ]}
               >
-                <DistrictDropdown cityId={fromCity} onChange={handleDistrictChange} />
+                <DistrictDropdown cityId={fromCity} onChange={handleFromDistrictChange} />
               </Form.Item>
             </Space>
             <ArrowRightOutlined />
@@ -112,7 +116,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   }
                 ]}
               >
-                <DistrictDropdown cityId={toCity} onChange={handleDistrictChange} />
+                <DistrictDropdown cityId={toCity} onChange={handleToDistrictChange} />
               </Form.Item>
             </Space>
           </Space>
