@@ -10,8 +10,8 @@
 .ant-input-number-affix-wrapper-focused:not(.ant-input-number-affix-wrapper-disabled),
 .ant-input-number:focus,
 .ant-input-number-focused {
-  border-color: $purple200;
-  box-shadow: 0 0 0 2px rgba(93, 62, 188, 0.2);
+  border: none !important;
+  box-shadow: none !important;
 }
 .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
 .ant-input-number-affix-wrapper:not(.ant-input-number-affix-wrapper-disabled):hover {
@@ -23,12 +23,12 @@
 .ant-input:focus,
 .ant-input-search .ant-input:focus,
 .ant-input-search .ant-input:hover {
-  border-color: $purple200;
+  border: none !important;
 }
 
 .ant-input-number:focus,
 .ant-input:focus {
-  box-shadow: 0 0 0 2px rgba(93, 62, 188, 0.2);
+  box-shadow: none !important;
 }
 
 .ant-input-search .ant-input:focus + .ant-input-group-addon .ant-input-search-button:not(.ant-btn-primary),

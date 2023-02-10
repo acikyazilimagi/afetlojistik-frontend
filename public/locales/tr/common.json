@@ -1,12 +1,15 @@
 {
+  "createdBy": "Oluşturan",
   "dashboard": {
     "title": "Panel"
   },
-  "destinationAddress": "Varış Açık Adres",
+  "destination": "İstikamet",
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
   },
+  "estimatedDepartTime": "Tahmini Çıkış Vakti",
   "gdprConsent": "Beni Hatırla",
+  "locationInfo": "Konum Bilgisi",
   "login": {
     "password": "Şifre",
     "phoneNumber": "Telefon Numarası",
@@ -18,5 +21,8 @@
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "selectCity": "Şehir seçiniz...",
-  "selectDistrict": "İlçe seçiniz..."
+  "selectDistrict": "İlçe seçiniz...",
+  "tripNumber": "Sefer Numarası",
+  "vehicle": "Araç",
+  "vehicleInfo": "Araç Bilgisi"
 }
