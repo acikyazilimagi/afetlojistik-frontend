@@ -18,3 +18,8 @@ export type TripType = {
   createdAt: string
   updatedAt: string
 }
+
+export type CreateTripFormType = {
+  vehicle: VehicleType
+  fromLocation: LocationType
+}
