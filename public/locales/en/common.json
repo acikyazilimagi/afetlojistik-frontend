@@ -1,12 +1,15 @@
 {
+  "createdBy": "Created By",
   "dashboard": {
     "title": "Dashboard"
   },
-  "destinationAddress": "Destination Address",
+  "destination": "Destination",
   "errors": {
     "phoneNumber": "Invalid Phone Number"
   },
+  "estimatedDepartTime": "Estimated Depart Time",
   "gdprConsent": "Remember Me",
+  "locationInfo": "Location Info",
   "login": {
     "password": "Password",
     "phoneNumber": "Phone Number",
@@ -18,5 +21,8 @@
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "selectCity": "Choose a city",
-  "selectDistrict": "Choose a district"
+  "selectDistrict": "Choose a district",
+  "tripNumber": "Trip Number",
+  "vehicle": "Vehicle",
+  "vehicleInfo": "Vehicle Info"
 }

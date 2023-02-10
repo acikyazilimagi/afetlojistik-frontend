@@ -17,6 +17,8 @@ const DEFAULT_PRODUCT_ROW = {
   categoryId: undefined,
   count: 0
 }
+import { FormInput } from 'components/Form'
+import styles from './Create.module.scss'
 
 export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { t } = useTranslation()
@@ -114,8 +116,9 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               required: true
             }
           ]}
+          className={styles.formItem}
         >
-          <Input />
+          <FormInput name='createdBy' />
         </Form.Item>
         <IconTitle icon={<FaTruck />} label={t('vehicle')} />
         <Space>
@@ -159,6 +162,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
         <Form.Item
           label='Estimated Depart Time'
           name={'estimatedDepartTime'}
+          className={styles.formItem}
           rules={[
             {
               required: true
