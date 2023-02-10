@@ -7,7 +7,11 @@ export type UserType = {
   phone: string
 }
 
-export type UserLoginResponseType = {
+export type LoginResponseType = {
+  success: boolean
+}
+
+export type VerifyAuthCodeResponseType = {
   user: UserType
   token: string
 }
