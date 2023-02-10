@@ -2,6 +2,7 @@
   "dashboard": {
     "title": "Panel"
   },
+  "destinationAddress": "Varış Açık Adres",
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
   },

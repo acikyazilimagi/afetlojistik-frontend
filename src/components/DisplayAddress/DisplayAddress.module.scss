@@ -1,0 +1,13 @@
+@import 'scss/colors.scss';
+
+.displayAddressContainer {
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.displayAddressTitle {
+  font-size: 15px !important;
+  color: $primary-color !important;
+}

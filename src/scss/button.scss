@@ -14,8 +14,8 @@
   }
 
   &-primary {
-    border-color: $generic-button !important;
-    background: $generic-button !important;
+    border-color: $primary-color !important;
+    background: $primary-color !important;
     color: $white;
     &:disabled {
       background: $gray200 !important;
@@ -25,7 +25,7 @@
     &:focus-within,
     &:focus {
       color: $white;
-      background: $generic-button-focus !important;
+      background: $primary-color-focus !important;
     }
   }
 

@@ -2,6 +2,7 @@
   "dashboard": {
     "title": "Dashboard"
   },
+  "destinationAddress": "Destination Address",
   "errors": {
     "phoneNumber": "Invalid Phone Number"
   },
@@ -10,10 +11,10 @@
     "password": "Password",
     "phoneNumber": "Phone Number",
     "signin": "Sign In",
-    "subtitle": "",
+    "subtitle": "February 5th Kahramanmaraş Earthquake",
     "title": "Sign In To Your Account"
   },
   "logout": "Logout",
-  "selectCity": "",
-  "selectDistrict": ""
+  "selectCity": "Choose a city",
+  "selectDistrict": "Choose a district"
 }
