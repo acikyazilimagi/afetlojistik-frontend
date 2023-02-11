@@ -48,13 +48,23 @@ export interface TripListFilterPostType {
   title: string
   content: string
   status: TripStatuses
+  truckPlateNumber: string
+  trailerPlateNumber: string
+  fromCityId: string
+  toCityId: string
+  fromDistrictId: string
+  toDistrictId: string
   category: { id: number }
 }
 
 export type TripListFilterTypes = {
   tripNumbers: string[]
-  fromCityIds: string[]
-  toCityIds: string[]
+  truckPlateNumber: string
+  trailerPlateNumber: string
+  fromCityId: string
+  toCityId: string
+  fromDistrictId: string
+  toDistrictId: string
   statuses: number[]
   createdAt: [Dayjs, Dayjs]
 }

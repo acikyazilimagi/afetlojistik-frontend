@@ -152,3 +152,12 @@ html {
 .max-width-500 {
   max-width: 500px;
 }
+
+.layout__filter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+  gap: 20px;
+  &-gap > *:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

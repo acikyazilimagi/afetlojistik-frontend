@@ -26,13 +26,52 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     syncWithLocation: true,
     onSearch: (params) => {
       const filters: CrudFilters = []
-      const { statuses, createdAt } = params
+      const {
+        statuses,
+        truckPlateNumber,
+        trailerPlateNumber,
+        fromCityId,
+        toCityId,
+        toDistrictId,
+        fromDistrictId,
+        createdAt
+      } = params
 
       filters.push(
         {
           field: 'statuses',
           operator: 'eq',
           value: statuses
+        },
+        {
+          field: 'truckPlateNumber',
+          operator: 'eq',
+          value: truckPlateNumber
+        },
+        {
+          field: 'fromCityId',
+          operator: 'eq',
+          value: fromCityId
+        },
+        {
+          field: 'toCityId',
+          operator: 'eq',
+          value: toCityId
+        },
+        {
+          field: 'toDistrictId',
+          operator: 'eq',
+          value: toDistrictId
+        },
+        {
+          field: 'fromDistrictId',
+          operator: 'eq',
+          value: fromDistrictId
+        },
+        {
+          field: 'trailerPlateNumber',
+          operator: 'eq',
+          value: trailerPlateNumber
         },
         {
           field: 'startDate',
