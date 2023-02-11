@@ -1,4 +1,7 @@
 {
+  "notifications": {
+    "editSuccess": "Record updated"
+  },
   "actions": "Actions",
   "addCategory": "Add Category",
   "auth": {
@@ -64,5 +67,9 @@
   },
   "updatedAt": "Updated At",
   "vehicle": "Vehicle",
-  "vehicleInfo": "Vehicle Info"
+  "vehicleInfo": "Vehicle Info",
+  "name": "Name",
+  "surname": "Surname",
+  "active": "Active",
+  "email": "Email"
 }

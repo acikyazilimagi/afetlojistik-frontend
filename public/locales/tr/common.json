@@ -1,4 +1,7 @@
 {
+  "notifications": {
+    "editSuccess": "Kayıt güncellendi"
+  },
   "actions": "İşlemler",
   "addCategory": "Kategori Ekle",
   "auth": {
@@ -64,5 +67,9 @@
   },
   "updatedAt": "Güncellenme Tarihi",
   "vehicle": "Araç",
-  "vehicleInfo": "Araç Bilgisi"
+  "vehicleInfo": "Araç Bilgisi",
+  "name": "Ad",
+  "surname": "Soyad",
+  "active": "Aktif",
+  "email": "Eposta"
 }
