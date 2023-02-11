@@ -54,9 +54,9 @@
   }
 
   &-link {
-    color: $ui-purple300 !important;
+    color: $primary-color !important;
     transition: 0.2s !important;
-    font-weight: 400 !important;
+    font-weight: 600 !important;
     border: none !important;
     &:disabled {
       color: $gray200 !important;
@@ -64,7 +64,7 @@
     &:hover,
     &:focus-within,
     &:focus {
-      color: $ui-purple200;
+      color: $primary-color-focus;
       font-weight: 600 !important;
     }
   }

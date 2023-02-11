@@ -10,7 +10,7 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => (
   <Link to='/'>
     {collapsed ? (
       <div className={styles.imageWrapper}>
-        <img src='/logo.png' alt='Afet Lojistik' className={styles.wrappedImage} />
+        <img src='/logo.png' alt='Afet Lojistik' className={styles.soloImage} />
       </div>
     ) : (
       <img src='/logo.png' alt='Afet Lojistik' className={styles.soloImage} />

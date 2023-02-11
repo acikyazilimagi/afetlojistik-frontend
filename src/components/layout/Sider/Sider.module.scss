@@ -1,3 +1,5 @@
+@import 'scss/colors.scss';
+
 .drawerButtonStyles {
   border-top-left-radius: 0;
   position: fixed;
@@ -9,4 +11,5 @@
 .antdLayoutSider {
   height: 100vh;
   overflow: hidden;
+  background: $primary-light-bg !important;
 }
