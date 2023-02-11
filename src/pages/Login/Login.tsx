@@ -73,7 +73,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
             }
           ]}
         >
-          <Input type='number' size='large' placeholder={'(5XX) XXX XXXX'} />
+          <Input type='number' size='large' placeholder={'(5XX) XXX XXXX'} className={styles.input} />
         </Form.Item>
         <div className={styles.rememberMeWrapper}>
           {rememberMe ?? (

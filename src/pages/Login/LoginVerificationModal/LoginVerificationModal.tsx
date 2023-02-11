@@ -119,7 +119,6 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
           />
         </Form>
         <div className='resend-code'>
-          <Typography.Text>{t('auth.resendDescription')}</Typography.Text>
           <Button onClick={() => onResend(values)} type='link'>
             {t('auth.resendCode')}
           </Button>
