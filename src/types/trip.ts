@@ -55,6 +55,7 @@ export interface TripListFilterPostType {
   toCityId: string
   fromDistrictId: string
   toDistrictId: string
+  productCategoryIds: string[]
   category: { id: number }
 }
 
@@ -66,6 +67,7 @@ export type TripListFilterTypes = {
   toCityId: string
   fromDistrictId: string
   toDistrictId: string
+  productCategoryIds: string[]
   statuses: number[]
   createdAt: [Dayjs, Dayjs]
 }

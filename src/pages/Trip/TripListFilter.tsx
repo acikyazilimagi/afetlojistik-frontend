@@ -1,10 +1,13 @@
 import { Button, Collapse, DatePicker, Form, FormProps, Select } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { tripStatusOptions } from 'constants/trip'
 import { FormInput } from 'components/Form'
 import { CityDropdown } from 'components/CityDropdown'
 import { DistrictDropdown } from 'components/DistrictDropdown'
+import { ProductCategoryType } from 'types/productCategoryType'
+import { getProductCategoryList } from 'services'
+import { Spinner } from 'components/Spinner'
 
 const { RangePicker } = DatePicker
 const { Panel } = Collapse
@@ -17,8 +20,17 @@ export interface ICategory {
 export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }) => {
   const { t } = useTranslation()
 
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
   const [fromCity, setFromCity] = useState<string | undefined>()
   const [toCity, setToCity] = useState<string | undefined>()
+
+  useEffect(() => {
+    getProductCategoryList()
+      .then(setCategoryList)
+      .then(() => setIsLoading(false))
+  }, [])
 
   const handleFromCityChange = (cityId: string) => {
     setFromCity(cityId)
@@ -26,6 +38,10 @@ export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }
 
   const handleToCityChange = (cityId: string) => {
     setToCity(cityId)
+  }
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
@@ -62,6 +78,14 @@ export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }
               </Form.Item>
               <Form.Item label={t('destinationDistrict')} name='toDistrictId'>
                 <DistrictDropdown cityId={toCity} />
+              </Form.Item>
+              <Form.Item label={t('category')} name='productCategoryIds'>
+                <Select
+                  allowClear
+                  mode='multiple'
+                  options={categoryList?.map((category) => ({ label: category.name, value: category._id }))}
+                  placeholder={t('categories')}
+                />
               </Form.Item>
             </div>
           </div>

@@ -41,6 +41,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
         toCityId,
         toDistrictId,
         fromDistrictId,
+        productCategoryIds,
         createdAt
       } = params
 
@@ -79,6 +80,11 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           field: 'trailerPlateNumber',
           operator: 'eq',
           value: trailerPlateNumber
+        },
+        {
+          field: 'productCategoryIds',
+          operator: 'eq',
+          value: productCategoryIds
         },
         {
           field: 'startDate',
