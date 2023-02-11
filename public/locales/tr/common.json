@@ -18,7 +18,7 @@
   "driverName": "Sürücü İsmi",
   "errorMessages": {
     "errorTitle": "Hata",
-    "minimumCount": "",
+    "minimumCount": "Koli adedi 0 olmamalı",
     "minimumProducts": "En az 1 koli eklenmeli"
   },
   "errors": {
