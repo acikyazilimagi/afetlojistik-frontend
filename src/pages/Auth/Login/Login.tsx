@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
-import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps } from 'antd'
+import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps, Typography } from 'antd'
 import { RuleObject } from 'antd/es/form'
+import { Link } from '@pankod/refine-react-router-v6'
 import { LoginFormType } from 'types/login'
 import { requestAuthCode } from 'services/auth'
 import { LoginTitle } from './LoginTitle'
@@ -87,6 +88,14 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
             {t('login.signin')}
           </Button>
         </Form.Item>
+        <div style={{ marginTop: 8 }}>
+          <Typography.Text style={{ fontSize: 12 }}>
+            {t('dontHaveAccount')}{' '}
+            <Link to='/register' style={{ fontWeight: 'bold' }}>
+              {t('register')}
+            </Link>
+          </Typography.Text>
+        </div>
       </Form>
     </Card>
   )

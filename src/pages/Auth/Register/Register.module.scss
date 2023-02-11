@@ -1,0 +1,25 @@
+.loginButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.rememberMeWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.loginRow {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.input {
+  &:hover {
+    border: 1px solid #000 !important;
+  }
+}
