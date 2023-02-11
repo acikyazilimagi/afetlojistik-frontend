@@ -120,8 +120,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             render={(vehicle: VehicleType) => (
               <Space direction='vertical'>
                 <Tag className='flex gap-4 align-center' icon={<FaTruck />}>
-                  {/* TODO CHANGE FIELD NAME}
-                  {/* {vehicle.plate.truck ?? '-'} */}
+                  {vehicle.plate.truck ?? '-'}
                 </Tag>
                 <Tag className='flex gap-4 align-center' icon={<FaIdCard />}>
                   {vehicle.name}

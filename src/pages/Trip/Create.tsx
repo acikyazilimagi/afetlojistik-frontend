@@ -192,14 +192,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               <Space direction='vertical' size={8}>
                 {fields.map(({ key, name, ...restField }, index) => (
                   <Space key={key} className={styles.categorySpace}>
-                    <Form.Item
-                      rules={[
-                        {
-                          required: true
-                        }
-                      ]}
-                      {...restField}
-                    >
+                    <Form.Item rules={[{ required: true, message: t('thisFieldIsRequired') }]} {...restField}>
                       <ProductCategoryDropdown
                         categoryList={categoryList}
                         onChange={(value) => handleProductChange(value, index)}
@@ -209,13 +202,9 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                       label={t('packageCount')}
                       name={[name, 'count']}
                       formProps={{
-                        ...restField,
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ]
+                        rules: [{ required: true, message: t('thisFieldIsRequired') }]
                       }}
+                      //handleChange={(newValue) => form.setFieldsValue({...values})}
                       mode='number'
                     />
                     <Button
