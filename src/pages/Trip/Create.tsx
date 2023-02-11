@@ -7,7 +7,7 @@ import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons'
 import { CityDropdown } from 'components/CityDropdown'
 import { IconTitle } from 'components/IconTitle'
-import { CreateTripFormType } from 'types/trip'
+import { CreateTripFormType, TripType } from 'types/trip'
 import { DistrictDropdown } from 'components/DistrictDropdown'
 import { ProductCategoryType } from 'types/productCategoryType'
 import { getProductCategoryList } from 'services'
@@ -25,7 +25,7 @@ const DEFAULT_PRODUCT_ROW = {
 
 export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { t } = useTranslation()
-  const { formProps, form, saveButtonProps } = useForm<CreateTripFormType>()
+  const { formProps, form, saveButtonProps, onFinish } = useForm<CreateTripFormType>()
   const { setFieldValue, getFieldValue } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
@@ -65,6 +65,25 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
     setFieldValue('products', current)
   }
 
+  const handleSubmit = (values: TripType) => {
+    const products = [...values.products]
+    const editedProducts = []
+
+    // CAN POSSIBLY BE DONE WAY MORE CLEANLY WITH .group() or .groupToMap()
+    for (let product of products) {
+      if (editedProducts.map((product) => product.categoryId).includes(product.categoryId)) {
+        //@ts-ignore
+        editedProducts.find((el) => el.categoryId === product.categoryId).count += product.count
+      } else {
+        editedProducts.push(product)
+      }
+    }
+
+    const newValues = { ...values, products: editedProducts }
+
+    onFinish(newValues)
+  }
+
   if (isLoading) {
     return <Spinner />
   }
@@ -72,7 +91,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   return (
     <div className={styles.createWrapper}>
       <Create saveButtonProps={saveButtonProps}>
-        <Form {...formProps} form={form} layout='vertical'>
+        <Form {...formProps} form={form} layout='vertical' onFinish={(values) => handleSubmit(values as TripType)}>
           <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>
             <Space direction='vertical' className='mb-12'>
@@ -192,14 +211,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               <Space direction='vertical' size={8}>
                 {fields.map(({ key, name, ...restField }, index) => (
                   <Space key={key} className={styles.categorySpace}>
-                    <Form.Item
-                      rules={[
-                        {
-                          required: true
-                        }
-                      ]}
-                      {...restField}
-                    >
+                    <Form.Item rules={[{ required: true, message: t('thisFieldIsRequired') }]} {...restField}>
                       <ProductCategoryDropdown
                         categoryList={categoryList}
                         onChange={(value) => handleProductChange(value, index)}
@@ -209,13 +221,9 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                       label={t('packageCount')}
                       name={[name, 'count']}
                       formProps={{
-                        ...restField,
-                        rules: [
-                          {
-                            required: true
-                          }
-                        ]
+                        rules: [{ required: true, message: t('thisFieldIsRequired') }]
                       }}
+                      //handleChange={(newValue) => form.setFieldsValue({...values})}
                       mode='number'
                     />
                     <Button
