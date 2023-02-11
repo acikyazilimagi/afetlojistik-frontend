@@ -8,7 +8,7 @@ export const LoginTitle = () => {
 
   return (
     <>
-      <Image src='/logo.png' />
+      <Image src='/logo.png' preview={false} />
       <Tag className='ant-tag-secondary' icon={<StockOutlined />} color={Colors.Main}>
         {t('login.subtitle')}
       </Tag>
