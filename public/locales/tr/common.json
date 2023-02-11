@@ -13,6 +13,7 @@
   },
   "actions": "İşlemler",
   "addCategory": "Kategori Ekle",
+  "alreadyHaveAccount": "",
   "auth": {
     "emailAuthentication": "E-posta doğrulama",
     "resendCode": "Yeniden Gönder",
@@ -20,18 +21,33 @@
     "verifyAndLogin": "Doğrulama ve Giriş"
   },
   "category": "Kategori",
+  "clear": "Temizle",
   "createdAt": "Oluşturulma Tarihi",
   "createdBy": "Oluşturan",
+  "crud": {
+    "exportButton": "",
+    "exportCreatedAt": "",
+    "exportExcel": "",
+    "exportExcelFilePlaceholder": "",
+    "exportExcelModalTitle": "",
+    "exportExcelNameInput": "",
+    "exportMenu": "",
+    "exportPdf": "",
+    "print": ""
+  },
   "dashboard": {
     "title": "Panel"
   },
   "destinationCity": "Hedef İl",
   "destinationDistrict": "Hedef İlçe",
+  "dontHaveAccount": "",
   "driverName": "Sürücü İsmi",
+  "errorCode": "",
   "errorMessages": {
     "errorTitle": "Hata",
     "minimumCount": "0'dan büyük bir değer girilmeli",
-    "minimumProducts": "En az 1 koli eklenmeli"
+    "minimumProducts": "En az 1 çeşit ürün eklenmeli",
+    "unknownError": "Bilinmeyen bir hata oluştu"
   },
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"
@@ -42,21 +58,36 @@
   "filter": "Filtre",
   "filters": "Filtre",
   "gdprConsent": "Beni Hatırla",
+  "lastNamePlaceholder": "",
   "location": "Konum",
   "locationInfo": "Konum Bilgisi",
   "login": {
     "phoneNumber": "Telefon Numarası",
     "signin": "Giriş Yap",
-    "subtitle": "5 Şubat Kahramanmaraş Depremi",
-    "title": "Hesabına Giriş Yap"
+    "subtitle": "5 Şubat Kahramanmaraş Depremi"
   },
   "logout": "Oturumu Kapat",
+  "messages": {
+    "resendCode": {
+      "error": "Yeni kod gönderirken bir hata oluştu",
+      "success": "Yeni kod gönderildi"
+    }
+  },
+  "namePlaceholder": "",
+  "note": "",
   "notes": "Notlar",
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
+  "register": {
+    "email": "",
+    "lastName": "",
+    "name": "",
+    "phoneNumber": "",
+    "registerButton": ""
+  },
   "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
@@ -70,7 +101,6 @@
   "tripStatuses": {
     "arrived": "Ulaştı",
     "cancelled": "İptal Edildi",
-    "completed": "Tamamlandı",
     "created": "Oluşturuldu",
     "onWay": "Yolda"
   },

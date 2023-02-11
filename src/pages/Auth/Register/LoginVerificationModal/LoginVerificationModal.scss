@@ -1,0 +1,24 @@
+.login-verification-modal {
+  .ant-modal-header,
+  .ant-modal-footer {
+    border: none;
+  }
+  .verification-modal-title {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .resend-code {
+    .ant-btn-link {
+      padding: 0 4px;
+      font-weight: 600 !important;
+      &:hover {
+        font-weight: 800 !important;
+      }
+    }
+  }
+
+  .verification-submit-btn {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}

@@ -10,11 +10,11 @@ import routerProvider from '@pankod/refine-react-router-v6'
 import { useTranslation } from 'react-i18next'
 import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
-import { Login } from 'pages/Login'
 import { dataProvider } from 'dataProviders'
 import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
 import { UserList } from 'pages/User'
 import { UserEdit } from 'pages/User/Edit'
+import { AuthPage } from 'pages/Auth'
 import { authProvider } from './authProvider'
 
 function App() {
@@ -55,9 +55,21 @@ function App() {
         Footer={Footer}
         Layout={Layout}
         OffLayoutArea={OffLayoutArea}
-        routerProvider={routerProvider}
+        routerProvider={{
+          ...routerProvider,
+          routes: [
+            {
+              path: '/login',
+              element: <AuthPage type='login' />
+            },
+            {
+              path: '/register',
+              element: <AuthPage type='register' />
+            }
+          ]
+        }}
+        LoginPage={AuthPage}
         authProvider={authProvider}
-        LoginPage={Login}
         i18nProvider={i18nProvider}
       />
     </ColorModeContextProvider>

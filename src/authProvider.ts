@@ -1,6 +1,8 @@
 import { AuthProvider } from '@pankod/refine-core'
+import { register } from 'services/auth'
 import { verifyAuthCode } from 'services/otp'
 import { VerifyAuthCodeFormType } from 'types/otp'
+import { RegisterFormType } from 'types/register'
 import { getUser, removeUser, setUser } from 'utils/auth'
 
 export const authProvider: AuthProvider = {
@@ -11,6 +13,17 @@ export const authProvider: AuthProvider = {
           setUser(response)
           return Promise.resolve()
         })
+        .catch(() => {})
+    }
+    return Promise.reject(new Error('username: admin, password: admin'))
+  },
+  register: async ({ phone }: RegisterFormType) => {
+    if (phone) {
+      return register({ phone })
+        .then((_response) =>
+          // setUser(response)
+          Promise.resolve()
+        )
         .catch(() => {})
     }
     return Promise.reject(new Error('username: admin, password: admin'))

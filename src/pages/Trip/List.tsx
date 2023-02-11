@@ -11,6 +11,7 @@ import { UserType } from 'types/user'
 import { EditableTripStatusDropdown } from 'components/EditableTripStatusDropdown'
 import { RowEditButton } from 'components/ui/RowEditButton'
 import { updateTripStatus } from 'services/trip'
+import { ExportTableDropdown } from 'components/ExportTableDropdown'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
@@ -65,7 +66,12 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     <List>
       <Space direction='vertical' size={20}>
         <TripListFilter formProps={searchFormProps} />
-        <Table {...tableProps} rowKey='tripNumber'>
+        <ExportTableDropdown
+          tableId='trip-list-table'
+          enabledExports={['excel', 'print']}
+          hiddenColumnIndices={[0, 9]}
+        />
+        <Table {...tableProps} rowKey='tripNumber' id='trip-list-table'>
           <Table.Column dataIndex='tripNumber' title='Trip Number' />
           <Table.Column
             dataIndex='createdBy'
@@ -120,14 +126,14 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             render={(vehicle: VehicleType) => (
               <Space direction='vertical'>
                 <Tag className='flex gap-4 align-center' icon={<FaTruck />}>
-                  {vehicle.plate.truck ?? '-'}
+                  {vehicle?.plate?.truck ?? '-'}
                 </Tag>
                 <Tag className='flex gap-4 align-center' icon={<FaIdCard />}>
-                  {vehicle.name}
+                  {vehicle?.plate?.truck ?? '-'}
                 </Tag>
-                <a href={`tel:${vehicle.phone}`}>
+                <a href={`tel:${vehicle?.phone ?? '-'}`}>
                   <Tag className='flex gap-4 align-center' icon={<FaPhone />}>
-                    {vehicle.phone}
+                    {vehicle?.plate?.truck ?? '-'}
                   </Tag>
                 </a>
               </Space>

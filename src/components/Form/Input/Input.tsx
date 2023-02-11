@@ -31,6 +31,8 @@ type InputProps<T extends InputMode> = {
   // @ts-ignore-next-line
   additionalProps?: T extends undefined ? AntInputProps : AdditionalPropsTypes[T]
   setDefaultValue?: boolean
+  maxLength?: number
+  min?: number
 }
 
 export const FormInput = <T extends InputMode = undefined>({
@@ -44,7 +46,9 @@ export const FormInput = <T extends InputMode = undefined>({
   disabled,
   formProps,
   additionalProps,
-  setDefaultValue
+  setDefaultValue,
+  maxLength,
+  min
 }: InputProps<T>) => {
   const BaseInputComponent = useMemo(() => {
     switch (mode) {
@@ -67,12 +71,14 @@ export const FormInput = <T extends InputMode = undefined>({
       {...formProps}
     >
       <BaseInputComponent
+        min={min}
         value={value}
         className={styles.input + ' ' + (disabled && styles.inputDisabled)}
         {...(setDefaultValue && { defaultValue: value })}
         //@ts-ignore
         onChange={handleChange}
         disabled={disabled}
+        maxLength={maxLength}
         {...additionalProps}
       />
     </Item>

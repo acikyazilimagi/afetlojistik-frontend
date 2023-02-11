@@ -9,3 +9,10 @@ export const requestAuthCode = async (data: LoginFormType): Promise<LoginRespons
       ...data
     })
     .then(transformResponseData)
+
+export const register = async (data: LoginFormType): Promise<LoginResponseType> =>
+  http
+    .post('user/register', {
+      ...data
+    })
+    .then(transformResponseData)

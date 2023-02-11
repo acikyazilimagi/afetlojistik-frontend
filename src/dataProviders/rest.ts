@@ -71,11 +71,17 @@ export const dataProvider = (): Omit<Required<DataProvider>, 'createMany' | 'upd
 
   update: async ({ resource, id, variables }) => {
     const url = `${resource}/${id}`
+    let _data = []
 
-    const { data } = await http.patch(url, variables)
-
+    if (resource === 'trip') {
+      const { data } = await http.put(url, variables)
+      _data = data
+    } else {
+      const { data } = await http.patch(url, variables)
+      _data = data
+    }
     return {
-      data
+      data: _data
     }
   },
 

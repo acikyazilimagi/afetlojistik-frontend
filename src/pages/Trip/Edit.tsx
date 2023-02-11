@@ -89,14 +89,14 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               <Form.Item
                 className={styles.formItem}
                 label={t('originCity')}
-                name={['fromLocation', 'cityName']}
+                name={['fromLocation', 'cityId']}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <CityDropdown onChange={handleFromCityChange} value={fromCity} />
               </Form.Item>
               <Form.Item
                 label={t('originDistrict')}
-                name={['fromLocation', 'districtName']}
+                name={['fromLocation', 'districtId']}
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
@@ -107,7 +107,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             <Space direction='vertical' className='mb-12'>
               <Form.Item
                 label={t('destinationCity')}
-                name={['toLocation', 'cityName']}
+                name={['toLocation', 'cityId']}
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
@@ -115,7 +115,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               </Form.Item>
               <Form.Item
                 label={t('destinationDistrict')}
-                name={['toLocation', 'districtName']}
+                name={['toLocation', 'districtId']}
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
@@ -124,39 +124,21 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             </Space>
           </Space>
           <div className='mb-20'>
-            <FormInput
-              name={['toLocation', 'address']}
-              label={t('explicitAddress')}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput name={['toLocation', 'address']} label={t('explicitAddress')} maxLength={200} />
           </div>
           <div className={styles.truckIcon}>
             <IconTitle icon={<FaTruck />} label={t('vehicle')} />
           </div>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput
-              label={t('plateNo')}
-              name={['vehicle', 'plate', 'truck']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput label={t('plateNo')} name={['vehicle', 'plate', 'truck']} />
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
           </Space>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
             <FormInput label={t('driverName')} name={['vehicle', 'name']} />
-            <FormInput
-              label={t('phoneNumber')}
-              name={['vehicle', 'phone']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput label={t('phoneNumber')} name={['vehicle', 'phone']} />
           </Space>
           <div className='mb-12'>
-            <FormInput label={t('notes')} name={'notes'} />
+            <FormInput label={t('notes')} name={'notes'} maxLength={200} />
           </div>
           <div className='mb-20'>
             <Form.Item
@@ -178,11 +160,8 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             rules={[
               {
                 validator: async (_, values) => {
-                  if (!values || values.length < 2) {
+                  if (!values || values.length < 1) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
-                  }
-                  if (values.some((value: ProductType) => value.count <= 0)) {
-                    return Promise.reject(new Error(t('errorMessages.minimumCount')))
                   }
                 }
               }
@@ -213,11 +192,18 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                         ...restField,
                         rules: [
                           {
-                            required: true
+                            required: true,
+                            message: t('errorMessages.minimumCount'),
+                            validator: async (_, values) => {
+                              if (values <= 0) {
+                                return Promise.reject(new Error(t('errorMessages.minimumCount')))
+                              }
+                            }
                           }
                         ]
                       }}
                       mode='number'
+                      min={0}
                     />
                     <Button
                       danger

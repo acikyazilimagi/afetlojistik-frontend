@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons'
+import moment from 'moment'
 import { CityDropdown } from 'components/CityDropdown'
 import { IconTitle } from 'components/IconTitle'
 import { CreateTripFormType, TripType } from 'types/trip'
@@ -13,7 +14,6 @@ import { ProductCategoryType } from 'types/productCategoryType'
 import { getProductCategoryList } from 'services'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
 import { FormInput } from 'components/Form'
-import { ProductType } from 'types/product'
 import { Spinner } from 'components/Spinner'
 
 import styles from './Create.module.scss'
@@ -26,7 +26,7 @@ const DEFAULT_PRODUCT_ROW = {
 export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { t } = useTranslation()
   const { formProps, form, saveButtonProps, onFinish } = useForm<CreateTripFormType>()
-  const { setFieldValue, getFieldValue } = form
+  const { setFieldValue, getFieldValue, resetFields } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
   const [fromCity, setFromCity] = useState<string | undefined>()
@@ -90,7 +90,24 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <div className={styles.createWrapper}>
-      <Create saveButtonProps={saveButtonProps}>
+      <Create
+        saveButtonProps={saveButtonProps}
+        footerButtons={({ defaultButtons }) => (
+          <>
+            <Button type='primary' onClick={() => resetFields()}>
+              {t('clear')}
+            </Button>
+            {defaultButtons}
+          </>
+        )}
+        footerButtonProps={{
+          style: {
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between'
+          }
+        }}
+      >
         <Form {...formProps} form={form} layout='vertical' onFinish={(values) => handleSubmit(values as TripType)}>
           <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>
@@ -133,45 +150,21 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             </Space>
           </Space>
           <div className='mb-20'>
-            <FormInput
-              name={['toLocation', 'address']}
-              label={t('explicitAddress')}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput name={['toLocation', 'address']} label={t('explicitAddress')} maxLength={200} />
           </div>
           <div className={styles.truckIcon}>
             <IconTitle icon={<FaTruck />} label={t('vehicle')} />
           </div>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput
-              label={t('plateNo')}
-              name={['vehicle', 'plate', 'truck']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput label={t('plateNo')} name={['vehicle', 'plate', 'truck']} />
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
           </Space>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput
-              label={t('driverName')}
-              name={['vehicle', 'name']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
-            <FormInput
-              label={t('phoneNumber')}
-              name={['vehicle', 'phone']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput label={t('driverName')} name={['vehicle', 'name']} />
+            <FormInput label={t('phoneNumber')} name={['vehicle', 'phone']} />
           </Space>
           <div className='mb-12'>
-            <FormInput label={t('notes')} name={'notes'} />
+            <FormInput label={t('notes')} name={'notes'} maxLength={200} />
           </div>
           <div className='mb-20'>
             <Form.Item
@@ -183,7 +176,11 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 value: value ? dayjs(value) : undefined
               })}
             >
-              <DatePicker showTime showSecond={false} />
+              <DatePicker
+                showTime
+                showSecond={false}
+                disabledDate={(current) => moment().add(-1, 'days') >= current || moment().add(1, 'month') <= current}
+              />
             </Form.Item>
           </div>
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />
@@ -199,9 +196,6 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 validator: async (_, values) => {
                   if (!values || values.length < 1) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
-                  }
-                  if (values.some((value: ProductType) => value.count <= 0)) {
-                    return Promise.reject(new Error(t('errorMessages.minimumCount')))
                   }
                 }
               }
@@ -221,10 +215,20 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                       label={t('packageCount')}
                       name={[name, 'count']}
                       formProps={{
-                        rules: [{ required: true, message: t('thisFieldIsRequired') }]
+                        rules: [
+                          {
+                            required: true,
+                            message: t('errorMessages.minimumCount'),
+                            validator: async (_, values) => {
+                              if (values <= 0) {
+                                return Promise.reject(new Error(t('errorMessages.minimumCount')))
+                              }
+                            }
+                          }
+                        ]
                       }}
-                      //handleChange={(newValue) => form.setFieldsValue({...values})}
                       mode='number'
+                      min={0}
                     />
                     <Button
                       danger

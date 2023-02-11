@@ -8,8 +8,28 @@
 
   &-secondary {
     &.ant-btn-default {
-      color: $purple200;
-      background: $ui-purple150 !important;
+      color: $primary-color;
+      background: $primary-light !important;
+
+      &:hover,
+      &:focus-within,
+      &:focus {
+        background-color: $primary-color !important;
+      }
+    }
+  }
+
+  &-default {
+    background: $primary-color !important;
+    color: #fff;
+    &:disabled {
+      background: $btn-disabled-bg !important;
+    }
+    &:hover,
+    &:focus-within,
+    &:focus {
+      color: $white !important;
+      background: $primary-color-focus !important;
     }
   }
 
@@ -32,31 +52,20 @@
   &-dangerous {
     &:not(:disabled) {
       color: $red !important;
+      background: transparent !important;
     }
     &:hover,
     &:focus-within,
     &:focus {
-      background: $ui-purple200 !important;
-    }
-  }
-
-  &-default {
-    background: $btn-default-bg !important;
-    &:disabled {
-      background: $btn-disabled-bg !important;
-    }
-    &:hover,
-    &:focus-within,
-    &:focus {
-      color: $white !important;
-      background: $ui-purple200 !important;
+      background: $red !important;
+      color: #fff !important;
     }
   }
 
   &-link {
-    color: $ui-purple300 !important;
+    color: $primary-color !important;
     transition: 0.2s !important;
-    font-weight: 400 !important;
+    font-weight: 600 !important;
     border: none !important;
     &:disabled {
       color: $gray200 !important;
@@ -64,7 +73,7 @@
     &:hover,
     &:focus-within,
     &:focus {
-      color: $ui-purple200;
+      color: $primary-color-focus;
       font-weight: 600 !important;
     }
   }
