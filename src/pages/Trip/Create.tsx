@@ -179,6 +179,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               <DatePicker
                 showTime
                 showSecond={false}
+                format='YYYY-MM-DD HH:mm'
                 disabledDate={(current) => moment().add(-1, 'days') >= current || moment().add(1, 'month') <= current}
               />
             </Form.Item>
