@@ -18,7 +18,7 @@
   "driverName": "Sürücü İsmi",
   "errorMessages": {
     "errorTitle": "Hata",
-    "minimumCount": "",
+    "minimumCount": "0'dan büyük bir değer girilmeli",
     "minimumProducts": "En az 1 koli eklenmeli"
   },
   "errors": {
@@ -48,7 +48,7 @@
   "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
-  "selectOption": "",
+  "selectOption": "Seçiniz ...",
   "status": "Durum",
   "statuses": "Durum",
   "thisFieldIsRequired": "Bu alan zorunlu",
@@ -62,7 +62,7 @@
     "created": "Oluşturuldu",
     "onWay": "Yolda"
   },
-  "updatedAt": "",
+  "updatedAt": "Güncelleme Tarihi",
   "vehicle": "Araç",
   "vehicleInfo": "Araç Bilgisi"
 }
