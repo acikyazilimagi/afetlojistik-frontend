@@ -1,6 +1,15 @@
 {
   "notifications": {
-    "editSuccess": "Kayıt güncellendi"
+    "success": "Başarılı",
+    "error": "Hata (durum kodu: {{statusCode}})",
+    "undoable": "Geri almak için {{seconds}} saniyeniz var",
+    "createSuccess": "Başarıyle oluşturuldu {{resource}}",
+    "createError": "Kaydederke hata oluştu {{resource}} (durum kodu: {{statusCode}})",
+    "deleteSuccess": "Başarıyla silindi {{resource}}",
+    "deleteError": "Silerken hata oluştu {{resource}} (durum kodu: {{statusCode}})",
+    "editSuccess": "Başarıyla düzenlendi {{resource}}",
+    "editError": "Düzenlerken hata oluştu {{resource}} (durum kodu: {{statusCode}})",
+    "importProgress": "Importing: {{processed}}/{{total}}"
   },
   "actions": "İşlemler",
   "addCategory": "Kategori Ekle",
