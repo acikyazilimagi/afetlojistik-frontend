@@ -1,4 +1,5 @@
 {
+  "actions": "Actions",
   "addCategory": "Add Category",
   "auth": {
     "emailAuthentication": "",
@@ -13,7 +14,6 @@
   "dashboard": {
     "title": "Dashboard"
   },
-  "destination": "Destination",
   "destinationCity": "Destination City",
   "destinationDistrict": "Destination District",
   "driverName": "Driver Name",
@@ -51,8 +51,8 @@
   "selectOption": "Select...",
   "status": "Status",
   "statuses": "Statuses",
+  "trailerNo": "Trailer No",
   "tripContent": "Trip Content",
-  "tripDetails": "Trip Details",
   "tripNo": "Trip No",
   "tripStatuses": {
     "arrived": "Arrived",
