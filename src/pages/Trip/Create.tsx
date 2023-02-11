@@ -122,7 +122,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
           </Space>
           <div className='mb-20'>
             <FormInput
-              name='destinationAddress'
+              name={['toLocation', 'address']}
               label={t('explicitAddress')}
               formProps={{
                 rules: [
@@ -151,7 +151,17 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
           </Space>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput label={t('driverName')} name={['vehicle', 'name']} />
+            <FormInput
+              label={t('driverName')}
+              name={['vehicle', 'name']}
+              formProps={{
+                rules: [
+                  {
+                    required: true
+                  }
+                ]
+              }}
+            />
             <FormInput
               label={t('phoneNumber')}
               name={['vehicle', 'phone']}
@@ -170,7 +180,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
           <div className='mb-20'>
             <Form.Item
               label={t('estimatedDepartDate')}
-              name={'estimatedDepartDate'}
+              name={'estimatedDepartTime'}
               className={styles.formItem}
               rules={[
                 {
