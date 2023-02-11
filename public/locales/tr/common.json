@@ -19,7 +19,7 @@
   "driverName": "Sürücü İsmi",
   "errorMessages": {
     "minimumCount": "",
-    "minimumProducts": "En az {{value}} koli eklenmeli"
+    "minimumProducts": "En az 1 koli eklenmeli"
   },
   "errors": {
     "phoneNumber": "Geçersiz Telefon Numarası"

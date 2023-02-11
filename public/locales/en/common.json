@@ -19,7 +19,7 @@
   "driverName": "Driver Name",
   "errorMessages": {
     "minimumCount": "Count cannot be zero.",
-    "minimumProducts": "Minimum {{value}} products must be added."
+    "minimumProducts": "Minimum 1 category must be added."
   },
   "errors": {
     "phoneNumber": "Invalid Phone Number"

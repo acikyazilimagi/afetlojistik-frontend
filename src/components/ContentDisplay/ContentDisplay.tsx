@@ -3,7 +3,7 @@ import styles from './ContentDisplay.module.scss'
 
 type ContentDisplayProps = {
   title: string
-  text: string
+  text?: string
 }
 
 export const ContentDisplay: React.FC<ContentDisplayProps> = ({ title, text }) => (

@@ -27,12 +27,15 @@ export type EditTripStatusFormType = {
   status?: TripsStatuses
 }
 
+export type CreateFormLocationType = {
+  cityId: string
+  districtId: string
+}
+
 export type CreateTripFormType = {
   vehicle: VehicleType
-  fromCityId: string
-  fromDistrictId: string
-  toCityId: string
-  toDistrictId: string
+  fromLocation: CreateFormLocationType
+  toLocation: CreateFormLocationType
   destinationAddress?: string
   estimatedDepartTime: string
   notes?: string

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CrudFilters, HttpError, IResourceComponentsProps } from '@pankod/refine-core'
-import { useTable, List, Table, Space, EditButton, ShowButton, DeleteButton, DateField, Tag } from '@pankod/refine-antd'
+import { useTable, List, Table, Space, EditButton, ShowButton, DateField, Tag } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
 import { ArrowRightOutlined, EditOutlined } from '@ant-design/icons'
 import { Button, Input, Modal } from 'antd'
@@ -12,6 +12,7 @@ import { UserType } from 'types/user'
 import { EditableTripStatusDropdown } from 'components/EditableTripStatusDropdown'
 import { useModal } from 'hooks/useModal'
 import { TripsStatuses } from 'constants/trip'
+import { updateTripStatus } from 'services/trip'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
@@ -20,7 +21,14 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const [isModalOpen, openModal, closeModal] = useModal({})
   const [plateNoInput, setPlateNoInput] = useState('')
 
-  const { tableProps, searchFormProps } = useTable<TripListFilterPostType, HttpError, TripListFilterTypes>({
+  // TODO
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isUpdating, setIsUpdating] = useState(false)
+  const { tableProps, searchFormProps, tableQueryResult } = useTable<
+    TripListFilterPostType,
+    HttpError,
+    TripListFilterTypes
+  >({
     syncWithLocation: true,
     onSearch: (params) => {
       const filters: CrudFilters = []
@@ -56,12 +64,25 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     setEditingRows([recordId])
   }
 
+  const handleUpdate = (values: EditTripStatusFormType) => {
+    setIsUpdating(true)
+    updateTripStatus(values)
+      .then(() => {
+        tableQueryResult.refetch()
+        setEditingRows([])
+      })
+      .finally(() => {
+        setIsUpdating(false)
+      })
+  }
+
   const saveNewStatus = (values: EditTripStatusFormType) => {
     if (values.status === TripsStatuses.OnWay) {
       openModal()
     }
 
     // HANDLE REQUEST FOR OTHER STATUSES HERE
+    handleUpdate(values)
     setEditingRows([])
   }
 
@@ -92,6 +113,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                     onSubmit={saveNewStatus}
                     setEditingRows={setEditingRows}
                   />
+
                   {!isEditing && (
                     <Button
                       onClick={() => handleEditEnable(trip._id)}
@@ -155,7 +177,6 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
               <Space>
                 <EditButton hideText size='small' recordItemId={record._id} />
                 <ShowButton hideText size='small' recordItemId={record._id} />
-                <DeleteButton hideText size='small' recordItemId={record._id} />
               </Space>
             )}
           />
