@@ -26,7 +26,7 @@ const DEFAULT_PRODUCT_ROW = {
 export const TripCreate: React.FC<IResourceComponentsProps> = () => {
   const { t } = useTranslation()
   const { formProps, form, saveButtonProps, onFinish } = useForm<CreateTripFormType>()
-  const { setFieldValue, getFieldValue } = form
+  const { setFieldValue, getFieldValue, resetFields } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
   const [fromCity, setFromCity] = useState<string | undefined>()
@@ -90,7 +90,24 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <div className={styles.createWrapper}>
-      <Create saveButtonProps={saveButtonProps}>
+      <Create
+        saveButtonProps={saveButtonProps}
+        footerButtons={({ defaultButtons }) => (
+          <>
+            <Button type='primary' onClick={() => resetFields()}>
+              {t('clear')}
+            </Button>
+            {defaultButtons}
+          </>
+        )}
+        footerButtonProps={{
+          style: {
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between'
+          }
+        }}
+      >
         <Form {...formProps} form={form} layout='vertical' onFinish={(values) => handleSubmit(values as TripType)}>
           <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>

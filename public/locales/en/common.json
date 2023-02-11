@@ -9,8 +9,20 @@
     "verifyAndLogin": "Verify & Login"
   },
   "category": "Category",
+  "clear": "Clear",
   "createdAt": "Created At",
   "createdBy": "Created By",
+  "crud": {
+    "exportButton": "",
+    "exportCreatedAt": "",
+    "exportExcel": "",
+    "exportExcelFilePlaceholder": "",
+    "exportExcelModalTitle": "",
+    "exportExcelNameInput": "",
+    "exportMenu": "",
+    "exportPdf": "",
+    "print": ""
+  },
   "dashboard": {
     "title": "Dashboard"
   },

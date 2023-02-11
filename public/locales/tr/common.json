@@ -9,8 +9,20 @@
     "verifyAndLogin": "Doğrulama ve Giriş"
   },
   "category": "Kategori",
+  "clear": "Temizle",
   "createdAt": "Oluşturulma Tarihi",
   "createdBy": "Oluşturan",
+  "crud": {
+    "exportButton": "",
+    "exportCreatedAt": "",
+    "exportExcel": "",
+    "exportExcelFilePlaceholder": "",
+    "exportExcelModalTitle": "",
+    "exportExcelNameInput": "",
+    "exportMenu": "",
+    "exportPdf": "",
+    "print": ""
+  },
   "dashboard": {
     "title": "Panel"
   },

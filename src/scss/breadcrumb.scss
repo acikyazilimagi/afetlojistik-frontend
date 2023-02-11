@@ -4,9 +4,9 @@
   .ant-breadcrumb-link {
     color: $ui-gray100;
     a {
-      color: $ui-purple300 !important;
+      color: $primary-color !important;
       &:hover {
-        color: $ui-purple300 !important;
+        color: $primary-color-focus !important;
         font-weight: 500;
       }
     }
