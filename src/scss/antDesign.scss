@@ -153,4 +153,8 @@
 
 .ant-menu-light .ant-menu-item {
   color: $primary-color-focus;
+  &:hover {
+    color: white;
+    background: $primary-color-focus !important;
+  }
 }
