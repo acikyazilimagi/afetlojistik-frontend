@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons'
+import moment from 'moment'
 import { CityDropdown } from 'components/CityDropdown'
 import { IconTitle } from 'components/IconTitle'
 import { CreateTripFormType, TripType } from 'types/trip'
@@ -159,7 +160,11 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 value: value ? dayjs(value) : undefined
               })}
             >
-              <DatePicker showTime showSecond={false} />
+              <DatePicker
+                showTime
+                showSecond={false}
+                disabledDate={(current) => moment().add(-1, 'days') >= current || moment().add(1, 'month') <= current}
+              />
             </Form.Item>
           </div>
           <IconTitle icon={<FaBoxes />} label={t('tripContent')} />

@@ -1,4 +1,4 @@
-import { Tag, Typography } from 'antd'
+import { Image, Tag } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { StockOutlined } from '@ant-design/icons'
 import { Colors } from 'constants/color'
@@ -8,7 +8,7 @@ export const LoginTitle = () => {
 
   return (
     <>
-      <Typography.Title level={3}>{t('login.title')}</Typography.Title>
+      <Image src='/logo.png' preview={false} />
       <Tag className='ant-tag-secondary' icon={<StockOutlined />} color={Colors.Main}>
         {t('login.subtitle')}
       </Tag>

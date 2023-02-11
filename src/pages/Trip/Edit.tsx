@@ -89,14 +89,14 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               <Form.Item
                 className={styles.formItem}
                 label={t('originCity')}
-                name={['fromLocation', 'cityName']}
+                name={['fromLocation', 'cityId']}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <CityDropdown onChange={handleFromCityChange} value={fromCity} />
               </Form.Item>
               <Form.Item
                 label={t('originDistrict')}
-                name={['fromLocation', 'districtName']}
+                name={['fromLocation', 'districtId']}
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
@@ -107,7 +107,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             <Space direction='vertical' className='mb-12'>
               <Form.Item
                 label={t('destinationCity')}
-                name={['toLocation', 'cityName']}
+                name={['toLocation', 'cityId']}
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
@@ -115,7 +115,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               </Form.Item>
               <Form.Item
                 label={t('destinationDistrict')}
-                name={['toLocation', 'districtName']}
+                name={['toLocation', 'districtId']}
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
@@ -160,7 +160,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             rules={[
               {
                 validator: async (_, values) => {
-                  if (!values || values.length < 2) {
+                  if (!values || values.length < 1) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
                   }
                   if (values.some((value: ProductType) => value.count <= 0)) {
