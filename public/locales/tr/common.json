@@ -1,19 +1,18 @@
 {
+  "actions": "İşlemler",
   "addCategory": "Kategori Ekle",
   "auth": {
-    "emailAuthentication": "",
-    "resendCode": "",
-    "resendDescription": "",
-    "sendCodeDescription": "",
-    "verifyAndLogin": ""
+    "emailAuthentication": "E-posta doğrulama",
+    "resendCode": "Yeniden Gönder",
+    "sendCodeDescription": "Kodu gönder",
+    "verifyAndLogin": "Doğrulama ve Giriş"
   },
   "category": "Kategori",
-  "createdAt": "",
-  "createdBy": "",
+  "createdAt": "Oluşturulma Tarihi",
+  "createdBy": "Oluşturan",
   "dashboard": {
     "title": "Panel"
   },
-  "destination": "İstikamet",
   "destinationCity": "Hedef İl",
   "destinationDistrict": "Hedef İlçe",
   "driverName": "Sürücü İsmi",
@@ -27,8 +26,8 @@
   "estimatedDepartDate": "Tahmini Çıkış Tarihi",
   "estimatedDepartTime": "Tahmini Çıkış Saati",
   "explicitAddress": "Açık Adres",
-  "filter": "",
-  "filters": "",
+  "filter": "Filtre",
+  "filters": "Filtre",
   "gdprConsent": "Beni Hatırla",
   "location": "Konum",
   "locationInfo": "Konum Bilgisi",
@@ -49,10 +48,10 @@
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
   "selectOption": "",
-  "status": "",
-  "statuses": "",
+  "status": "Durum",
+  "statuses": "Durum",
+  "trailerNo": "Trailer No",
   "tripContent": "Sefer İçeriği",
-  "tripDetails": "Sefer Detayı",
   "tripNo": "Sefer Numarası",
   "tripStatuses": {
     "arrived": "Ulaştı",
