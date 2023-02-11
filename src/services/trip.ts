@@ -9,8 +9,8 @@ export const updateTripStatusToOnWay = async (data: EditTripStatusFormType): Pro
 }
 
 export const updateTripStatusToArrived = async (data: EditTripStatusFormType): Promise<unknown> => {
-  const { tripId } = data
-  return http.patch(`trip/${tripId}/status/arrived`).then(transformResponseData)
+  const { tripId, arrivedTime } = data
+  return http.patch(`trip/${tripId}/status/arrived`, { arrivedTime }).then(transformResponseData)
 }
 
 export const updateTripStatusToCancelled = async (data: EditTripStatusFormType): Promise<unknown> => {

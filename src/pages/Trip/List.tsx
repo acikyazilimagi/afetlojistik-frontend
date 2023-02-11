@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { CrudFilters, HttpError, IResourceComponentsProps } from '@pankod/refine-core'
-import { useTable, List, Table, Space, EditButton, ShowButton, DateField, Tag } from '@pankod/refine-antd'
+import { useTable, List, Table, Space, EditButton, ShowButton, DateField, Tag, DatePicker } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { FaTruck, FaIdCard, FaPhone } from 'react-icons/fa'
+import { Button, Modal } from 'antd'
+import dayjs, { Dayjs } from 'dayjs'
 import { EditTripStatusFormType, TripListFilterPostType, TripListFilterTypes, TripType } from 'types/trip'
 import { VehicleType } from 'types/vehicle'
 import { LocationType } from 'types/location'
@@ -12,12 +14,17 @@ import { EditableTripStatusDropdown } from 'components/EditableTripStatusDropdow
 import { RowEditButton } from 'components/ui/RowEditButton'
 import { updateTripStatus } from 'services/trip'
 import { ExportTableDropdown } from 'components/ExportTableDropdown'
+import { TripStatuses } from 'constants/trip'
 import { TripListFilter } from './TripListFilter'
 
 export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const { t } = useTranslation()
   const [editingRows, setEditingRows] = useState<string[]>([])
   const [isUpdating, setIsUpdating] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalValues, setModalValues] = useState<EditTripStatusFormType>()
+  const [arrivedTimeInput, setArrivedTimeInput] = useState<Dayjs>()
+
   const { tableProps, searchFormProps, tableQueryResult } = useTable<
     TripListFilterPostType,
     HttpError,
@@ -90,15 +97,23 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   })
 
   const handleUpdate = (values: EditTripStatusFormType) => {
-    setIsUpdating(true)
-    updateTripStatus(values)
-      .then(() => {
-        tableQueryResult.refetch()
-        setEditingRows([])
-      })
-      .finally(() => {
-        setIsUpdating(false)
-      })
+    if (Number(values.status) !== TripStatuses.Arrived || values.arrivedTime) {
+      setIsUpdating(true)
+      updateTripStatus(values)
+        .then(() => {
+          tableQueryResult.refetch()
+          setEditingRows([])
+        })
+        .finally(() => {
+          setIsUpdating(false)
+          setIsModalOpen(false)
+          setArrivedTimeInput(undefined)
+          setModalValues(undefined)
+        })
+    } else {
+      setModalValues(values)
+      setIsModalOpen(true)
+    }
   }
 
   return (
@@ -170,11 +185,11 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
                   {vehicle?.plate?.truck ?? '-'}
                 </Tag>
                 <Tag className='flex gap-4 align-center' icon={<FaIdCard />}>
-                  {vehicle?.plate?.truck ?? '-'}
+                  {vehicle?.name ?? '-'}
                 </Tag>
                 <a href={`tel:${vehicle?.phone ?? '-'}`}>
                   <Tag className='flex gap-4 align-center' icon={<FaPhone />}>
-                    {vehicle?.plate?.truck ?? '-'}
+                    {vehicle?.phone ?? '-'}
                   </Tag>
                 </a>
               </Space>
@@ -202,6 +217,34 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           />
         </Table>
       </Space>
+      <Modal
+        title={t('enterArrivedTime')}
+        visible={isModalOpen}
+        onCancel={() => {
+          setEditingRows([])
+          setArrivedTimeInput(undefined)
+          setIsModalOpen(false)
+        }}
+        footer={[
+          <div key='footer' className='flex flex-sb'>
+            <Button
+              onClick={() => {
+                const valuesWithDate = { ...modalValues, arrivedTime: arrivedTimeInput }
+                handleUpdate(valuesWithDate)
+              }}
+              type='primary'
+            >
+              {t('save')}
+            </Button>
+          </div>
+        ]}
+      >
+        <DatePicker
+          showTime
+          showSecond={false}
+          onChange={(value) => setArrivedTimeInput(value ? dayjs(value) : undefined)}
+        />
+      </Modal>
     </List>
   )
 }

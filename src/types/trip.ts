@@ -26,6 +26,7 @@ export type TripType = {
 export type EditTripStatusFormType = {
   tripId?: string
   status?: TripStatuses
+  arrivedTime?: Dayjs
 }
 
 export type CreateFormLocationType = {
