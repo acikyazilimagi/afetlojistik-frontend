@@ -124,7 +124,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             </Space>
           </Space>
           <div className='mb-20'>
-            <FormInput name={['toLocation', 'address']} label={t('explicitAddress')} />
+            <FormInput name={['toLocation', 'address']} label={t('explicitAddress')} maxLength={200} />
           </div>
           <div className={styles.truckIcon}>
             <IconTitle icon={<FaTruck />} label={t('vehicle')} />
@@ -138,7 +138,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
             <FormInput label={t('phoneNumber')} name={['vehicle', 'phone']} />
           </Space>
           <div className='mb-12'>
-            <FormInput label={t('notes')} name={'notes'} />
+            <FormInput label={t('notes')} name={'notes'} maxLength={200} />
           </div>
           <div className='mb-20'>
             <Form.Item
