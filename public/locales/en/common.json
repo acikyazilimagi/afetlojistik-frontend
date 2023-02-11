@@ -2,10 +2,9 @@
   "actions": "Actions",
   "addCategory": "Add Category",
   "auth": {
-    "emailAuthentication": "",
+    "emailAuthentication": "E-Mail Authentication",
     "resendCode": "Resend",
-    "resendDescription": "",
-    "sendCodeDescription": "",
+    "sendCodeDescription": "Send Code",
     "verifyAndLogin": "Verify & Login"
   },
   "category": "Category",
@@ -51,6 +50,7 @@
   "selectOption": "Select...",
   "status": "Status",
   "statuses": "Statuses",
+  "thisFieldIsRequired": "This field is required",
   "trailerNo": "Trailer No",
   "tripContent": "Trip Content",
   "tripNo": "Trip No",

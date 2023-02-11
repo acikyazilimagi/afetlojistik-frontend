@@ -80,11 +80,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 className={styles.formItem}
                 label={t('originCity')}
                 name={['fromLocation', 'cityId']}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <CityDropdown onChange={handleFromCityChange} value={fromCity} />
               </Form.Item>
@@ -92,11 +88,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 label={t('originDistrict')}
                 name={['fromLocation', 'districtId']}
                 className={styles.formItem}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <DistrictDropdown cityId={fromCity} onChange={handleFromDistrictChange} />
               </Form.Item>
@@ -107,11 +99,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 label={t('destinationCity')}
                 name={['toLocation', 'cityId']}
                 className={styles.formItem}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <CityDropdown onChange={handleToCityChange} value={toCity} />
               </Form.Item>
@@ -119,11 +107,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 label={t('destinationDistrict')}
                 name={['toLocation', 'districtId']}
                 className={styles.formItem}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <DistrictDropdown cityId={toCity} onChange={handleToDistrictChange} />
               </Form.Item>
@@ -134,11 +118,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               name={['toLocation', 'address']}
               label={t('explicitAddress')}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
           </div>
@@ -150,11 +130,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               label={t('plateNo')}
               name={['vehicle', 'plate', 'truck']}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
@@ -164,22 +140,14 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               label={t('driverName')}
               name={['vehicle', 'name']}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
             <FormInput
               label={t('phoneNumber')}
               name={['vehicle', 'phone']}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
           </Space>
@@ -191,11 +159,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               label={t('estimatedDepartDate')}
               name={'estimatedDepartTime'}
               className={styles.formItem}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
+              rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               getValueProps={(value) => ({
                 value: value ? dayjs(value) : undefined
               })}
