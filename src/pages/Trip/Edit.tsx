@@ -163,9 +163,6 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                   if (!values || values.length < 1) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
                   }
-                  if (values.some((value: ProductType) => value.count <= 0)) {
-                    return Promise.reject(new Error(t('errorMessages.minimumCount')))
-                  }
                 }
               }
             ]}
@@ -195,11 +192,18 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                         ...restField,
                         rules: [
                           {
-                            required: true
+                            required: true,
+                            message: t('errorMessages.minimumCount'),
+                            validator: async (_, values) => {
+                              if (values <= 0) {
+                                return Promise.reject(new Error(t('errorMessages.minimumCount')))
+                              }
+                            }
                           }
                         ]
                       }}
                       mode='number'
+                      min={0}
                     />
                     <Button
                       danger

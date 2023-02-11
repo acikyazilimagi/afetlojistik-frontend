@@ -21,12 +21,12 @@ export const resendAuthCode = async (phone: string): Promise<void> =>
     .then(transformResponseData)
     .then(() =>
       notification.success({
-        message: i18n.t<string>('messages.cancelRemoveFromSale.success')
+        message: i18n.t<string>('messages.resendCode.success')
       })
     )
     .catch((error) =>
       handleEndpointErrorsNotification({
         error,
-        message: i18n.t('messages.cancelRemoveFromSale.error')
+        message: i18n.t('messages.resendCode.error')
       })
     )

@@ -123,7 +123,11 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ 
             {t('auth.resendCode')}
           </Button>
         </div>
+        {/* LOKALISE DOESN'T SEE SOME KEYS RELATED TO REQUESTS */}
         <div style={{ display: 'none' }}>{t('errorMessages.errorTitle')}</div>
+        <div style={{ display: 'none' }}>{t('messages.resendCode.success')}</div>
+        <div style={{ display: 'none' }}>{t('messages.resendCode.error')}</div>
+        <div style={{ display: 'none' }}>{t('errorMessages.unknownError')}</div>
       </Space>
     </Modal>
   )

@@ -1,6 +1,7 @@
 {
   "actions": "Actions",
   "addCategory": "Add Category",
+  "alreadyHaveAccount": "",
   "auth": {
     "emailAuthentication": "E-Mail Authentication",
     "resendCode": "Resend",
@@ -15,11 +16,14 @@
   },
   "destinationCity": "Destination City",
   "destinationDistrict": "Destination District",
+  "dontHaveAccount": "",
   "driverName": "Driver Name",
+  "errorCode": "",
   "errorMessages": {
     "errorTitle": "Error",
     "minimumCount": "Count cannot be zero.",
-    "minimumProducts": "Minimum 1 category must be added."
+    "minimumProducts": "Minimum 1 category must be added.",
+    "unknownError": "An unknown error has occurred"
   },
   "errors": {
     "phoneNumber": "Invalid Phone Number"
@@ -30,21 +34,36 @@
   "filter": "Filter",
   "filters": "Filters",
   "gdprConsent": "Remember Me",
+  "lastNamePlaceholder": "",
   "location": "Location",
   "locationInfo": "Location Info",
   "login": {
     "phoneNumber": "Phone Number",
     "signin": "Sign In",
-    "subtitle": "February 5th Kahramanmaraş Earthquake",
-    "title": "Sign In To Your Account"
+    "subtitle": "February 5th Kahramanmaraş Earthquake"
   },
   "logout": "Logout",
+  "messages": {
+    "resendCode": {
+      "error": "Failed to send a new code",
+      "success": "New code has been sent"
+    }
+  },
+  "namePlaceholder": "",
+  "note": "",
   "notes": "Notes",
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
+  "register": {
+    "email": "",
+    "lastName": "",
+    "name": "",
+    "phoneNumber": "",
+    "registerButton": ""
+  },
   "selectCategory": "Select Category",
   "selectCity": "Choose a city",
   "selectDistrict": "Choose a district",
@@ -58,7 +77,6 @@
   "tripStatuses": {
     "arrived": "Arrived",
     "cancelled": "Cancelled",
-    "completed": "Completed",
     "created": "Created",
     "onWay": "On Way"
   },
