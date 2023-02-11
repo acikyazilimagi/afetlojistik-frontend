@@ -4,6 +4,7 @@ export enum TripsStatuses {
   Created = 100,
   OnWay = 200,
   Arrived = 300,
+  // WILL BE DEPRECATED
   Completed = 400,
   Cancelled = 500
 }

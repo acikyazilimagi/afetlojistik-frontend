@@ -133,42 +133,18 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             </Space>
           </Space>
           <div className='mb-20'>
-            <FormInput
-              name={['toLocation', 'address']}
-              label={t('explicitAddress')}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput name={['toLocation', 'address']} label={t('explicitAddress')} />
           </div>
           <div className={styles.truckIcon}>
             <IconTitle icon={<FaTruck />} label={t('vehicle')} />
           </div>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput
-              label={t('plateNo')}
-              name={['vehicle', 'plate', 'truck']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput label={t('plateNo')} name={['vehicle', 'plate', 'truck']} />
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
           </Space>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput
-              label={t('driverName')}
-              name={['vehicle', 'name']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
-            <FormInput
-              label={t('phoneNumber')}
-              name={['vehicle', 'phone']}
-              formProps={{
-                rules: [{ required: true, message: t('thisFieldIsRequired') }]
-              }}
-            />
+            <FormInput label={t('driverName')} name={['vehicle', 'name']} />
+            <FormInput label={t('phoneNumber')} name={['vehicle', 'phone']} />
           </Space>
           <div className='mb-12'>
             <FormInput label={t('notes')} name={'notes'} />
