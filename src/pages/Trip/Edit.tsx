@@ -158,7 +158,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
             <FormInput
               label={t('plateNo')}
-              name={['vehicle', 'plateNumber']}
+              name={['vehicle', 'plate', 'truck']}
               formProps={{
                 rules: [
                   {
@@ -167,17 +167,10 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 ]
               }}
             />
-            <FormInput
-              label={t('driverName')}
-              name={['vehicle', 'name']}
-              formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
-              }}
-            />
+            <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
+          </Space>
+          <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
+            <FormInput label={t('driverName')} name={['vehicle', 'name']} />
             <FormInput
               label={t('phoneNumber')}
               name={['vehicle', 'phone']}
