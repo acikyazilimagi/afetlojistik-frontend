@@ -56,6 +56,13 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
           <ContentDisplay title={t('plateNo')} text={record.vehicle.plate.truck} />
           <ContentDisplay title={t('trailerNo')} text={record.vehicle.plate.trailer} />
         </Space>
+        <Space direction='horizontal' className='mb-12 space-flex-item'>
+          <ContentDisplay title={t('driverName')} text={record.vehicle.name} />
+          <ContentDisplay title={t('phoneNumber')} text={record.vehicle.phone} />
+        </Space>
+        <Space direction='horizontal' className='mb-12 space-flex-item'>
+          <ContentDisplay title={t('note')} text={record.notes} />
+        </Space>
         <Space direction='horizontal' className={`mb-12 ${styles.categorySpace}`}>
           <ContentDisplay title={t('estimatedDepartDate')} text={dateAndTime.date} />
           <ContentDisplay title={t('estimatedDepartTime')} text={dateAndTime.time} />

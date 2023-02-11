@@ -9,6 +9,7 @@ export type UserType = {
 
 export type LoginResponseType = {
   success: boolean
+  error: boolean
 }
 
 export type VerifyAuthCodeResponseType = {

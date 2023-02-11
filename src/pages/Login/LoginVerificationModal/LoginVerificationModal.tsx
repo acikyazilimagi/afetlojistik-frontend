@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { useLogin } from '@pankod/refine-core'
 import { OtpInput } from 'components/OtpInput'
 import { VerifyAuthCodeFormType } from 'types/otp'
-import { LoginFormType } from 'types/login'
+import { resendAuthCode } from 'services/otp'
 import { initialValues, validationSchema } from './formHelper'
 import './LoginVerificationModal.scss'
 
@@ -13,15 +13,9 @@ type LoginVerificationModalProps = {
   phone?: number
   isVisible: boolean
   onClose: () => void
-  onResend: (values: LoginFormType) => void
 }
 
-export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
-  isVisible,
-  phone,
-  onClose,
-  onResend
-}) => {
+export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ isVisible, phone, onClose }) => {
   const { t } = useTranslation()
 
   const [autoSubmit, setAutoSubmit] = useState(true)
@@ -69,6 +63,12 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
 
   const handleOtpChange = (code: string) => {
     setValues({ ...values, code })
+  }
+
+  const handleResend = (phone?: number) => {
+    if (phone) {
+      resendAuthCode(phone.toString())
+    }
   }
 
   return (
@@ -119,7 +119,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
           />
         </Form>
         <div className='resend-code'>
-          <Button onClick={() => onResend(values)} type='link'>
+          <Button onClick={() => handleResend(values.phone)} type='link'>
             {t('auth.resendCode')}
           </Button>
         </div>

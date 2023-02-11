@@ -4,6 +4,8 @@ export enum TripsStatuses {
   Created = 100,
   OnWay = 200,
   Arrived = 300,
+  // WILL BE DEPRECATED
+  Completed = 400,
   Cancelled = 500
 }
 
@@ -22,6 +24,10 @@ export const tripStatusOptions: Record<TripsStatuses, { label: string; value: Tr
     label: i18n.t('tripStatuses.arrived'),
     value: TripsStatuses.Arrived,
     color: '#008C20'
+  },
+  [TripsStatuses.Completed]: {
+    label: i18n.t('tripStatuses.completed'),
+    value: TripsStatuses.Completed
   },
   [TripsStatuses.Cancelled]: {
     label: i18n.t('tripStatuses.cancelled'),

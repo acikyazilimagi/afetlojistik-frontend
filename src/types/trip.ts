@@ -20,6 +20,7 @@ export type TripType = {
   products: ProductType[]
   createdAt: string
   updatedAt: string
+  notes: string
 }
 
 export type EditTripStatusFormType = {
