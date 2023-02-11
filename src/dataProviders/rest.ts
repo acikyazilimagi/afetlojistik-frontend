@@ -4,11 +4,9 @@ import { http } from 'services/http'
 import { generateFilter } from 'utils/generateFilter'
 import { generateSort } from 'utils/generateSort'
 
-export const dataProvider = (
-  apiUrl: string
-): Omit<Required<DataProvider>, 'createMany' | 'updateMany' | 'deleteMany'> => ({
+export const dataProvider = (): Omit<Required<DataProvider>, 'createMany' | 'updateMany' | 'deleteMany'> => ({
   getList: async ({ resource, hasPagination = true, pagination = { current: 1, pageSize: 10 }, filters, sort }) => {
-    const url = `${apiUrl}/${resource}`
+    const url = `${resource}`
 
     const { current = 1, pageSize = 10 } = pagination ?? {}
 
@@ -54,7 +52,7 @@ export const dataProvider = (
   },
 
   getMany: async ({ resource, ids }) => {
-    const { data } = await http.get(`${apiUrl}/${resource}?${stringify.stringify({ id: ids })}`)
+    const { data } = await http.get(`${resource}?${stringify.stringify({ id: ids })}`)
 
     return {
       data
@@ -62,7 +60,7 @@ export const dataProvider = (
   },
 
   create: async ({ resource, variables }) => {
-    const url = `${apiUrl}/${resource}`
+    const url = `${resource}`
 
     const { data } = await http.post(url, variables)
 
@@ -72,7 +70,7 @@ export const dataProvider = (
   },
 
   update: async ({ resource, id, variables }) => {
-    const url = `${apiUrl}/${resource}/${id}`
+    const url = `${resource}/${id}`
     let _data = []
 
     if (resource === 'trip') {
@@ -88,7 +86,7 @@ export const dataProvider = (
   },
 
   getOne: async ({ resource, id }) => {
-    const url = `${apiUrl}/${resource}/${id}`
+    const url = `${resource}/${id}`
 
     const { data } = await http.get(url)
 
@@ -98,7 +96,7 @@ export const dataProvider = (
   },
 
   deleteOne: async ({ resource, id, variables }) => {
-    const url = `${apiUrl}/${resource}/${id}`
+    const url = `${resource}/${id}`
 
     const { data } = await http.delete(url, {
       data: variables
@@ -109,7 +107,7 @@ export const dataProvider = (
     }
   },
 
-  getApiUrl: () => apiUrl,
+  getApiUrl: () => process.env.REACT_APP_BACKEND_URL,
 
   custom: async ({ url, method, filters, sort, payload, query, headers }) => {
     let requestUrl = `${url}?`

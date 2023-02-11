@@ -2,6 +2,7 @@ import React from 'react'
 
 import { I18nProvider, Refine } from '@pankod/refine-core'
 import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
+import { AntdInferencer } from '@pankod/refine-inferencer/antd'
 import '@pankod/refine-antd/dist/reset.css'
 import 'scss/style.scss'
 
@@ -11,6 +12,8 @@ import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { dataProvider } from 'dataProviders'
 import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
+import { UserList } from 'pages/User'
+import { UserEdit } from 'pages/User/Edit'
 import { AuthPage } from 'pages/Auth'
 import { authProvider } from './authProvider'
 
@@ -26,7 +29,7 @@ function App() {
   return (
     <ColorModeContextProvider>
       <Refine
-        dataProvider={dataProvider('https://afetlojistik.com/api')}
+        dataProvider={dataProvider()}
         notificationProvider={notificationProvider}
         ReadyPage={ReadyPage}
         catchAll={<ErrorComponent />}
@@ -37,6 +40,13 @@ function App() {
             edit: Edit,
             show: Detail,
             create: TripCreate
+          },
+          {
+            name: 'user',
+            list: UserList,
+            edit: UserEdit,
+            show: AntdInferencer,
+            create: AntdInferencer
           }
         ]}
         Title={Title}

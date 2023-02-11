@@ -86,6 +86,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/order': ['error', { groups: ['external', 'internal'] }],
     'import/no-cycle': ['warn', { ignoreExternal: true }],
+    "import/no-unresolved": "off",
     'no-shadow': 'off',
     'arrow-body-style': ['error', 'as-needed'],
     'consistent-return': 'off',
