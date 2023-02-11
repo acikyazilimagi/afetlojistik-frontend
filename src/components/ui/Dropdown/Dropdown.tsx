@@ -1,5 +1,6 @@
 import { Select, SelectProps, Typography } from 'antd'
 import React from 'react'
+import { replaceTurkishChars } from 'utils/common'
 import styles from './Dropdown.module.scss'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,9 +20,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, options, optionClassN
       }
       autoClearSearchValue={props.mode === 'tags'}
       filterOption={(input, option) => {
-        const label = option?.label?.toString().toLowerCase()
-        const value = option?.value?.toString().toLowerCase()
-        const inputComparable = input?.toString().toLowerCase()
+        const label = replaceTurkishChars(option?.label?.toString().toLowerCase())
+        const value = replaceTurkishChars(option?.value?.toString().toLowerCase())
+        const inputComparable = replaceTurkishChars(input?.toString().toLowerCase()) + ''
         return Boolean((label && label.indexOf(inputComparable) >= 0) || (value && value.indexOf(inputComparable) >= 0))
       }}
       onChange={(value, option) => {

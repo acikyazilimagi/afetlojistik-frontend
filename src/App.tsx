@@ -26,7 +26,7 @@ function App() {
   return (
     <ColorModeContextProvider>
       <Refine
-        dataProvider={dataProvider('https://test.afetlojistik.com/api')}
+        dataProvider={dataProvider('https://afetlojistik.com/api')}
         notificationProvider={notificationProvider}
         ReadyPage={ReadyPage}
         catchAll={<ErrorComponent />}
