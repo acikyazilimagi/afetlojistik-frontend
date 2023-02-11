@@ -4,6 +4,7 @@
   "auth": {
     "emailAuthentication": "E-posta doğrulama",
     "resendCode": "Yeniden Gönder",
+    "resendDescription": "",
     "sendCodeDescription": "Kodu gönder",
     "verifyAndLogin": "Doğrulama ve Giriş"
   },
@@ -17,6 +18,7 @@
   "destinationDistrict": "Hedef İlçe",
   "driverName": "Sürücü İsmi",
   "errorMessages": {
+    "errorTitle": "Hata",
     "minimumCount": "",
     "minimumProducts": "En az 1 koli eklenmeli"
   },

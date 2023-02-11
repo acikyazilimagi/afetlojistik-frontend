@@ -18,6 +18,7 @@
   "destinationDistrict": "Destination District",
   "driverName": "Driver Name",
   "errorMessages": {
+    "errorTitle": "Error",
     "minimumCount": "Count cannot be zero.",
     "minimumProducts": "Minimum 1 category must be added."
   },
