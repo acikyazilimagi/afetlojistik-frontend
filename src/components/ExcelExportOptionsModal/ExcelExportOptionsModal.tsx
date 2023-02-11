@@ -48,29 +48,29 @@ export const ExcelExportOptionsModal: React.FC<CrudCreateModalProps> = ({ onExpo
   return (
     <>
       <Button icon={<FileExcelOutlined />} block onClick={show}>
-        {t('crud.exportExcel')}
+        {t('exportExcel')}
       </Button>
       <Modal
         open={visible}
         onCancel={resetModal}
         destroyOnClose
-        title={t('crud.exportExcelModalTitle')}
+        title={t('exportExcelModalTitle')}
         footer={
           <Button form='exportExcelForm' htmlType='submit' disabled={!!errors.fileName}>
-            {t('crud.exportButton')}
+            {t('exportButton')}
           </Button>
         }
       >
         <Form id='exportExcelForm' form={form} layout='vertical' onFinish={handleSubmit}>
           <FormInput
             name={'fileName'}
-            label={t('crud.exportExcelNameInput')}
+            label={t('exportExcelNameInput')}
             errorMessage={errors.fileName}
             isTouched={touched.fileName}
             value={values.fileName}
             handleChange={handleChange}
             additionalProps={{
-              placeholder: t('crud.exportExcelFilePlaceholder'),
+              placeholder: t('exportExcelFilePlaceholder'),
               prefix: <FileOutlined className='site-form-item-icon' />,
               size: 'large'
             }}
