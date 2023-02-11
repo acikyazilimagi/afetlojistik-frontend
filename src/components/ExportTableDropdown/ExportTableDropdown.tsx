@@ -40,7 +40,7 @@ export const ExportTableDropdown: React.FC<ExportTableDropdownProps> = ({
 
     applyStyle(ws)
 
-    XLSX.utils.sheet_add_aoa(ws, [[`${t('crud.exportCreatedAt')}: ${new Date().toISOString()}`]], {
+    XLSX.utils.sheet_add_aoa(ws, [[`${t('exportCreatedAt')}: ${new Date().toISOString()}`]], {
       origin: -1,
       cellDates: true
     })
@@ -67,7 +67,7 @@ export const ExportTableDropdown: React.FC<ExportTableDropdownProps> = ({
         </Menu>
       }
     >
-      <Button type='primary'>{t('crud.exportMenu')}</Button>
+      <Button type='primary'>{t('exportMenu')}</Button>
     </Dropdown>
   )
 }
