@@ -123,6 +123,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({
             {t('auth.resendCode')}
           </Button>
         </div>
+        <div style={{ display: 'none' }}>{t('errorMessages.errorTitle')}</div>
       </Space>
     </Modal>
   )
