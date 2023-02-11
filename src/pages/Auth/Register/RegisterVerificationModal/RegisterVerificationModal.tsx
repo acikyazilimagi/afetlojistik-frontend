@@ -2,25 +2,25 @@ import { Button, Form, Image, Modal, Space, Typography } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
-import { useLogin } from '@pankod/refine-core'
+import { useRegister } from '@pankod/refine-core'
 import { OtpInput } from 'components/OtpInput'
 import { VerifyAuthCodeFormType } from 'types/otp'
 import { resendAuthCode } from 'services/otp'
 import { initialValues, validationSchema } from './formHelper'
-import './LoginVerificationModal.scss'
+import './RegisterVerificationModal.scss'
 
-type LoginVerificationModalProps = {
+type RegisterVerificationModalProps = {
   phone?: number
   isVisible: boolean
   onClose: () => void
 }
 
-export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ isVisible, phone, onClose }) => {
+export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps> = ({ isVisible, phone, onClose }) => {
   const { t } = useTranslation()
 
   const [autoSubmit, setAutoSubmit] = useState(true)
 
-  const { mutate: logInUser, isLoading } = useLogin<VerifyAuthCodeFormType>()
+  const { mutate: registerUser, isLoading } = useRegister<VerifyAuthCodeFormType>()
 
   const [form] = Form.useForm()
   const formik = useFormik({
@@ -28,7 +28,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ 
     validationSchema,
     onSubmit: (values) => {
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      logInUser(values, { onError: resetModal })
+      registerUser(values, { onError: resetModal })
     }
   })
 

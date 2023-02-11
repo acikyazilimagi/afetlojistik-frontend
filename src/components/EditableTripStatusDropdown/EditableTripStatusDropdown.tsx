@@ -3,7 +3,7 @@ import { Form, Tag } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import { GenericDropdown } from 'components/GenericDropdown'
-import { TripsStatuses, tripStatusOptions } from 'constants/trip'
+import { TripStatuses, tripStatusOptions } from 'constants/trip'
 import { EditTripStatusFormType } from 'types/trip'
 import { editTripStatusInitialValues, validationSchema } from './formHelper'
 import styles from './EditableTripStatusDropdown.module.scss'
@@ -12,7 +12,7 @@ type EditableTripStatusDropdownProps = {
   isEditing?: boolean
   formId: string
   tripId: string
-  currentStatus: TripsStatuses
+  currentStatus: TripStatuses
   onSubmit: (values: EditTripStatusFormType) => void
 }
 export const EditableTripStatusDropdown: React.FC<EditableTripStatusDropdownProps> = ({
@@ -48,7 +48,7 @@ export const EditableTripStatusDropdown: React.FC<EditableTripStatusDropdownProp
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditing])
-  const handleStatusChange = (status: TripsStatuses) => {
+  const handleStatusChange = (status: TripStatuses) => {
     setValues({ ...values, status })
   }
 

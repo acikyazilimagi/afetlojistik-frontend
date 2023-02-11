@@ -1,6 +1,6 @@
 import { EditTripStatusFormType } from 'types/trip'
 import { transformResponseData } from 'utils/http'
-import { TripsStatuses } from 'constants/trip'
+import { TripStatuses } from 'constants/trip'
 import { http } from './http'
 
 export const updateTripStatusToOnWay = async (data: EditTripStatusFormType): Promise<unknown> => {
@@ -20,11 +20,11 @@ export const updateTripStatusToCancelled = async (data: EditTripStatusFormType):
 
 export const updateTripStatus = async (data: EditTripStatusFormType): Promise<unknown> => {
   switch (Number(data.status)) {
-    case TripsStatuses.OnWay:
+    case TripStatuses.OnWay:
       return updateTripStatusToOnWay(data)
-    case TripsStatuses.Arrived:
+    case TripStatuses.Arrived:
       return updateTripStatusToArrived(data)
-    case TripsStatuses.Cancelled:
+    case TripStatuses.Cancelled:
       return updateTripStatusToCancelled(data)
   }
 }

@@ -1,30 +1,30 @@
 import i18n from 'i18n'
 
-export enum TripsStatuses {
+export enum TripStatuses {
   Created = 100,
   OnWay = 200,
   Arrived = 300,
   Cancelled = 500
 }
 
-export const tripStatusOptions: Record<TripsStatuses, { label: string; value: TripsStatuses; color?: string }> = {
-  [TripsStatuses.Created]: {
+export const tripStatusOptions: Record<TripStatuses, { label: string; value: TripStatuses; color?: string }> = {
+  [TripStatuses.Created]: {
     label: i18n.t('tripStatuses.created'),
-    value: TripsStatuses.Created,
+    value: TripStatuses.Created,
     color: '#007787'
   },
-  [TripsStatuses.OnWay]: {
+  [TripStatuses.OnWay]: {
     label: i18n.t('tripStatuses.onWay'),
-    value: TripsStatuses.OnWay,
+    value: TripStatuses.OnWay,
     color: '#C69A00'
   },
-  [TripsStatuses.Arrived]: {
+  [TripStatuses.Arrived]: {
     label: i18n.t('tripStatuses.arrived'),
-    value: TripsStatuses.Arrived,
+    value: TripStatuses.Arrived,
     color: '#008C20'
   },
-  [TripsStatuses.Cancelled]: {
+  [TripStatuses.Cancelled]: {
     label: i18n.t('tripStatuses.cancelled'),
-    value: TripsStatuses.Cancelled
+    value: TripStatuses.Cancelled
   }
 }

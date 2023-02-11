@@ -1,7 +1,7 @@
 export type RegisterFormType = {
   name: string
-  lastName: string
+  surname: string
   phone: number
   email: string
-  consent: boolean
+  dataConsent: boolean
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LoginPageProps, useModal, useRegister } from '@pankod/refine-core'
+import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
 import {
   Row,
@@ -19,8 +19,9 @@ import { RuleObject } from 'antd/es/form'
 import { MailOutlined, MobileOutlined } from '@ant-design/icons'
 import { Link } from '@pankod/refine-react-router-v6'
 import { RegisterFormType } from 'types/register'
+import { register } from 'services/auth'
 import { RegisterTitle } from './RegisterTitle'
-import { LoginVerificationModal } from './LoginVerificationModal'
+import { RegisterVerificationModal } from './RegisterVerificationModal'
 import styles from './Register.module.scss'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
@@ -47,15 +48,23 @@ const validatePhoneNumber = (
 
 export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => {
   const { t } = useTranslation()
-  const { mutate: register, isLoading } = useRegister()
 
   const [form] = Form.useForm<RegisterFormType>()
-  const { visible, close } = useModal({})
+  const { visible, show, close } = useModal({})
 
-  const [phoneNumber] = useState<number | undefined>()
+  const [isLoading, setIsLoading] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
 
   const handlePhoneSubmit = (values: RegisterFormType) => {
+    setIsLoading(true)
+    setPhoneNumber(values.phone)
     register(values)
+      .then((isSuccess) => {
+        if (isSuccess) {
+          show()
+        }
+      })
+      .finally(() => setIsLoading(false))
   }
 
   const CardContent = (
@@ -79,7 +88,7 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
             <Input size='large' placeholder={t('namePlaceholder')} className={styles.input} />
           </Form.Item>
           <Form.Item
-            name='lastName'
+            name='surname'
             label={t('register.lastName')}
             rules={[{ required: true, message: t('thisFieldIsRequired') }]}
           >
@@ -112,7 +121,7 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
           />
         </Form.Item>
         <div className={styles.rememberMeWrapper}>
-          <Form.Item name='consent' valuePropName='checked' noStyle>
+          <Form.Item name='dataConsent' valuePropName='checked' noStyle>
             <Checkbox className='font-12'>{t('gdprConsent')}</Checkbox>
           </Form.Item>
         </div>
@@ -137,7 +146,7 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
     <Row justify='center' align='middle' className={styles.loginRow} style={{ backgroundImage: "url('/bg.svg')" }}>
       <Col md={12} lg={10}>
         {renderContent ? renderContent(CardContent) : CardContent}
-        <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
+        <RegisterVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
       </Col>
     </Row>
   )

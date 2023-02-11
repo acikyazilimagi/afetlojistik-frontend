@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs'
-import { TripsStatuses } from 'constants/trip'
+import { TripStatuses } from 'constants/trip'
 import { ChangeLogType } from './changeLog'
 import { LocationType } from './location'
 import { ProductType } from './product'
@@ -15,7 +15,7 @@ export type TripType = {
   toLocation: LocationType
   createdBy: UserType
   statusChangeLog: ChangeLogType[]
-  status: TripsStatuses
+  status: TripStatuses
   estimatedDepartTime: string
   products: ProductType[]
   createdAt: string
@@ -25,7 +25,7 @@ export type TripType = {
 
 export type EditTripStatusFormType = {
   tripId?: string
-  status?: TripsStatuses
+  status?: TripStatuses
 }
 
 export type CreateFormLocationType = {
@@ -47,7 +47,7 @@ export interface TripListFilterPostType {
   id: number
   title: string
   content: string
-  status: TripsStatuses
+  status: TripStatuses
   category: { id: number }
 }
 

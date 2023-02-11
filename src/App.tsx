@@ -2,6 +2,7 @@ import React from 'react'
 
 import { I18nProvider, Refine } from '@pankod/refine-core'
 import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
+// eslint-disable-next-line import/no-unresolved
 import { AntdInferencer } from '@pankod/refine-inferencer/antd'
 import '@pankod/refine-antd/dist/reset.css'
 import 'scss/style.scss'

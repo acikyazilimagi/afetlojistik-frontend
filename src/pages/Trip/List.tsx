@@ -66,11 +66,13 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     <List>
       <Space direction='vertical' size={20}>
         <TripListFilter formProps={searchFormProps} />
-        <ExportTableDropdown
-          tableId='trip-list-table'
-          enabledExports={['excel', 'print']}
-          hiddenColumnIndices={[0, 9]}
-        />
+        <Space align='end' direction='vertical'>
+          <ExportTableDropdown
+            tableId='trip-list-table'
+            enabledExports={['excel', 'print']}
+            hiddenColumnIndices={[0, 9]}
+          />
+        </Space>
         <Table {...tableProps} rowKey='tripNumber' id='trip-list-table'>
           <Table.Column dataIndex='tripNumber' title='Trip Number' />
           <Table.Column
