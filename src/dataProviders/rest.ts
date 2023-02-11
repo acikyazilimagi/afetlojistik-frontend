@@ -73,11 +73,17 @@ export const dataProvider = (
 
   update: async ({ resource, id, variables }) => {
     const url = `${apiUrl}/${resource}/${id}`
+    let _data = []
 
-    const { data } = await http.patch(url, variables)
-
+    if (resource === 'trip') {
+      const { data } = await http.put(url, variables)
+      _data = data
+    } else {
+      const { data } = await http.patch(url, variables)
+      _data = data
+    }
     return {
-      data
+      data: _data
     }
   },
 
