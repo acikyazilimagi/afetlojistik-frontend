@@ -31,17 +31,27 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
 
   const data = queryResult?.data?.data
 
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   const [products, setProducts] = useState<ProductType[]>(data?.products ?? [])
-  useEffect(() => data && setProducts(data.products), [data])
+  const [fromCity, setFromCity] = useState<string | undefined>()
+  const [toCity, setToCity] = useState<string | undefined>()
+  const [fromDistrict, setFromDistrict] = useState<string | undefined>()
+  const [toDistrict, setToDistrict] = useState<string | undefined>()
+
+  useEffect(() => {
+    if (data) {
+      setProducts(data.products)
+      setFromCity(data.fromLocation.cityId)
+      setToCity(data.toLocation.cityId)
+      setFromDistrict(data.fromLocation.districtId)
+      setToDistrict(data.toLocation.districtId)
+    }
+  }, [data])
 
   const { setFieldValue, setFieldsValue, getFieldsValue, getFieldValue } = form
 
   const [categoryList, setCategoryList] = useState<ProductCategoryType[]>()
-  const [fromCity, setFromCity] = useState<string | undefined>()
-  const [toCity, setToCity] = useState<string | undefined>()
-
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-
   useEffect(() => {
     getProductCategoryList()
       .then(setCategoryList)
@@ -52,20 +62,24 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setFromCity(cityId)
     setFieldValue('fromDistrictId', undefined)
+    setFromDistrict(undefined)
   }
 
   const handleToCityChange = (cityId: string) => {
     setFieldsValue({ ...getFieldsValue(), cityId })
     setToCity(cityId)
     setFieldValue('toDistrictId', undefined)
+    setToDistrict(undefined)
   }
 
   const handleFromDistrictChange = (districtId: string) => {
     setFieldValue('fromDistrictId', districtId)
+    setFromDistrict(districtId)
   }
 
   const handleToDistrictChange = (districtId: string) => {
     setFieldValue('toDistrictId', districtId)
+    setToDistrict(districtId)
   }
 
   const handleProductChange = (categoryId: string, index: number) => {
@@ -100,7 +114,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
-                <DistrictDropdown cityId={fromCity} onChange={handleFromDistrictChange} />
+                <DistrictDropdown cityId={fromCity} onChange={handleFromDistrictChange} value={fromDistrict} />
               </Form.Item>
             </Space>
             <ArrowRightOutlined />
@@ -119,7 +133,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 className={styles.formItem}
                 rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
-                <DistrictDropdown cityId={toCity} onChange={handleToDistrictChange} />
+                <DistrictDropdown cityId={toCity} onChange={handleToDistrictChange} value={toDistrict} />
               </Form.Item>
             </Space>
           </Space>
