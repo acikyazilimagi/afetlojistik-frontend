@@ -53,12 +53,12 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
         </Space>
         <IconTitle icon={<FaTruck />} label={t('vehicle')} />
         <Space direction='horizontal' className='mb-12 space-flex-item'>
-          <ContentDisplay title={t('plateNo')} text={record.vehicle.plate.truck} />
-          <ContentDisplay title={t('trailerNo')} text={record.vehicle.plate.trailer} />
+          <ContentDisplay title={t('plateNo')} text={record.vehicle?.plate?.truck} />
+          <ContentDisplay title={t('trailerNo')} text={record.vehicle?.plate?.trailer} />
         </Space>
         <Space direction='horizontal' className='mb-12 space-flex-item'>
-          <ContentDisplay title={t('driverName')} text={record.vehicle.name} />
-          <ContentDisplay title={t('phoneNumber')} text={record.vehicle.phone} />
+          <ContentDisplay title={t('driverName')} text={record.vehicle?.name} />
+          <ContentDisplay title={t('phoneNumber')} text={record.vehicle?.phone} />
         </Space>
         <Space direction='horizontal' className='mb-12 space-flex-item'>
           <ContentDisplay title={t('note')} text={record.notes} />

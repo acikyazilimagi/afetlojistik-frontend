@@ -120,14 +120,14 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
             render={(vehicle: VehicleType) => (
               <Space direction='vertical'>
                 <Tag className='flex gap-4 align-center' icon={<FaTruck />}>
-                  {vehicle.plate.truck ?? '-'}
+                  {vehicle?.plate?.truck ?? '-'}
                 </Tag>
                 <Tag className='flex gap-4 align-center' icon={<FaIdCard />}>
-                  {vehicle.name}
+                  {vehicle?.plate?.truck ?? '-'}
                 </Tag>
-                <a href={`tel:${vehicle.phone}`}>
+                <a href={`tel:${vehicle?.phone ?? '-'}`}>
                   <Tag className='flex gap-4 align-center' icon={<FaPhone />}>
-                    {vehicle.phone}
+                    {vehicle?.plate?.truck ?? '-'}
                   </Tag>
                 </a>
               </Space>

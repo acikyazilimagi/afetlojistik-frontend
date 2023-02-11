@@ -1,8 +1,8 @@
 export type VehicleType = {
-  plate: {
+  plate?: {
     truck: string
     trailer: string
   }
-  phone: string
-  name: string
+  phone?: string
+  name?: string
 }

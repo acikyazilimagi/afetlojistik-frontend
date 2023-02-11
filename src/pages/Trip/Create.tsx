@@ -14,7 +14,6 @@ import { ProductCategoryType } from 'types/productCategoryType'
 import { getProductCategoryList } from 'services'
 import { ProductCategoryDropdown } from 'components/ProductCategoryDropdown'
 import { FormInput } from 'components/Form'
-import { ProductType } from 'types/product'
 import { Spinner } from 'components/Spinner'
 
 import styles from './Create.module.scss'
@@ -181,9 +180,6 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   if (!values || values.length < 1) {
                     return Promise.reject(new Error(t('errorMessages.minimumProducts')))
                   }
-                  if (values.some((value: ProductType) => value.count <= 0)) {
-                    return Promise.reject(new Error(t('errorMessages.minimumCount')))
-                  }
                 }
               }
             ]}
@@ -202,10 +198,20 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                       label={t('packageCount')}
                       name={[name, 'count']}
                       formProps={{
-                        rules: [{ required: true, message: t('thisFieldIsRequired') }]
+                        rules: [
+                          {
+                            required: true,
+                            message: t('errorMessages.minimumCount'),
+                            validator: async (_, values) => {
+                              if (values <= 0) {
+                                return Promise.reject(new Error(t('errorMessages.minimumCount')))
+                              }
+                            }
+                          }
+                        ]
                       }}
-                      //handleChange={(newValue) => form.setFieldsValue({...values})}
                       mode='number'
+                      min={0}
                     />
                     <Button
                       danger
