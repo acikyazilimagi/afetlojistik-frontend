@@ -92,7 +92,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
   )
 
   return (
-    <Row justify='center' align='middle' className={styles.loginRow}>
+    <Row justify='center' align='middle' className={styles.loginRow} style={{ backgroundImage: "url('/bg.svg')" }}>
       <Col md={12} lg={10}>
         {renderContent ? renderContent(CardContent) : CardContent}
         <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} onResend={handlePhoneSubmit} />
