@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useGetLocale, useSetLocale, useGetIdentity, useIsExistAuthentication, useLogout } from '@pankod/refine-core'
-import { AntdLayout, Space, Menu, Button, Icons, Dropdown, Typography, Switch } from '@pankod/refine-antd'
+import { AntdLayout, Space, Menu, Button, Icons, Dropdown, Switch } from '@pankod/refine-antd'
 import { LogoutOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
 import { ColorModeContext } from 'contexts'
@@ -9,7 +9,6 @@ import { UserType } from 'types/user'
 import styles from './Header.module.scss'
 
 const { DownOutlined } = Icons
-const { Text } = Typography
 
 export const Header: React.FC = () => {
   const locale = useGetLocale()
@@ -50,23 +49,22 @@ export const Header: React.FC = () => {
       />
       <Dropdown overlay={menu}>
         <Button type='link'>
-          <Space className='white-text'>
+          <Space>
             {supportedLanguages[currentLocale as SupportedLanguages].flag}
             {supportedLanguages[currentLocale as SupportedLanguages].label}
             <DownOutlined />
           </Space>
         </Button>
       </Dropdown>
-      <div className='flex flex-center ml-8'>
-        {user?.name && (
-          <Dropdown overlay={logoutMenu} placement='bottomRight'>
-            <Text ellipsis strong className='white-text pointer'>
-              {user.name + ' ' + user.surname}
-              <DownOutlined className='ml-8' />
-            </Text>
-          </Dropdown>
-        )}
-      </div>
+
+      <Dropdown overlay={logoutMenu}>
+        <Button type='link'>
+          <Space>
+            {user?.name + ' ' + user?.surname}
+            <DownOutlined />
+          </Space>
+        </Button>
+      </Dropdown>
     </AntdLayout.Header>
   )
 }
