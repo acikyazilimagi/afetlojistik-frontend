@@ -90,11 +90,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 className={styles.formItem}
                 label={t('originCity')}
                 name={['fromLocation', 'cityName']}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <CityDropdown onChange={handleFromCityChange} value={fromCity} />
               </Form.Item>
@@ -102,11 +98,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 label={t('originDistrict')}
                 name={['fromLocation', 'districtName']}
                 className={styles.formItem}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <DistrictDropdown cityId={fromCity} onChange={handleFromDistrictChange} />
               </Form.Item>
@@ -117,11 +109,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 label={t('destinationCity')}
                 name={['toLocation', 'cityName']}
                 className={styles.formItem}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <CityDropdown onChange={handleToCityChange} value={toCity} />
               </Form.Item>
@@ -129,11 +117,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                 label={t('destinationDistrict')}
                 name={['toLocation', 'districtName']}
                 className={styles.formItem}
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
+                rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               >
                 <DistrictDropdown cityId={toCity} onChange={handleToDistrictChange} />
               </Form.Item>
@@ -144,11 +128,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               name={['toLocation', 'address']}
               label={t('explicitAddress')}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
           </div>
@@ -160,11 +140,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               label={t('plateNo')}
               name={['vehicle', 'plate', 'truck']}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
@@ -175,11 +151,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               label={t('phoneNumber')}
               name={['vehicle', 'phone']}
               formProps={{
-                rules: [
-                  {
-                    required: true
-                  }
-                ]
+                rules: [{ required: true, message: t('thisFieldIsRequired') }]
               }}
             />
           </Space>
@@ -191,11 +163,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               label={t('estimatedDepartDate')}
               name={'estimatedDepartTime'}
               className={styles.formItem}
-              rules={[
-                {
-                  required: true
-                }
-              ]}
+              rules={[{ required: true, message: t('thisFieldIsRequired') }]}
               getValueProps={(value) => ({
                 value: value ? dayjs(value) : undefined
               })}

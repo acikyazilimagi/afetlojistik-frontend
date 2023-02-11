@@ -4,7 +4,6 @@
   "auth": {
     "emailAuthentication": "E-posta doğrulama",
     "resendCode": "Yeniden Gönder",
-    "resendDescription": "",
     "sendCodeDescription": "Kodu gönder",
     "verifyAndLogin": "Doğrulama ve Giriş"
   },
@@ -52,6 +51,7 @@
   "selectOption": "",
   "status": "Durum",
   "statuses": "Durum",
+  "thisFieldIsRequired": "Bu alan zorunlu",
   "trailerNo": "Trailer No",
   "tripContent": "Sefer İçeriği",
   "tripNo": "Sefer Numarası",

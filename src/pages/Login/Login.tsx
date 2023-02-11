@@ -67,13 +67,13 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
           name='phone'
           label={t('login.phoneNumber')}
           rules={[
-            { required: true },
+            { required: true, message: t('thisFieldIsRequired') },
             {
               validator: (rule, value, callback) => validatePhoneNumber(rule, value, callback, t)
             }
           ]}
         >
-          <Input type='number' size='large' placeholder={'(5XX) XXX XXXX'} />
+          <Input size='large' placeholder={'(5XX) XXX XXXX'} className={styles.input} />
         </Form.Item>
         <div className={styles.rememberMeWrapper}>
           {rememberMe ?? (
