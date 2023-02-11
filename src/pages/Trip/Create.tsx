@@ -148,6 +148,9 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                 ]
               }}
             />
+            <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
+          </Space>
+          <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
             <FormInput
               label={t('driverName')}
               name={['vehicle', 'name']}
