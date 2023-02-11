@@ -20,9 +20,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, options, optionClassN
       }
       autoClearSearchValue={props.mode === 'tags'}
       filterOption={(input, option) => {
-        const label = replaceTurkishChars(option?.label?.toString().toLowerCase())
-        const value = replaceTurkishChars(option?.value?.toString().toLowerCase())
-        const inputComparable = replaceTurkishChars(input?.toString().toLowerCase()) + ''
+        const label = replaceTurkishChars(option?.label?.toString().toLocaleUpperCase()) + ''
+        const value = replaceTurkishChars(option?.value?.toString().toLocaleUpperCase()) + ''
+        const inputComparable = replaceTurkishChars(input?.toString().toLocaleUpperCase()) + ''
         return Boolean((label && label.indexOf(inputComparable) >= 0) || (value && value.indexOf(inputComparable) >= 0))
       }}
       onChange={(value, option) => {
