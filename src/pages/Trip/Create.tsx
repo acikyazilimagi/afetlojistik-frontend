@@ -160,7 +160,23 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             <FormInput label={t('trailerNo')} name={['vehicle', 'plate', 'trailer']} />
           </Space>
           <Space direction='horizontal' align='center' className='space-flex-item justify-center'>
-            <FormInput label={t('driverName')} name={['vehicle', 'name']} />
+            <FormInput
+              formProps={{
+                rules: [
+                  {
+                    required: true,
+                    validator: async (_, value) => {
+                      const isValid = /^[a-zA-Z ]+$/.test(value)
+                      if (!value || !isValid) {
+                        return Promise.reject(new Error(t('errorMessages.invalidCharacters')))
+                      }
+                    }
+                  }
+                ]
+              }}
+              label={t('driverName')}
+              name={['vehicle', 'name']}
+            />
             <FormInput label={t('phoneNumber')} name={['vehicle', 'phone']} />
           </Space>
           <div className='mb-12'>
