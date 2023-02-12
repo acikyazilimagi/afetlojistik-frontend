@@ -106,7 +106,8 @@
     "lastName": "Soyad",
     "name": "Ad",
     "phoneNumber": "Telefon Numarası",
-    "registerButton": "Hesap Oluştur"
+    "registerButton": "Kaydol",
+    "registerLink": "Kaydol"
   },
   "save": "Kaydet",
   "selectCategory": "Kategori Seç",
