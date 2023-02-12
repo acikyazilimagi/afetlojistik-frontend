@@ -14,33 +14,21 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
         <Form.Item
           label={t<string>('name')}
           name={['name']}
-          rules={[
-            {
-              required: true
-            }
-          ]}
+          rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label={t<string>('surname')}
           name={['surname']}
-          rules={[
-            {
-              required: true
-            }
-          ]}
+          rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label={t<string>('phoneNumber')}
           name={['phone']}
-          rules={[
-            {
-              required: true
-            }
-          ]}
+          rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
           <Input />
         </Form.Item>
@@ -51,11 +39,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           label={t('isActive')}
           valuePropName='checked'
           name={['active']}
-          rules={[
-            {
-              required: true
-            }
-          ]}
+          rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
           <Checkbox>Active</Checkbox>
         </Form.Item>
@@ -63,11 +47,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           label={t('isAdmin')}
           valuePropName='checked'
           name={['isAdmin']}
-          rules={[
-            {
-              required: true
-            }
-          ]}
+          rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
           <Checkbox>Is Admin</Checkbox>
         </Form.Item>
