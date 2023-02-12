@@ -27,7 +27,7 @@ const DEFAULT_PRODUCT_ROW = {
 }
 
 export const TripEdit: React.FC<IResourceComponentsProps> = () => {
-  const { formProps, saveButtonProps, form, queryResult } = useForm<TripType>()
+  const { formProps, saveButtonProps, form, queryResult, onFinish } = useForm<TripType>()
   const { t } = useTranslation()
 
   const data = queryResult?.data?.data
@@ -94,10 +94,35 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
     return <Spinner />
   }
 
+  const handleSubmit = (values: TripType) => {
+    const products = [...values.products]
+    const editedProducts = []
+
+    // CAN POSSIBLY BE DONE WAY MORE CLEANLY WITH .group() or .groupToMap()
+    for (let product of products) {
+      if (editedProducts.map((product) => product.categoryId).includes(product.categoryId)) {
+        //@ts-ignore
+        editedProducts.find((el) => el.categoryId === product.categoryId).count += product.count
+      } else {
+        editedProducts.push(product)
+      }
+    }
+
+    const newValues = { ...values, products: editedProducts }
+
+    onFinish(newValues)
+  }
+
   return (
     <div className={styles.detailWrapper}>
       <Edit saveButtonProps={saveButtonProps}>
-        <Form {...formProps} form={form} layout='vertical' id='editTripForm'>
+        <Form
+          {...formProps}
+          form={form}
+          layout='vertical'
+          id='editTripForm'
+          onFinish={(values) => handleSubmit(values as TripType)}
+        >
           <IconTitle icon={<FaRoad />} label={t('location')} />
           <Space direction='horizontal' className={styles.locationContainer}>
             <Space direction='vertical' className='mb-12'>
