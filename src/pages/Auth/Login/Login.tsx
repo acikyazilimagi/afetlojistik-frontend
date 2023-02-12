@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps, Typography } from 'antd'
 import { RuleObject } from 'antd/es/form'
 import { Link } from '@pankod/refine-react-router-v6'
+//eslint-disable-next-line
+import { useCookies } from 'react-cookie'
 import { LoginFormType } from 'types/login'
 import { requestAuthCode } from 'services/auth'
 import { LoginTitle } from './LoginTitle'
@@ -101,11 +103,13 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
   )
 
   return (
-    <Row justify='center' align='middle' className={styles.loginRow} style={{ backgroundImage: "url('/bg.svg')" }}>
-      <Col md={12} lg={10}>
-        {renderContent ? renderContent(CardContent) : CardContent}
-        <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
-      </Col>
-    </Row>
+    <>
+      <Row justify='center' align='middle' className={styles.loginRow} style={{ backgroundImage: "url('/bg.svg')" }}>
+        <Col md={12} lg={10}>
+          {renderContent ? renderContent(CardContent) : CardContent}
+          <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
+        </Col>
+      </Row>
+    </>
   )
 }

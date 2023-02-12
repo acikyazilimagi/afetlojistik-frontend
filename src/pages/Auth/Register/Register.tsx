@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
 import {
@@ -18,13 +18,17 @@ import {
 import { RuleObject } from 'antd/es/form'
 import { MailOutlined, MobileOutlined } from '@ant-design/icons'
 import { Link } from '@pankod/refine-react-router-v6'
+//eslint-disable-next-line
+import { useCookies } from 'react-cookie'
 import { RegisterFormType } from 'types/register'
 import { register } from 'services/auth'
 import { RegisterTitle } from './RegisterTitle'
 import { RegisterVerificationModal } from './RegisterVerificationModal'
 import styles from './Register.module.scss'
 
-type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
+type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps> & {
+  onPrivacyConsentClick: () => void
+}
 
 const validatePhoneNumber = (
   rule: RuleObject,
@@ -46,7 +50,7 @@ const validatePhoneNumber = (
   }
 }
 
-export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => {
+export const Register: React.FC<LoginProps> = ({ renderContent, formProps, onPrivacyConsentClick }) => {
   const { t } = useTranslation()
 
   const [form] = Form.useForm<RegisterFormType>()
@@ -54,6 +58,8 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
 
   const [isLoading, setIsLoading] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
+  const [canLogin, setCanLogin] = useState(false)
+  const [cookies] = useCookies(['privacyConsent'])
 
   const handlePhoneSubmit = (values: RegisterFormType) => {
     setIsLoading(true)
@@ -66,6 +72,14 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
       })
       .finally(() => setIsLoading(false))
   }
+
+  useEffect(() => {
+    if (cookies.privacyConsent) {
+      setCanLogin(true)
+    } else {
+      setCanLogin(false)
+    }
+  }, [cookies])
 
   const CardContent = (
     <Card title={<RegisterTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
@@ -126,9 +140,15 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
           </Form.Item>
         </div>
         <Form.Item>
-          <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
-            {t('register.registerButton')}
-          </Button>
+          {!canLogin ? (
+            <Button type='primary' size='large' block onClick={onPrivacyConsentClick}>
+              Kişisel Rıza Metnini Kabul Et
+            </Button>
+          ) : (
+            <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
+              {t('register.registerButton')}
+            </Button>
+          )}
         </Form.Item>
         <div style={{ marginTop: 8 }}>
           <Typography.Text style={{ fontSize: 12 }}>

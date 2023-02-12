@@ -1,5 +1,7 @@
 import React from 'react'
 
+//eslint-disable-next-line
+import { CookiesProvider } from 'react-cookie'
 import { I18nProvider, Refine } from '@pankod/refine-core'
 import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
 import '@pankod/refine-antd/dist/reset.css'
@@ -7,6 +9,7 @@ import 'scss/style.scss'
 
 import routerProvider from '@pankod/refine-react-router-v6'
 import { useTranslation } from 'react-i18next'
+
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { dataProvider } from 'dataProviders'
 import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
@@ -25,50 +28,52 @@ function App() {
   }
 
   return (
-    <Refine
-      dataProvider={dataProvider()}
-      notificationProvider={notificationProvider}
-      ReadyPage={ReadyPage}
-      catchAll={<ErrorComponent />}
-      resources={[
-        {
-          name: 'trip',
-          list: TripList,
-          edit: Edit,
-          show: Detail,
-          create: TripCreate
-        },
-        {
-          name: 'user',
-          list: UserList,
-          edit: UserEdit,
-          show: UserDetail,
-          create: UserCreate
-        }
-      ]}
-      Title={Title}
-      Header={Header}
-      Sider={Sider}
-      Footer={Footer}
-      Layout={Layout}
-      OffLayoutArea={OffLayoutArea}
-      routerProvider={{
-        ...routerProvider,
-        routes: [
+    <CookiesProvider>
+      <Refine
+        dataProvider={dataProvider()}
+        notificationProvider={notificationProvider}
+        ReadyPage={ReadyPage}
+        catchAll={<ErrorComponent />}
+        resources={[
           {
-            path: '/login',
-            element: <AuthPage type='login' />
+            name: 'trip',
+            list: TripList,
+            edit: Edit,
+            show: Detail,
+            create: TripCreate
           },
           {
-            path: '/register',
-            element: <AuthPage type='register' />
+            name: 'user',
+            list: UserList,
+            edit: UserEdit,
+            show: UserDetail,
+            create: UserCreate
           }
-        ]
-      }}
-      LoginPage={AuthPage}
-      authProvider={authProvider}
-      i18nProvider={i18nProvider}
-    />
+        ]}
+        Title={Title}
+        Header={Header}
+        Sider={Sider}
+        Footer={Footer}
+        Layout={Layout}
+        OffLayoutArea={OffLayoutArea}
+        routerProvider={{
+          ...routerProvider,
+          routes: [
+            {
+              path: '/login',
+              element: <AuthPage type='login' />
+            },
+            {
+              path: '/register',
+              element: <AuthPage type='register' />
+            }
+          ]
+        }}
+        LoginPage={AuthPage}
+        authProvider={authProvider}
+        i18nProvider={i18nProvider}
+      />
+    </CookiesProvider>
   )
 }
 
