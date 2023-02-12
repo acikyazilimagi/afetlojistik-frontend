@@ -1,48 +1,29 @@
 {
-  "notifications": {
-    "success": "Başarılı",
-    "error": "Hata (durum kodu: {{statusCode}})",
-    "undoable": "Geri almak için {{seconds}} saniyeniz var",
-    "createSuccess": "Başarıyle oluşturuldu {{resource}}",
-    "createError": "Kaydederke hata oluştu {{resource}} (durum kodu: {{statusCode}})",
-    "deleteSuccess": "Başarıyla silindi {{resource}}",
-    "deleteError": "Silerken hata oluştu {{resource}} (durum kodu: {{statusCode}})",
-    "editSuccess": "Başarıyla düzenlendi {{resource}}",
-    "editError": "Düzenlerken hata oluştu {{resource}} (durum kodu: {{statusCode}})",
-    "importProgress": "Importing: {{processed}}/{{total}}"
-  },
   "actions": "İşlemler",
+  "active": "Aktif",
   "addCategory": "Kategori Ekle",
-  "alreadyHaveAccount": "",
+  "alreadyHaveAccount": "Zaten hesabınız var mı?",
   "auth": {
     "emailAuthentication": "E-posta doğrulama",
     "resendCode": "Yeniden Gönder",
     "sendCodeDescription": "Kodu gönder",
     "verifyAndLogin": "Doğrulama ve Giriş"
   },
+  "categories": "Kategoriler",
   "category": "Kategori",
   "clear": "Temizle",
   "createdAt": "Oluşturulma Tarihi",
   "createdBy": "Oluşturan",
-  "crud": {
-    "exportButton": "",
-    "exportCreatedAt": "",
-    "exportExcel": "",
-    "exportExcelFilePlaceholder": "",
-    "exportExcelModalTitle": "",
-    "exportExcelNameInput": "",
-    "exportMenu": "",
-    "exportPdf": "",
-    "print": ""
-  },
   "dashboard": {
     "title": "Panel"
   },
   "destinationCity": "Hedef İl",
   "destinationDistrict": "Hedef İlçe",
-  "dontHaveAccount": "",
+  "dontHaveAccount": "Hesabınız yok mu?",
   "driverName": "Sürücü İsmi",
-  "errorCode": "",
+  "email": "Eposta",
+  "enterArrivedTime": "Varış Zamanı",
+  "errorCode": "Hata kodu",
   "errorMessages": {
     "errorTitle": "Hata",
     "minimumCount": "0'dan büyük bir değer girilmeli",
@@ -55,16 +36,23 @@
   "estimatedDepartDate": "Tahmini Çıkış Tarihi",
   "estimatedDepartTime": "Tahmini Çıkış Saati",
   "explicitAddress": "Açık Adres",
+  "exportButton": "Excel'e Aktar",
+  "exportCreatedAt": "Oluşturulma Tarihi",
+  "exportExcel": "Excel'e Aktar",
+  "exportExcelFilePlaceholder": "Dosya adı",
+  "exportExcelModalTitle": "Excel'e Aktar",
+  "exportExcelNameInput": "Dosya ismi",
+  "exportMenu": "Menü",
+  "exportPdf": "PDF",
   "filter": "Filtre",
   "filters": "Filtre",
   "gdprConsent": "Beni Hatırla",
-  "lastNamePlaceholder": "",
+  "lastNamePlaceholder": "Soyad",
   "location": "Konum",
   "locationInfo": "Konum Bilgisi",
   "login": {
     "phoneNumber": "Telefon Numarası",
-    "signin": "Giriş Yap",
-    "subtitle": "6 Şubat Kahramanmaraş Depremi"
+    "signin": "Giriş Yap"
   },
   "logout": "Oturumu Kapat",
   "messages": {
@@ -73,29 +61,35 @@
       "success": "Yeni kod gönderildi"
     }
   },
-  "namePlaceholder": "",
-  "note": "",
+  "name": "Ad",
+  "namePlaceholder": "İsim girin",
+  "note": "Note",
   "notes": "Notlar",
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
+  "plates": "Plaka",
+  "print": "Yazdır",
   "register": {
-    "email": "",
-    "lastName": "",
-    "name": "",
-    "phoneNumber": "",
-    "registerButton": ""
+    "email": "E-posta",
+    "lastName": "Soyad",
+    "name": "Ad",
+    "phoneNumber": "Telefon Numarası",
+    "registerButton": "Kaydet"
   },
+  "save": "Kaydet",
   "selectCategory": "Kategori Seç",
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
   "selectOption": "Seçiniz ...",
   "status": "Durum",
   "statuses": "Durum",
+  "surname": "Soyad",
   "thisFieldIsRequired": "Bu alan zorunlu",
   "trailerNo": "Trailer No",
+  "trailerNumbers": "Trailer Numaraları",
   "tripContent": "Sefer İçeriği",
   "tripNo": "Sefer Numarası",
   "tripStatuses": {
@@ -105,10 +99,11 @@
     "onWay": "Yolda"
   },
   "updatedAt": "Güncellenme Tarihi",
+  "userStatuses": {
+    "active": "Aktif",
+    "disabled": "Engellenmiş",
+    "pending": "Beklemede"
+  },
   "vehicle": "Araç",
-  "vehicleInfo": "Araç Bilgisi",
-  "name": "Ad",
-  "surname": "Soyad",
-  "active": "Aktif",
-  "email": "Eposta"
+  "vehicleInfo": "Araç Bilgisi"
 }

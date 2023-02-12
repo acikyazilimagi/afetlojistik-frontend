@@ -1,48 +1,29 @@
 {
-  "notifications": {
-    "success": "Successful",
-    "error": "Error (status code: {{statusCode}})",
-    "undoable": "You have {{seconds}} seconds to undo",
-    "createSuccess": "Successfully created {{resource}}",
-    "createError": "There was an error creating {{resource}} (status code: {{statusCode}})",
-    "deleteSuccess": "Successfully deleted {{resource}}",
-    "deleteError": "Error when deleting {{resource}} (status code: {{statusCode}})",
-    "editSuccess": "Successfully edited {{resource}}",
-    "editError": "Error when editing {{resource}} (status code: {{statusCode}})",
-    "importProgress": "Importing: {{processed}}/{{total}}"
-  },
   "actions": "Actions",
+  "active": "Active",
   "addCategory": "Add Category",
-  "alreadyHaveAccount": "",
+  "alreadyHaveAccount": "You already have an account?",
   "auth": {
     "emailAuthentication": "E-Mail Authentication",
     "resendCode": "Resend",
     "sendCodeDescription": "Send Code",
     "verifyAndLogin": "Verify & Login"
   },
+  "categories": "Categories",
   "category": "Category",
   "clear": "Clear",
   "createdAt": "Created At",
   "createdBy": "Created By",
-  "crud": {
-    "exportButton": "",
-    "exportCreatedAt": "",
-    "exportExcel": "",
-    "exportExcelFilePlaceholder": "",
-    "exportExcelModalTitle": "",
-    "exportExcelNameInput": "",
-    "exportMenu": "",
-    "exportPdf": "",
-    "print": ""
-  },
   "dashboard": {
     "title": "Dashboard"
   },
   "destinationCity": "Destination City",
   "destinationDistrict": "Destination District",
-  "dontHaveAccount": "",
+  "dontHaveAccount": "You don't have an account?",
   "driverName": "Driver Name",
-  "errorCode": "",
+  "email": "Email",
+  "enterArrivedTime": "Enter Arrived Time",
+  "errorCode": "Error code",
   "errorMessages": {
     "errorTitle": "Error",
     "minimumCount": "Count cannot be zero.",
@@ -55,16 +36,23 @@
   "estimatedDepartDate": "Estimated Depart Date",
   "estimatedDepartTime": "Estimated Depart Time",
   "explicitAddress": "Explicit Address",
+  "exportButton": "Export",
+  "exportCreatedAt": "Created At",
+  "exportExcel": "Export Excel",
+  "exportExcelFilePlaceholder": "File Placeholder",
+  "exportExcelModalTitle": "Export",
+  "exportExcelNameInput": "Name",
+  "exportMenu": "Menu",
+  "exportPdf": "PDF",
   "filter": "Filter",
   "filters": "Filters",
   "gdprConsent": "Remember Me",
-  "lastNamePlaceholder": "",
+  "lastNamePlaceholder": "Last name",
   "location": "Location",
   "locationInfo": "Location Info",
   "login": {
     "phoneNumber": "Phone Number",
-    "signin": "Sign In",
-    "subtitle": "February 6th Kahramanmaraş Earthquake"
+    "signin": "Sign In"
   },
   "logout": "Logout",
   "messages": {
@@ -73,29 +61,35 @@
       "success": "New code has been sent"
     }
   },
-  "namePlaceholder": "",
-  "note": "",
+  "name": "Name",
+  "namePlaceholder": "Name",
+  "note": "Note",
   "notes": "Notes",
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
+  "plates": "Plates",
+  "print": "Print",
   "register": {
-    "email": "",
-    "lastName": "",
-    "name": "",
-    "phoneNumber": "",
-    "registerButton": ""
+    "email": "Email",
+    "lastName": "Last Name",
+    "name": "Name",
+    "phoneNumber": "Phone Number",
+    "registerButton": "Register"
   },
+  "save": "Save",
   "selectCategory": "Select Category",
   "selectCity": "Choose a city",
   "selectDistrict": "Choose a district",
   "selectOption": "Select...",
   "status": "Status",
   "statuses": "Statuses",
+  "surname": "Surname",
   "thisFieldIsRequired": "This field is required",
   "trailerNo": "Trailer No",
+  "trailerNumbers": "Trailer Numbers",
   "tripContent": "Trip Content",
   "tripNo": "Trip No",
   "tripStatuses": {
@@ -105,10 +99,11 @@
     "onWay": "On Way"
   },
   "updatedAt": "Updated At",
+  "userStatuses": {
+    "active": "Active",
+    "disabled": "Disabled",
+    "pending": "Pending"
+  },
   "vehicle": "Vehicle",
-  "vehicleInfo": "Vehicle Info",
-  "name": "Name",
-  "surname": "Surname",
-  "active": "Active",
-  "email": "Email"
+  "vehicleInfo": "Vehicle Info"
 }
