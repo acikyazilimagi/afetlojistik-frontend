@@ -5,6 +5,7 @@ import { Typography, Space, Tag } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined } from '@ant-design/icons'
+import moment from 'moment'
 import { TripType } from 'types/trip'
 import { IconTitle } from 'components/IconTitle'
 import { ContentDisplay } from 'components/ContentDisplay'
@@ -43,9 +44,7 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
           <Tag color={tripStatusOptions[record.status].color}>
             {t(tripStatusOptions[record.status].label)}{' '}
             {arrived ? (
-              <span className='ml-4'>
-                {convertTimeToDateAndSplit(arrived.createdAt).date} {convertTimeToDateAndSplit(arrived.createdAt).time}
-              </span>
+              <span className='ml-4'>{moment(arrived.createdAt).locale('tr').format('DD/MM/YYYY HH:mm')}</span>
             ) : null}
           </Tag>
         </Space>

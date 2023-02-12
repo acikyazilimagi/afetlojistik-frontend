@@ -12,7 +12,8 @@ export const convertTimeToDateAndSplit = (
       time: '-'
     }
   }
-
+  //eslint-disable-next-line
+  console.log(i18n.language)
   const dateString = moment(date)
     .locale(i18n.language)
     .format(dateFormat ?? 'll')
