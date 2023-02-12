@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { CrudFilters, HttpError, IResourceComponentsProps } from '@pankod/refine-core'
 import { useTable, List, Table, Space, EditButton, ShowButton, DateField, Tag, DatePicker } from '@pankod/refine-antd'
 import { useTranslation } from 'react-i18next'
-import { ArrowRightOutlined } from '@ant-design/icons'
 import { FaTruck, FaIdCard, FaPhone } from 'react-icons/fa'
 import { Button, Modal } from 'antd'
 import dayjs, { Dayjs } from 'dayjs'
@@ -173,12 +172,23 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           />
           <Table.Column
             dataIndex={['fromLocation']}
-            title={t('locationInfo') as string}
-            render={(fromLocation: LocationType, record: TripType) => (
+            title={t('sourceLocation') as string}
+            render={(fromLocation: LocationType) => (
               <Space direction='horizontal' size={8} className='flex align-center'>
-                <Tag className='mie-0'>{fromLocation.cityName}</Tag>
-                <ArrowRightOutlined />
-                <Tag>{record.toLocation.cityName}</Tag>
+                <Tag className='mie-0'>
+                  {fromLocation.cityName}-{fromLocation.districtName}
+                </Tag>
+              </Space>
+            )}
+          />
+          <Table.Column
+            dataIndex={['toLocation']}
+            title={t('destinationLocation') as string}
+            render={(toLocation: LocationType) => (
+              <Space direction='horizontal' size={8} className='flex align-center'>
+                <Tag className='mie-0'>
+                  {toLocation.cityName}-{toLocation.districtName}
+                </Tag>
               </Space>
             )}
           />

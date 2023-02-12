@@ -19,6 +19,7 @@
   },
   "destinationCity": "Hedef İl",
   "destinationDistrict": "Hedef İlçe",
+  "destinationLocation": "Hedef Konum",
   "dontHaveAccount": "Hesabınız yok mu?",
   "driverName": "Sürücü İsmi",
   "email": "Eposta",
@@ -49,7 +50,6 @@
   "gdprConsent": "Beni Hatırla",
   "lastNamePlaceholder": "Soyad",
   "location": "Konum",
-  "locationInfo": "Konum Bilgisi",
   "login": {
     "phoneNumber": "Telefon Numarası",
     "signin": "Giriş Yap"
@@ -65,6 +65,9 @@
   "namePlaceholder": "Ad",
   "note": "Note",
   "notes": "Notlar",
+  "notifications": {
+    "success": "Başarılı"
+  },
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
@@ -84,6 +87,7 @@
   "selectCity": "Şehir seçiniz...",
   "selectDistrict": "İlçe seçiniz...",
   "selectOption": "Seçiniz ...",
+  "sourceLocation": "Çıkış Konum",
   "status": "Durum",
   "statuses": "Durum",
   "surname": "Soyad",

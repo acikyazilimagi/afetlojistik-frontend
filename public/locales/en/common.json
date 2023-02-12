@@ -19,6 +19,7 @@
   },
   "destinationCity": "Destination City",
   "destinationDistrict": "Destination District",
+  "destinationLocation": "Destination Location",
   "dontHaveAccount": "You don't have an account?",
   "driverName": "Driver Name",
   "email": "Email",
@@ -49,7 +50,6 @@
   "gdprConsent": "Remember Me",
   "lastNamePlaceholder": "Last name",
   "location": "Location",
-  "locationInfo": "Location Info",
   "login": {
     "phoneNumber": "Phone Number",
     "signin": "Sign In"
@@ -65,6 +65,9 @@
   "namePlaceholder": "Name",
   "note": "Note",
   "notes": "Notes",
+  "notifications": {
+    "success": "Success"
+  },
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
@@ -84,6 +87,7 @@
   "selectCity": "Choose a city",
   "selectDistrict": "Choose a district",
   "selectOption": "Select...",
+  "sourceLocation": "Source Location",
   "status": "Status",
   "statuses": "Statuses",
   "surname": "Surname",
