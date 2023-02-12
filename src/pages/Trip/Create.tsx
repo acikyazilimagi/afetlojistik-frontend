@@ -167,7 +167,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
                   {
                     validator: async (_, value) => {
                       const isValid = value ? /^[a-zA-Z ]+$/.test(value) : true
-                      if (!value || !isValid) {
+                      if (!isValid) {
                         return Promise.reject(new Error(t('errorMessages.invalidCharacters')))
                       }
                     }
