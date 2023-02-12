@@ -4,10 +4,10 @@
   "addCategory": "Add Category",
   "alreadyHaveAccount": "You already have an account?",
   "auth": {
-    "emailAuthentication": "E-Mail Authentication",
     "resendCode": "Resend",
     "sendCodeDescription": "Send Code",
-    "verifyAndLogin": "Verify & Login"
+    "verifyAndLogin": "Verify & Login",
+    "verifyTitle": "Verification"
   },
   "buttons": {
     "cancel": "",
@@ -95,6 +95,7 @@
     "editUser": "Edit User",
     "tripDetails": "Trip Details",
     "trips": "Trips",
+    "userDetails": "User Details",
     "users": "Users"
   },
   "phoneNumber": "Phone Number",

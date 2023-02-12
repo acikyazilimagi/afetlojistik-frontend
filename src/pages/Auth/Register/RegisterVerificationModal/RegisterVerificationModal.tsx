@@ -78,7 +78,7 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
       destroyOnClose
       title={
         <Typography.Title level={5} className='verification-modal-title text-purple'>
-          {t('auth.emailAuthentication')}
+          {t('auth.verifyTitle')}
         </Typography.Title>
       }
       centered
@@ -106,7 +106,8 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
             name='code'
             formProps={{
               id: 'verifyAuthCodeForm',
-              required: true
+              required: true,
+              rules: [{ required: true, message: t('thisFieldIsRequired') }]
             }}
             errorMessage={errors.code}
             isTouched={touched.code}
