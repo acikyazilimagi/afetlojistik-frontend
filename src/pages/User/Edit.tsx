@@ -8,8 +8,6 @@ export const UserEdit: React.FC<IResourceComponentsProps> = () => {
 
   const { formProps, saveButtonProps } = useForm()
 
-  // const userData = queryResult?.data?.data
-
   return (
     <Edit saveButtonProps={saveButtonProps} title={t('pageTitles.editUser')}>
       <Form {...formProps} layout='vertical'>
