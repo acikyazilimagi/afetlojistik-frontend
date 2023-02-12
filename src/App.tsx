@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { dataProvider } from 'dataProviders'
 import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
-import { UserList } from 'pages/User'
+import { UserCreate, UserList } from 'pages/User'
 import { UserEdit } from 'pages/User/Edit'
 import { AuthPage } from 'pages/Auth'
 import { authProvider } from './authProvider'
@@ -45,7 +45,7 @@ function App() {
           list: UserList,
           edit: UserEdit,
           show: AntdInferencer,
-          create: AntdInferencer
+          create: UserCreate
         }
       ]}
       Title={Title}
