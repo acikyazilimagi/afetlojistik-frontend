@@ -235,7 +235,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
       </Space>
       <Modal
         title={t('enterArrivedTime')}
-        visible={isModalOpen}
+        open={isModalOpen}
         onCancel={() => {
           setEditingRows([])
           setArrivedTimeInput(undefined)
