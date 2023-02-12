@@ -1,6 +1,7 @@
 import React from 'react'
 import { CardProps, FormProps, LayoutProps } from 'antd'
 import { AuthPageProps } from '@pankod/refine-core'
+
 import { Register } from './Register'
 import { Login } from './Login'
 
@@ -13,6 +14,7 @@ export type AuthProps = AuthPageProps<LayoutProps, CardProps, FormProps>
  */
 export const AuthPage: React.FC<AuthProps> = (props) => {
   const { type } = props
+
   const renderView = () => {
     switch (type) {
       case 'register':

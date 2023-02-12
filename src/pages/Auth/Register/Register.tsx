@@ -1,31 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
-import {
-  Row,
-  Col,
-  Card,
-  Form,
-  Input,
-  Button,
-  Checkbox,
-  CardProps,
-  LayoutProps,
-  FormProps,
-  Space,
-  Typography
-} from 'antd'
+import { Row, Col, Card, Form, Input, Button, CardProps, LayoutProps, FormProps, Space, Typography } from 'antd'
 import { RuleObject } from 'antd/es/form'
 import { MailOutlined, MobileOutlined } from '@ant-design/icons'
 import { Link } from '@pankod/refine-react-router-v6'
+import { useCookies } from 'react-cookie'
 import { RegisterFormType } from 'types/register'
 import { register } from 'services/auth'
 import { RegisterTitle } from './RegisterTitle'
 import { RegisterVerificationModal } from './RegisterVerificationModal'
 import styles from './Register.module.scss'
+import { PrivacyConsentModal } from './PrivacyConsentModal'
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>
-
 const validatePhoneNumber = (
   rule: RuleObject,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,6 +42,9 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
 
   const [isLoading, setIsLoading] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
+  const [canLogin, setCanLogin] = useState(false)
+  const [cookies, setCookie] = useCookies(['privacyConsent'])
+  const [isPrivacyConsentModalVisible, setIsPrivacyConsentModalVisible] = useState(false)
 
   const handlePhoneSubmit = (values: RegisterFormType) => {
     setIsLoading(true)
@@ -66,6 +57,39 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
       })
       .finally(() => setIsLoading(false))
   }
+
+  useEffect(() => {
+    if (cookies.privacyConsent) {
+      setCanLogin(true)
+    } else {
+      setCanLogin(false)
+    }
+  }, [cookies])
+
+  const handlePrivacyConsentModalOk = () => {
+    setIsPrivacyConsentModalVisible(false)
+    setCookie('privacyConsent', true, { path: '/' })
+  }
+
+  const handlePrivacyConsentModalCancel = () => {
+    setIsPrivacyConsentModalVisible(false)
+  }
+
+  const renderPrivacyConsentModal = () => (
+    <PrivacyConsentModal
+      visible={isPrivacyConsentModalVisible}
+      handleOk={handlePrivacyConsentModalOk}
+      handleCancel={handlePrivacyConsentModalCancel}
+    />
+  )
+
+  useEffect(() => {
+    if (cookies.privacyConsent) {
+      setIsPrivacyConsentModalVisible(false)
+    } else {
+      setIsPrivacyConsentModalVisible(true)
+    }
+  }, [cookies])
 
   const CardContent = (
     <Card title={<RegisterTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
@@ -120,15 +144,16 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
             className={styles.input}
           />
         </Form.Item>
-        <div className={styles.rememberMeWrapper}>
-          <Form.Item name='dataConsent' valuePropName='checked' noStyle>
-            <Checkbox className='font-12'>{t('gdprConsent')}</Checkbox>
-          </Form.Item>
-        </div>
         <Form.Item>
-          <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
-            {t('register.registerButton')}
-          </Button>
+          {!canLogin ? (
+            <Button type='primary' size='large' block onClick={() => setIsPrivacyConsentModalVisible(true)}>
+              Kişisel Rıza Metnini Kabul Edin
+            </Button>
+          ) : (
+            <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
+              {t('register.registerButton')}
+            </Button>
+          )}
         </Form.Item>
         <div style={{ marginTop: 8 }}>
           <Typography.Text style={{ fontSize: 12 }}>
@@ -148,6 +173,7 @@ export const Register: React.FC<LoginProps> = ({ renderContent, formProps }) => 
         {renderContent ? renderContent(CardContent) : CardContent}
         <RegisterVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
       </Col>
+      {renderPrivacyConsentModal()}
     </Row>
   )
 }
