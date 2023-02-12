@@ -39,6 +39,7 @@
   "errorCode": "Error code",
   "errorMessages": {
     "errorTitle": "Error",
+    "invalidCharacters": "Invalid characters",
     "minimumCount": "Count cannot be zero.",
     "minimumProducts": "Minimum 1 category must be added.",
     "unknownError": "An unknown error has occurred"
@@ -85,6 +86,10 @@
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
+  "pageTitles": {
+    "trips": "Trips",
+    "users": "Users"
+  },
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
   "plates": "Plates",

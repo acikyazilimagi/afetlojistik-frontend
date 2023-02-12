@@ -39,6 +39,7 @@
   "errorCode": "Hata kodu",
   "errorMessages": {
     "errorTitle": "Hata",
+    "invalidCharacters": "Geçersiz karakter",
     "minimumCount": "0'dan büyük bir değer girilmeli",
     "minimumProducts": "En az 1 çeşit ürün eklenmeli",
     "unknownError": "Bilinmeyen bir hata oluştu"
@@ -85,6 +86,10 @@
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
+  "pageTitles": {
+    "trips": "Seferler",
+    "users": "Kullanıcılar"
+  },
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
   "plates": "Plaka",
@@ -123,5 +128,5 @@
     "pending": "Beklemede"
   },
   "vehicle": "Araç",
-  "vehicleInfo": "Araç Bilgisi"
+  "vehicleInfo": ""
 }

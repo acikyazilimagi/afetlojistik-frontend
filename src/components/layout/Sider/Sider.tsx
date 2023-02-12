@@ -12,12 +12,24 @@ import {
 import { useTitle, CanAccess, ITreeMenu, useRouterContext, useMenu, useRefineContext } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
 
+import i18n from 'i18n'
 import { Title as DefaultTitle } from '../Title'
 
 import styles from './Sider.module.scss'
 
 const { UnorderedListOutlined, DashboardOutlined, BarsOutlined } = Icons
 const { SubMenu } = Menu
+
+const getPageTranslationKey = (name: string) => {
+  switch (name) {
+    case 'trip':
+      return i18n.t('pageTitles.trips')
+    case 'user':
+      return i18n.t('pageTitles.users')
+    default:
+      return ''
+  }
+}
 
 export const Sider: typeof DefaultSider = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
@@ -69,7 +81,7 @@ export const Sider: typeof DefaultSider = () => {
             className={`${isSelected && 'font-bold'}`}
             icon={icon ?? (isRoute && <UnorderedListOutlined />)}
           >
-            <Link to={route}>{label}</Link>
+            <Link to={route}>{t(getPageTranslationKey(name))}</Link>
             {!collapsed && isSelected && <div className='ant-menu-tree-arrow' />}
           </Menu.Item>
         </CanAccess>
