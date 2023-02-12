@@ -65,7 +65,7 @@ export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }
                 <FormInput name={'trailerPlateNumber'} />
               </Form.Item>
               <Form.Item label={t('createdAt')} name='createdAt'>
-                <RangePicker />
+                <RangePicker format={'DD/MM/YYYY'} />
               </Form.Item>
               <Form.Item label={t('originCity')} name='fromCityId'>
                 <CityDropdown onChange={handleFromCityChange} />
