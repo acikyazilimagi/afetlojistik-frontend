@@ -41,7 +41,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           name={['active']}
           rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
-          <Checkbox>Active</Checkbox>
+          <Checkbox>{t('isActive')}</Checkbox>
         </Form.Item>
         <Form.Item
           label={t('isAdmin')}
@@ -49,7 +49,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           name={['isAdmin']}
           rules={[{ required: true, message: t('thisFieldIsRequired') }]}
         >
-          <Checkbox>Is Admin</Checkbox>
+          <Checkbox>{t('isAdmin')}</Checkbox>
         </Form.Item>
       </Form>
     </Create>
