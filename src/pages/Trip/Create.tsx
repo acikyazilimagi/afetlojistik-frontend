@@ -205,9 +205,9 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
           <Form.List
             name='products'
             initialValue={[
-              { categoryId: '', count: 0 },
-              { categoryId: '', count: 0 },
-              { categoryId: '', count: 0 }
+              { categoryId: undefined, count: 0 },
+              { categoryId: undefined, count: 0 },
+              { categoryId: undefined, count: 0 }
             ]}
             rules={[
               {
@@ -223,7 +223,16 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               <Space direction='vertical' size={8}>
                 {fields.map(({ key, name, ...restField }, index) => (
                   <Space key={key} className={styles.categorySpace}>
-                    <Form.Item rules={[{ required: true, message: t('thisFieldIsRequired') }]} {...restField}>
+                    <Form.Item
+                      rules={[
+                        {
+                          required: true,
+                          message: t('thisFieldIsRequired')
+                        }
+                      ]}
+                      name={[name, 'categoryId']}
+                      {...restField}
+                    >
                       <ProductCategoryDropdown
                         categoryList={categoryList}
                         onChange={(value) => handleProductChange(value, index)}
