@@ -139,6 +139,7 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
         <div style={{ display: 'none' }}>{t('buttons.clear')}</div>
         <div style={{ display: 'none' }}>{t('buttons.refresh')}</div>
         <div style={{ display: 'none' }}>{t('notifications.createSuccess')}</div>
+        <div style={{ display: 'none' }}>{t('notifications.editSuccess')}</div>
       </Space>
     </Modal>
   )

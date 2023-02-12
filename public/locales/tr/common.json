@@ -79,6 +79,7 @@
   "notes": "Notlar",
   "notifications": {
     "createSuccess": "Başarı ile oluşturuldu",
+    "editSuccess": "Güncelleme başarılı",
     "success": "Başarılı"
   },
   "originCity": "Çıkış İli",

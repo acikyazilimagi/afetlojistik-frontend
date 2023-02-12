@@ -79,6 +79,7 @@
   "notes": "Notes",
   "notifications": {
     "createSuccess": "Created Successfully",
+    "editSuccess": "",
     "success": "Success"
   },
   "originCity": "Origin City",
