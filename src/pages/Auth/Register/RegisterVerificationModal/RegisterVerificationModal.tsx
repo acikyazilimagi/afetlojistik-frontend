@@ -138,6 +138,7 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
         <div style={{ display: 'none' }}>{t('buttons.filter')}</div>
         <div style={{ display: 'none' }}>{t('buttons.clear')}</div>
         <div style={{ display: 'none' }}>{t('buttons.refresh')}</div>
+        <div style={{ display: 'none' }}>{t('notifications.createSuccess')}</div>
       </Space>
     </Modal>
   )

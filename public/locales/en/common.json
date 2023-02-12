@@ -78,16 +78,12 @@
   "note": "Note",
   "notes": "Notes",
   "notifications": {
+    "createSuccess": "Created Successfully",
     "success": "Success"
   },
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
-  "pages": {
-    "trip": {
-      "create": ""
-    }
-  },
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
   "plates": "Plates",

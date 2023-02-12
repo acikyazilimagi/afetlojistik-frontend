@@ -78,14 +78,12 @@
   "note": "Note",
   "notes": "Notlar",
   "notifications": {
+    "createSuccess": "Başarı ile oluşturuldu",
     "success": "Başarılı"
   },
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
-  "pages": {
-    "trip": "sdsd"
-  },
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
   "plates": "Plaka",
