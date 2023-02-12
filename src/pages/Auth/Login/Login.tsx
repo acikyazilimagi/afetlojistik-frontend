@@ -94,13 +94,11 @@ export const Login: React.FC<LoginProps> = ({ renderContent, formProps }) => {
   )
 
   return (
-    <>
-      <Row justify='center' align='middle' className={styles.loginRow} style={{ backgroundImage: "url('/bg.svg')" }}>
-        <Col md={12} lg={10}>
-          {renderContent ? renderContent(CardContent) : CardContent}
-          <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
-        </Col>
-      </Row>
-    </>
+    <Row justify='center' align='middle' className={styles.loginRow} style={{ backgroundImage: "url('/bg.svg')" }}>
+      <Col md={12} lg={10}>
+        {renderContent ? renderContent(CardContent) : CardContent}
+        <LoginVerificationModal isVisible={visible} phone={phoneNumber} onClose={close} />
+      </Col>
+    </Row>
   )
 }

@@ -1,5 +1,3 @@
-// antd modal for privacy consent
-
 import React from 'react'
 import { Modal, Space, Typography } from 'antd'
 

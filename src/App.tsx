@@ -1,6 +1,5 @@
 import React from 'react'
 
-//eslint-disable-next-line
 import { CookiesProvider } from 'react-cookie'
 import { I18nProvider, Refine } from '@pankod/refine-core'
 import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
