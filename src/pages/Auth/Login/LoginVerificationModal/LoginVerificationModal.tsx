@@ -78,7 +78,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ 
       destroyOnClose
       title={
         <Typography.Title level={5} className='verification-modal-title text-purple'>
-          {t('auth.emailAuthentication')}
+          {t('auth.verifyTitle')}
         </Typography.Title>
       }
       centered

@@ -4,10 +4,10 @@
   "addCategory": "Kategori Ekle",
   "alreadyHaveAccount": "Zaten hesabınız var mı?",
   "auth": {
-    "emailAuthentication": "SMS doğrulama",
     "resendCode": "Yeniden Gönder",
     "sendCodeDescription": "Kodu gönder",
-    "verifyAndLogin": "Doğrulama ve Giriş"
+    "verifyAndLogin": "Doğrulama ve Giriş",
+    "verifyTitle": "Doğrulama"
   },
   "buttons": {
     "cancel": "İptal",
