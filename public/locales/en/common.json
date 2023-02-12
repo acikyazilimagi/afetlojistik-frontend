@@ -9,6 +9,18 @@
     "sendCodeDescription": "Send Code",
     "verifyAndLogin": "Verify & Login"
   },
+  "buttons": {
+    "cancel": "",
+    "clear": "",
+    "confirm": "",
+    "create": "",
+    "delete": "",
+    "edit": "",
+    "filter": "",
+    "logout": "",
+    "refresh": "",
+    "save": ""
+  },
   "categories": "Categories",
   "category": "Category",
   "clear": "Clear",
@@ -71,6 +83,11 @@
   "originCity": "Origin City",
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
+  "pages": {
+    "trip": {
+      "create": ""
+    }
+  },
   "phoneNumber": "Phone Number",
   "plateNo": "Plate No",
   "plates": "Plates",

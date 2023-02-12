@@ -128,6 +128,16 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
         <div style={{ display: 'none' }}>{t('messages.resendCode.success')}</div>
         <div style={{ display: 'none' }}>{t('messages.resendCode.error')}</div>
         <div style={{ display: 'none' }}>{t('errorMessages.unknownError')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.create')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.save')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.logout')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.delete')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.edit')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.cancel')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.confirm')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.filter')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.clear')}</div>
+        <div style={{ display: 'none' }}>{t('buttons.refresh')}</div>
       </Space>
     </Modal>
   )

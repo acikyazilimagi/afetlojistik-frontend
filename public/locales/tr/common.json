@@ -9,6 +9,18 @@
     "sendCodeDescription": "Kodu gönder",
     "verifyAndLogin": "Doğrulama ve Giriş"
   },
+  "buttons": {
+    "cancel": "İptal",
+    "clear": "Temizle",
+    "confirm": "Onayla",
+    "create": "Oluştur",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "filter": "Filtrele",
+    "logout": "Çıkış Yap",
+    "refresh": "Yenile",
+    "save": "Kaydet"
+  },
   "categories": "Kategoriler",
   "category": "Kategori",
   "clear": "Temizle",
@@ -71,6 +83,9 @@
   "originCity": "Çıkış İli",
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
+  "pages": {
+    "trip": "sdsd"
+  },
   "phoneNumber": "Telefon Numarası",
   "plateNo": "Araç Plakası",
   "plates": "Plaka",
