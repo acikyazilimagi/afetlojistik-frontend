@@ -5,9 +5,9 @@
 }
 
 .formItem {
-  border: 1px solid #d9d9d9 !important;
-  border-radius: 6px;
-  padding: 0 8px;
+  // border: 1px solid #d9d9d9 !important;
+  // border-radius: 6px;
+  // padding: 0 8px;
   margin-bottom: 0;
   min-width: 150px;
   :global(label) {
@@ -50,4 +50,8 @@
       min-width: 130px;
     }
   }
+
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 6px;
+  padding-bottom: 10px;
 }
