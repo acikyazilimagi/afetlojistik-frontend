@@ -214,12 +214,12 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           <Table.Column
             dataIndex={['createdAt']}
             title={t('createdAt') as string}
-            render={(value: string) => <DateField value={value} />}
+            render={(value: string) => <DateField value={value} format={'DD/MM/YYYY'} />}
           />
           <Table.Column
             dataIndex={['updatedAt']}
             title={t('updatedAt') as string}
-            render={(value: string) => <DateField value={value} />}
+            render={(value: string) => <DateField value={value} format={'DD/MM/YYYY'} />}
           />
           <Table.Column
             title={t('actions') as string}
