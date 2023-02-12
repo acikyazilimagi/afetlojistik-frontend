@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
-import { Row, Col, Card, Form, Input, Button, Checkbox, CardProps, LayoutProps, FormProps, Typography } from 'antd'
+import { Row, Col, Card, Form, Input, Button, CardProps, LayoutProps, FormProps, Typography } from 'antd'
 import { RuleObject } from 'antd/es/form'
 import { Link } from '@pankod/refine-react-router-v6'
 import { LoginFormType } from 'types/login'
@@ -32,7 +32,7 @@ const validatePhoneNumber = (
   }
 }
 
-export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formProps }) => {
+export const Login: React.FC<LoginProps> = ({ renderContent, formProps }) => {
   const { t } = useTranslation()
   const [form] = Form.useForm<LoginFormType>()
   const { visible, show, close } = useModal({})
@@ -76,13 +76,6 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
         >
           <Input size='large' placeholder={'(5XX) XXX XXXX'} className={styles.input} />
         </Form.Item>
-        <div className={styles.rememberMeWrapper}>
-          {rememberMe ?? (
-            <Form.Item name='remember' valuePropName='checked' noStyle>
-              <Checkbox className='font-12'>{t('gdprConsent')}</Checkbox>
-            </Form.Item>
-          )}
-        </div>
         <Form.Item>
           <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
             {t('login.signin')}
