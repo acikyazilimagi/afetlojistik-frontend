@@ -10,9 +10,9 @@ export const http = axios.create({ baseURL: process.env.REACT_APP_BACKEND_URL })
 http.interceptors.request.use((config) => {
   const token = getToken()
   // eslint-disable-next-line no-param-reassign
-  config.headers.Authorization = token
+  config.headers.Authorization = 'Bearer ' + token
   // eslint-disable-next-line no-param-reassign
-  config.headers.token = token
+  // config.headers.token = token
 
   return config
 })
