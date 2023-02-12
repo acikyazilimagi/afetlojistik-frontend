@@ -92,7 +92,7 @@ export const Login: React.FC<LoginProps> = ({ rememberMe, renderContent, formPro
           <Typography.Text style={{ fontSize: 12 }}>
             {t('dontHaveAccount')}{' '}
             <Link to='/register' style={{ fontWeight: 'bold' }}>
-              {t('register.registerButton')}
+              {t('register.registerLink')}
             </Link>
           </Typography.Text>
         </div>

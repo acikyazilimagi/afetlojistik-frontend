@@ -106,7 +106,8 @@
     "lastName": "Last Name",
     "name": "Name",
     "phoneNumber": "Phone Number",
-    "registerButton": "Register"
+    "registerButton": "Register",
+    "registerLink": "Register"
   },
   "save": "Save",
   "selectCategory": "Select Category",
