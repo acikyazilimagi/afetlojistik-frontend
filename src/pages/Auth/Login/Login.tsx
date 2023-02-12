@@ -4,8 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { Row, Col, Card, Form, Input, Button, CardProps, LayoutProps, FormProps, Typography } from 'antd'
 import { RuleObject } from 'antd/es/form'
 import { Link } from '@pankod/refine-react-router-v6'
-//eslint-disable-next-line
-import { useCookies } from 'react-cookie'
 import { LoginFormType } from 'types/login'
 import { requestAuthCode } from 'services/auth'
 import { LoginTitle } from './LoginTitle'

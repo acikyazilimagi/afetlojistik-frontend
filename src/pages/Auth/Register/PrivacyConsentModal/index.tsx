@@ -15,7 +15,7 @@ export const PrivacyConsentModal: React.FC<PrivacyConsentProps> = ({ visible, ha
     open={visible}
     onOk={handleOk}
     onCancel={handleCancel}
-    okText={'Kabul Et'}
+    okText={'Kabul Ediyorum'}
     cancelText={'Kabul Etmiyorum'}
   >
     <Space direction='vertical' size='large' style={{ paddingBottom: '20px' }}>
