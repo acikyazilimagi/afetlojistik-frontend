@@ -35,7 +35,7 @@ export const UserDetail: React.FC<IResourceComponentsProps> = () => {
         </Space>
         <Space direction='horizontal' className={`mt-12 ${styles.locationContainer}`}>
           <ContentDisplay title={t('phone')} text={record.phone} />
-          <ContentDisplay title={t('email')} text={record.email} />
+          <ContentDisplay title={t('email')} text={record.email ?? '-'} />
         </Space>
         <Space direction='horizontal' className={`mt-12 ${styles.locationContainer}`}>
           <ContentDisplay title={t('isAdmin')} text={record.isAdmin ? '✓' : 'X'} />
