@@ -11,7 +11,7 @@ export const authProvider: AuthProvider = {
           setUser(response)
           return Promise.resolve()
         })
-        .catch(() => {})
+        .catch(() => Promise.reject())
     }
     return Promise.reject(new Error('username: admin, password: admin'))
   },
@@ -22,7 +22,7 @@ export const authProvider: AuthProvider = {
           setUser(response)
           return Promise.resolve()
         })
-        .catch(() => {})
+        .catch(() => Promise.reject())
     }
     return Promise.reject(new Error('username: admin, password: admin'))
   },

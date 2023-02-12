@@ -20,7 +20,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ 
 
   const [autoSubmit, setAutoSubmit] = useState(true)
 
-  const { mutate: logInUser, isLoading } = useLogin<VerifyAuthCodeFormType>()
+  const { mutateAsync: logInUser, isLoading } = useLogin<VerifyAuthCodeFormType>()
 
   const [form] = Form.useForm()
   const formik = useFormik({
@@ -28,7 +28,7 @@ export const LoginVerificationModal: React.FC<LoginVerificationModalProps> = ({ 
     validationSchema,
     onSubmit: (values) => {
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      logInUser(values, { onError: resetModal })
+      logInUser(values).catch(resetModal)
     }
   })
 

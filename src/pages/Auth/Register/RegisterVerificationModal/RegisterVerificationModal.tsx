@@ -20,7 +20,7 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
 
   const [autoSubmit, setAutoSubmit] = useState(true)
 
-  const { mutate: registerUser, isLoading } = useRegister<VerifyAuthCodeFormType>()
+  const { mutateAsync: registerUser, isLoading } = useRegister<VerifyAuthCodeFormType>()
 
   const [form] = Form.useForm()
   const formik = useFormik({
@@ -28,7 +28,7 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
     validationSchema,
     onSubmit: (values) => {
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      registerUser(values, { onError: resetModal })
+      registerUser(values).catch(resetModal)
     }
   })
 
