@@ -60,12 +60,12 @@
   "exportPdf": "PDF Kaydet",
   "filter": "Filtre",
   "filters": "Filtre",
-  "gdprConsent": "Beni Hatırla",
   "isActive": "Aktif",
   "isAdmin": "Admin",
   "lastNamePlaceholder": "Soyad",
   "location": "Konum",
   "login": {
+    "pendingRegistration": "Hesabınızın aktifleştirilmesi bekleniyor",
     "phoneNumber": "Telefon Numarası",
     "signin": "Giriş Yap"
   },

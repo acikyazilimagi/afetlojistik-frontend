@@ -20,7 +20,7 @@ export const authProvider: AuthProvider = {
       return verifyAuthCode({ phone, code })
         .then((response) => {
           setUser(response)
-          return Promise.resolve()
+          return Promise.resolve('/login?register=pending')
         })
         .catch(() => Promise.reject())
     }

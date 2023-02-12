@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoginPageProps, useModal } from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
-import { Row, Col, Card, Form, Input, Button, CardProps, LayoutProps, FormProps, Typography } from 'antd'
+import { Row, Col, Card, Form, Input, Button, CardProps, LayoutProps, FormProps, Typography, Alert } from 'antd'
 import { RuleObject } from 'antd/es/form'
-import { Link } from '@pankod/refine-react-router-v6'
+import { Link, useSearchParams } from '@pankod/refine-react-router-v6'
 import { LoginFormType } from 'types/login'
 import { requestAuthCode } from 'services/auth'
 import { LoginTitle } from './LoginTitle'
@@ -39,6 +39,8 @@ export const Login: React.FC<LoginProps> = ({ renderContent, formProps }) => {
 
   const [isLoading, setIsLoading] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState<number | undefined>()
+  const [searchParams] = useSearchParams()
+  const [pendingCard, setPendingCard] = useState(false)
 
   const handlePhoneSubmit = (values: LoginFormType) => {
     setIsLoading(true)
@@ -52,45 +54,54 @@ export const Login: React.FC<LoginProps> = ({ renderContent, formProps }) => {
       .finally(() => setIsLoading(false))
   }
 
+  useEffect(() => {
+    if (searchParams.get('register') === 'pending') {
+      setPendingCard(true)
+    }
+  }, [searchParams])
+
   const CardContent = (
-    <Card title={<LoginTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
-      <Form<LoginFormType>
-        layout='vertical'
-        form={form}
-        onFinish={handlePhoneSubmit}
-        requiredMark={false}
-        initialValues={{
-          consent: false
-        }}
-        {...formProps}
-      >
-        <Form.Item
-          name='phone'
-          label={t('login.phoneNumber')}
-          rules={[
-            { required: true, message: t('thisFieldIsRequired') },
-            {
-              validator: (rule, value, callback) => validatePhoneNumber(rule, value, callback, t)
-            }
-          ]}
+    <>
+      {pendingCard && <Alert message={t('login.pendingRegistration')} type='warning' />}
+      <Card title={<LoginTitle />} headStyle={{ borderBottom: 0, textAlign: 'center' }} bordered={false}>
+        <Form<LoginFormType>
+          layout='vertical'
+          form={form}
+          onFinish={handlePhoneSubmit}
+          requiredMark={false}
+          initialValues={{
+            consent: false
+          }}
+          {...formProps}
         >
-          <Input size='large' placeholder={'(5XX) XXX XXXX'} className={styles.input} />
-        </Form.Item>
-        <Form.Item>
-          <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
-            {t('login.signin')}
-          </Button>
-        </Form.Item>
-        <div style={{ marginTop: 8 }}>
-          <Typography.Text style={{ fontSize: 12 }}>
-            {t('dontHaveAccount')}{' '}
-            <Link to='/register' style={{ fontWeight: 'bold' }}>
-              {t('register.registerLink')}
-            </Link>
-          </Typography.Text>
-        </div>
-      </Form>
-    </Card>
+          <Form.Item
+            name='phone'
+            label={t('login.phoneNumber')}
+            rules={[
+              { required: true, message: t('thisFieldIsRequired') },
+              {
+                validator: (rule, value, callback) => validatePhoneNumber(rule, value, callback, t)
+              }
+            ]}
+          >
+            <Input size='large' placeholder={'(5XX) XXX XXXX'} className={styles.input} />
+          </Form.Item>
+          <Form.Item>
+            <Button type='primary' size='large' htmlType='submit' loading={isLoading} block>
+              {t('login.signin')}
+            </Button>
+          </Form.Item>
+          <div style={{ marginTop: 8 }}>
+            <Typography.Text style={{ fontSize: 12 }}>
+              {t('dontHaveAccount')}{' '}
+              <Link to='/register' style={{ fontWeight: 'bold' }}>
+                {t('register.registerLink')}
+              </Link>
+            </Typography.Text>
+          </div>
+        </Form>
+      </Card>
+    </>
   )
 
   return (
