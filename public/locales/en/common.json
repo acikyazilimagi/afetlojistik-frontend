@@ -61,6 +61,8 @@
   "filter": "Filter",
   "filters": "Filters",
   "gdprConsent": "Remember Me",
+  "isActive": "Is Active",
+  "isAdmin": "Is Admin",
   "lastNamePlaceholder": "Last name",
   "location": "Location",
   "login": {

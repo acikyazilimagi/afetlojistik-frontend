@@ -48,7 +48,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          label='Active'
+          label={t('isActive')}
           valuePropName='checked'
           name={['active']}
           rules={[
@@ -60,7 +60,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
           <Checkbox>Active</Checkbox>
         </Form.Item>
         <Form.Item
-          label='Is Admin'
+          label={t('isAdmin')}
           valuePropName='checked'
           name={['isAdmin']}
           rules={[

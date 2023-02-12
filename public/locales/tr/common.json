@@ -61,6 +61,8 @@
   "filter": "Filtre",
   "filters": "Filtre",
   "gdprConsent": "Beni Hatırla",
+  "isActive": "Aktif",
+  "isAdmin": "Admin",
   "lastNamePlaceholder": "Soyad",
   "location": "Konum",
   "login": {
