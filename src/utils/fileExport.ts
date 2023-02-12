@@ -157,8 +157,8 @@ export const applyStyle = (ws: XLSX.WorkSheet) => {
       ws[i].s.fill = {
         // background color
         patternType: 'solid',
-        fgColor: { rgb: '5d3ebc' },
-        bgColor: { rgb: '5d3ebc' }
+        fgColor: { rgb: '007787' },
+        bgColor: { rgb: '007787' }
       }
     }
 
