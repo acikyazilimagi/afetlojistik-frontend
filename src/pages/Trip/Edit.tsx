@@ -34,7 +34,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
-  const [products, setProducts] = useState<ProductType[]>(data?.products ?? [])
+  const [products, setProducts] = useState<Partial<ProductType>[]>(data?.products ?? [])
   const [fromCity, setFromCity] = useState<string | undefined>()
   const [toCity, setToCity] = useState<string | undefined>()
   const [fromDistrict, setFromDistrict] = useState<string | undefined>()
@@ -86,6 +86,22 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
   const handleProductChange = (categoryId: string, index: number) => {
     const current = [...getFieldValue('products')]
     current[index] = { ...current[index], categoryId }
+    setProducts(current)
+    setFieldValue('products', current)
+  }
+
+  const handleAddProduct = () => {
+    let current = [...getFieldValue('products')]
+    current = current?.slice()
+    current?.push(DEFAULT_PRODUCT_ROW)
+    setProducts(current)
+    setFieldValue('products', current)
+  }
+
+  const handleRemoveProduct = (index: number) => {
+    let current = [...getFieldValue('products')]
+    current = current?.slice()
+    current?.splice(index, 1)
     setProducts(current)
     setFieldValue('products', current)
   }
@@ -212,7 +228,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
               }
             ]}
           >
-            {(fields, { add, remove }, { errors }) => (
+            {(fields, _, { errors }) => (
               <Space direction='vertical' size={8}>
                 {fields.map(({ key, name, ...restField }, index) => (
                   <Space key={key} className={styles.categorySpace}>
@@ -253,7 +269,8 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                     <Button
                       danger
                       onClick={() => {
-                        remove(index)
+                        // remove(index)
+                        handleRemoveProduct(index)
                       }}
                       icon={<DeleteOutlined />}
                     />
@@ -263,7 +280,8 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                   className='mt-6'
                   block
                   onClick={() => {
-                    add(DEFAULT_PRODUCT_ROW)
+                    handleAddProduct()
+                    // add(DEFAULT_PRODUCT_ROW)
                   }}
                   icon={<PlusOutlined />}
                 >
