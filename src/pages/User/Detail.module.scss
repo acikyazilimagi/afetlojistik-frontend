@@ -1,0 +1,16 @@
+.detailWrapper {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.locationContainer {
+  :global(.ant-space-item) {
+    flex: 1;
+  }
+}
+
+.contentContainer {
+  margin-bottom: 12px;
+  justify-content: space-between;
+}

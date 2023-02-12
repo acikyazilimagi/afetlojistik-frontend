@@ -2,8 +2,6 @@ import React from 'react'
 
 import { I18nProvider, Refine } from '@pankod/refine-core'
 import { notificationProvider, ReadyPage, ErrorComponent } from '@pankod/refine-antd'
-// eslint-disable-next-line import/no-unresolved
-import { AntdInferencer } from '@pankod/refine-inferencer/antd'
 import '@pankod/refine-antd/dist/reset.css'
 import 'scss/style.scss'
 
@@ -12,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { dataProvider } from 'dataProviders'
 import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
-import { UserCreate, UserList } from 'pages/User'
+import { UserCreate, UserDetail, UserList } from 'pages/User'
 import { UserEdit } from 'pages/User/Edit'
 import { AuthPage } from 'pages/Auth'
 import { authProvider } from './authProvider'
@@ -44,7 +42,7 @@ function App() {
           name: 'user',
           list: UserList,
           edit: UserEdit,
-          show: AntdInferencer,
+          show: UserDetail,
           create: UserCreate
         }
       ]}
