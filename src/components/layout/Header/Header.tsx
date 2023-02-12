@@ -1,9 +1,7 @@
-import { useContext } from 'react'
 import { useGetLocale, useSetLocale, useGetIdentity, useIsExistAuthentication, useLogout } from '@pankod/refine-core'
-import { AntdLayout, Space, Menu, Button, Icons, Dropdown, Switch } from '@pankod/refine-antd'
+import { AntdLayout, Space, Menu, Button, Icons, Dropdown } from '@pankod/refine-antd'
 import { LogoutOutlined } from '@ant-design/icons'
 import { useTranslation } from 'react-i18next'
-import { ColorModeContext } from 'contexts'
 import { SupportedLanguages, supportedLanguages } from 'constants/languageConstants'
 import { UserType } from 'types/user'
 import styles from './Header.module.scss'
@@ -14,7 +12,6 @@ export const Header: React.FC = () => {
   const locale = useGetLocale()
   const changeLanguage = useSetLocale()
   const { data: user }: { data?: UserType } = useGetIdentity()
-  const { mode, setMode } = useContext(ColorModeContext)
   const { t } = useTranslation()
   const isExistAuthentication = useIsExistAuthentication()
   const { mutate: mutateLogout } = useLogout()
@@ -41,12 +38,6 @@ export const Header: React.FC = () => {
 
   return (
     <AntdLayout.Header className={styles.header}>
-      <Switch
-        checkedChildren='🌛'
-        unCheckedChildren='🔆'
-        onChange={() => setMode(mode === 'light' ? 'dark' : 'light')}
-        defaultChecked={mode === 'dark'}
-      />
       <Dropdown overlay={menu}>
         <Button type='link'>
           <Space>

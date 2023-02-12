@@ -9,7 +9,6 @@ import 'scss/style.scss'
 
 import routerProvider from '@pankod/refine-react-router-v6'
 import { useTranslation } from 'react-i18next'
-import { ColorModeContextProvider } from 'contexts'
 import { Title, Header, Sider, Footer, Layout, OffLayoutArea } from 'components/layout'
 import { dataProvider } from 'dataProviders'
 import { TripCreate, TripList, Detail, Edit } from 'pages/Trip'
@@ -28,52 +27,50 @@ function App() {
   }
 
   return (
-    <ColorModeContextProvider>
-      <Refine
-        dataProvider={dataProvider()}
-        notificationProvider={notificationProvider}
-        ReadyPage={ReadyPage}
-        catchAll={<ErrorComponent />}
-        resources={[
+    <Refine
+      dataProvider={dataProvider()}
+      notificationProvider={notificationProvider}
+      ReadyPage={ReadyPage}
+      catchAll={<ErrorComponent />}
+      resources={[
+        {
+          name: 'trip',
+          list: TripList,
+          edit: Edit,
+          show: Detail,
+          create: TripCreate
+        },
+        {
+          name: 'user',
+          list: UserList,
+          edit: UserEdit,
+          show: AntdInferencer,
+          create: AntdInferencer
+        }
+      ]}
+      Title={Title}
+      Header={Header}
+      Sider={Sider}
+      Footer={Footer}
+      Layout={Layout}
+      OffLayoutArea={OffLayoutArea}
+      routerProvider={{
+        ...routerProvider,
+        routes: [
           {
-            name: 'trip',
-            list: TripList,
-            edit: Edit,
-            show: Detail,
-            create: TripCreate
+            path: '/login',
+            element: <AuthPage type='login' />
           },
           {
-            name: 'user',
-            list: UserList,
-            edit: UserEdit,
-            show: AntdInferencer,
-            create: AntdInferencer
+            path: '/register',
+            element: <AuthPage type='register' />
           }
-        ]}
-        Title={Title}
-        Header={Header}
-        Sider={Sider}
-        Footer={Footer}
-        Layout={Layout}
-        OffLayoutArea={OffLayoutArea}
-        routerProvider={{
-          ...routerProvider,
-          routes: [
-            {
-              path: '/login',
-              element: <AuthPage type='login' />
-            },
-            {
-              path: '/register',
-              element: <AuthPage type='register' />
-            }
-          ]
-        }}
-        LoginPage={AuthPage}
-        authProvider={authProvider}
-        i18nProvider={i18nProvider}
-      />
-    </ColorModeContextProvider>
+        ]
+      }}
+      LoginPage={AuthPage}
+      authProvider={authProvider}
+      i18nProvider={i18nProvider}
+    />
   )
 }
 
