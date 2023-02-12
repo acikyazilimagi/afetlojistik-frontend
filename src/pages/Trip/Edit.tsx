@@ -196,7 +196,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
                   {
                     required: true,
                     validator: async (_, value) => {
-                      const isValid = /^[a-zA-Z ]+$/.test(value)
+                      const isValid = value ? /^[a-zA-Z ]+$/.test(value) : true
                       if (!value || !isValid) {
                         return Promise.reject(new Error(t('errorMessages.invalidCharacters')))
                       }
