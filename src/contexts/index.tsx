@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, createContext, useEffect, useState } from 'react'
-import { ConfigProvider, theme } from '@pankod/refine-antd'
+import { ConfigProvider /* theme*/ } from '@pankod/refine-antd'
 
 type ColorModeContextType = {
   mode: string
@@ -27,7 +27,7 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({ children
     }
   }
 
-  const { darkAlgorithm, defaultAlgorithm } = theme
+  // const { darkAlgorithm, defaultAlgorithm } = theme
 
   return (
     <ColorModeContext.Provider
@@ -37,9 +37,9 @@ export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({ children
       }}
     >
       <ConfigProvider
-        theme={{
-          algorithm: mode === 'light' ? defaultAlgorithm : darkAlgorithm
-        }}
+      // theme={{
+      //   algorithm: mode === 'light' ? defaultAlgorithm : darkAlgorithm
+      // }}
       >
         {children}
       </ConfigProvider>
