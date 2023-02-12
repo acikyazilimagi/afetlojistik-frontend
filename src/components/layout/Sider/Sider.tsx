@@ -9,10 +9,19 @@ import {
   Sider as DefaultSider,
   Button
 } from '@pankod/refine-antd'
-import { useTitle, CanAccess, ITreeMenu, useRouterContext, useMenu, useRefineContext } from '@pankod/refine-core'
+import {
+  useTitle,
+  CanAccess,
+  ITreeMenu,
+  useRouterContext,
+  useMenu,
+  useRefineContext,
+  useGetIdentity
+} from '@pankod/refine-core'
 import { useTranslation } from 'react-i18next'
 
 import i18n from 'i18n'
+import { UserType } from 'types/user'
 import { Title as DefaultTitle } from '../Title'
 
 import styles from './Sider.module.scss'
@@ -34,12 +43,14 @@ const getPageTranslationKey = (name: string) => {
 export const Sider: typeof DefaultSider = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false)
+
   const { Link } = useRouterContext()
   const Title = useTitle()
   const { t } = useTranslation()
   const { menuItems, selectedKey, defaultOpenKeys } = useMenu()
   const breakpoint = Grid.useBreakpoint()
   const { hasDashboard } = useRefineContext()
+  const { data: user }: { data?: UserType } = useGetIdentity()
 
   const isMobile = typeof breakpoint.lg === 'undefined' ? false : !breakpoint.lg
 
@@ -67,6 +78,11 @@ export const Sider: typeof DefaultSider = () => {
       }
       const isSelected = route === selectedKey
       const isRoute = !(parentName !== undefined && children.length === 0)
+
+      if (name === 'user' && !user?.isAdmin) {
+        return null
+      }
+
       return (
         <CanAccess
           key={route}
