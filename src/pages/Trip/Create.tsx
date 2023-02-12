@@ -165,7 +165,6 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
               formProps={{
                 rules: [
                   {
-                    required: true,
                     validator: async (_, value) => {
                       const isValid = value ? /^[a-zA-Z ]+$/.test(value) : true
                       if (!value || !isValid) {
