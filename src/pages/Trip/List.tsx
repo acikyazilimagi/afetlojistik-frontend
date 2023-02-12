@@ -258,6 +258,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
         <DatePicker
           showTime
           showSecond={false}
+          format='YYYY-MM-DD HH:mm'
           onChange={(value) => setArrivedTimeInput(value ? dayjs(value) : undefined)}
         />
       </Modal>
