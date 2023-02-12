@@ -1,7 +1,7 @@
 import React from 'react'
 import { IResourceComponentsProps, useShow } from '@pankod/refine-core'
 import { Show } from '@pankod/refine-antd'
-import { Typography, Space } from 'antd'
+import { Typography, Space, Tag } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { FaBoxes, FaRoad, FaTruck } from 'react-icons/fa'
 import { ArrowRightOutlined } from '@ant-design/icons'
@@ -12,6 +12,7 @@ import { convertTimeToDateAndSplit } from 'utils/date'
 
 import { Spinner } from 'components/Spinner'
 
+import { TripStatuses, tripStatusOptions } from 'constants/trip'
 import styles from './Detail.module.scss'
 
 export const Detail: React.FC<IResourceComponentsProps> = () => {
@@ -32,10 +33,22 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
 
   const dateAndTime = convertTimeToDateAndSplit(record.estimatedDepartTime, 'DD/MM/YYYY')
 
+  const arrived = record.statusChangeLog.find((log) => log.status === TripStatuses.Arrived)
+
   return (
     <div className={styles.detailWrapper}>
       <Show isLoading={isLoading}>
-        <Typography.Title level={3}>{`${t('tripNo')}: ${record?.tripNumber}`}</Typography.Title>
+        <Space direction='horizontal' className='mb-12 space-flex-item'>
+          <Typography.Title level={3}>{`${t('tripNo')}: ${record?.tripNumber}`}</Typography.Title>
+          <Tag color={tripStatusOptions[record.status].color}>
+            {t(tripStatusOptions[record.status].label)}{' '}
+            {arrived ? (
+              <span className='ml-4'>
+                {convertTimeToDateAndSplit(arrived.createdAt).date} {convertTimeToDateAndSplit(arrived.createdAt).time}
+              </span>
+            ) : null}
+          </Tag>
+        </Space>
         <IconTitle icon={<FaRoad />} label={t('location')} />
         <Space direction='horizontal' className={styles.locationContainer}>
           <Space direction='vertical' className={styles.contentContainer}>
