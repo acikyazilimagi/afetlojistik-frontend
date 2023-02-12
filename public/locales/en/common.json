@@ -89,6 +89,11 @@
   "originDistrict": "Origin District",
   "packageCount": "Package Count",
   "pageTitles": {
+    "createTrip": "Create Trip",
+    "createUser": "Create User",
+    "editTrip": "Edit Trip",
+    "editUser": "Edit User",
+    "tripDetails": "Trip Details",
     "trips": "Trips",
     "users": "Users"
   },

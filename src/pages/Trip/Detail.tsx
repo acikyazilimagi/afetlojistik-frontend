@@ -38,7 +38,7 @@ export const Detail: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <div className={styles.detailWrapper}>
-      <Show isLoading={isLoading}>
+      <Show isLoading={isLoading} title={t('pageTitles.tripDetails')}>
         <Space direction='horizontal' className='mb-12 space-flex-item'>
           <Typography.Title level={3}>{`${t('tripNo')}: ${record?.tripNumber}`}</Typography.Title>
           <Tag color={tripStatusOptions[record.status].color}>

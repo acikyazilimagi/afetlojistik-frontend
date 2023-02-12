@@ -107,6 +107,7 @@ export const TripCreate: React.FC<IResourceComponentsProps> = () => {
             justifyContent: 'space-between'
           }
         }}
+        title={t('pageTitles.createTrip')}
       >
         <Form {...formProps} form={form} layout='vertical' onFinish={(values) => handleSubmit(values as TripType)}>
           <IconTitle icon={<FaRoad />} label={t('location')} />

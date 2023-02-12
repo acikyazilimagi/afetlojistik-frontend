@@ -11,7 +11,7 @@ export const UserEdit: React.FC<IResourceComponentsProps> = () => {
   // const userData = queryResult?.data?.data
 
   return (
-    <Edit saveButtonProps={saveButtonProps}>
+    <Edit saveButtonProps={saveButtonProps} title={t('pageTitles.editUser')}>
       <Form {...formProps} layout='vertical'>
         <Form.Item
           label={t<string>('name')}

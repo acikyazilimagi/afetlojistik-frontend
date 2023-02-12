@@ -122,7 +122,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   }
 
   return (
-    <List>
+    <List title={t('pageTitles.trips')}>
       <Space direction='vertical' size={20}>
         <TripListFilter formProps={searchFormProps} />
         <Space align='end' direction='vertical'>

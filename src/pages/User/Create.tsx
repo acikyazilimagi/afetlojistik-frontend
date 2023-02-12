@@ -9,7 +9,7 @@ export const UserCreate: React.FC<IResourceComponentsProps> = () => {
   const { formProps, saveButtonProps } = useForm()
 
   return (
-    <Create saveButtonProps={saveButtonProps}>
+    <Create saveButtonProps={saveButtonProps} title={t('pageTitles.createUser')}>
       <Form {...formProps} layout='vertical'>
         <Form.Item
           label={t<string>('name')}

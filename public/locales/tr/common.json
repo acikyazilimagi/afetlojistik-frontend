@@ -89,6 +89,11 @@
   "originDistrict": "Çıkış İlçesi",
   "packageCount": "Koli Adedi",
   "pageTitles": {
+    "createTrip": "Sefer Oluştur",
+    "createUser": "Kullanıcı Oluştur",
+    "editTrip": "Sefer Düzenle",
+    "editUser": "Kullanıcı Düzenle",
+    "tripDetails": "Sefer Detayları",
     "trips": "Seferler",
     "users": "Kullanıcılar"
   },

@@ -131,7 +131,7 @@ export const TripEdit: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <div className={styles.detailWrapper}>
-      <Edit saveButtonProps={saveButtonProps}>
+      <Edit saveButtonProps={saveButtonProps} title={t('pageTitles.editTrip')}>
         <Form
           {...formProps}
           form={form}

@@ -11,7 +11,7 @@ export const UserList: React.FC<IResourceComponentsProps> = () => {
   })
 
   return (
-    <List>
+    <List title={t('pageTitles.users')}>
       <Table {...tableProps} rowKey='_id'>
         <Table.Column dataIndex='name' title={t<string>('name')} />
         <Table.Column dataIndex='surname' title={t<string>('surname')} />
