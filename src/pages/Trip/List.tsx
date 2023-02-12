@@ -134,7 +134,7 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
           />
         </Space>
         <Table {...tableProps} rowKey='tripNumber' id='trip-list-table'>
-          <Table.Column dataIndex='tripNumber' title='Trip Number' />
+          <Table.Column dataIndex='tripNumber' title='Sefer No' />
           <Table.Column
             dataIndex='createdBy'
             title={t('createdBy') as string}

@@ -4,7 +4,7 @@
   "addCategory": "Kategori Ekle",
   "alreadyHaveAccount": "Zaten hesabınız var mı?",
   "auth": {
-    "emailAuthentication": "E-posta doğrulama",
+    "emailAuthentication": "SMS doğrulama",
     "resendCode": "Yeniden Gönder",
     "sendCodeDescription": "Kodu gönder",
     "verifyAndLogin": "Doğrulama ve Giriş"
@@ -35,7 +35,7 @@
   },
   "estimatedDepartDate": "Tahmini Çıkış Tarihi",
   "estimatedDepartTime": "Tahmini Çıkış Saati",
-  "explicitAddress": "Açık Adres",
+  "explicitAddress": "Varış Açık Adres",
   "exportButton": "Excel'e Aktar",
   "exportCreatedAt": "Oluşturulma Tarihi",
   "exportExcel": "Excel'e Aktar",
@@ -88,8 +88,8 @@
   "statuses": "Durum",
   "surname": "Soyad",
   "thisFieldIsRequired": "Bu alan zorunlu",
-  "trailerNo": "Trailer No",
-  "trailerNumbers": "Trailer Numaraları",
+  "trailerNo": "Dorse No",
+  "trailerNumbers": "Dorse Plakası",
   "tripContent": "Sefer İçeriği",
   "tripNo": "Sefer Numarası",
   "tripStatuses": {
