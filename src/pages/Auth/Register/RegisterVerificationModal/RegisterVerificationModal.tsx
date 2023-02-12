@@ -106,7 +106,8 @@ export const RegisterVerificationModal: React.FC<RegisterVerificationModalProps>
             name='code'
             formProps={{
               id: 'verifyAuthCodeForm',
-              required: true
+              required: true,
+              rules: [{ required: true, message: t('thisFieldIsRequired') }]
             }}
             errorMessage={errors.code}
             isTouched={touched.code}
