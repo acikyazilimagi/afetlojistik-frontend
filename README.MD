@@ -1,11 +1,13 @@
 # Afet Lojistik - Frontend
 
 <div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
+    <a href="https://afetlojistik.com/">
+    <img src="public/logo.svg" align="center" />
     </a>
 </div>
 <br/>
+
+[Canlı Uygulama](https://afetlojistik.com/)
 
 Bu [refine](https://github.com/pankod/refine) projesi [superplate](https://github.com/pankod/refine) ile kurulmuştur.
 
