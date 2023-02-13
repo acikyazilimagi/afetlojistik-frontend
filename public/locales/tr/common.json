@@ -41,7 +41,7 @@
     "errorTitle": "Hata",
     "invalidCharacters": "Geçersiz karakter",
     "minimumCount": "0'dan büyük bir değer girilmeli",
-    "minimumProducts": "En az 1 çeşit ürün eklenmeli",
+    "minimumProducts": "En az 1 kategori eklenmeli",
     "unknownError": "Bilinmeyen bir hata oluştu"
   },
   "errors": {
