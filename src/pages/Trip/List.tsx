@@ -24,12 +24,12 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
   const [modalValues, setModalValues] = useState<EditTripStatusFormType>()
   const [arrivedTimeInput, setArrivedTimeInput] = useState<Dayjs>()
 
-  const { tableProps, searchFormProps, tableQueryResult } = useTable<
+  const { tableProps, searchFormProps, tableQueryResult, setFilters } = useTable<
     TripListFilterPostType,
     HttpError,
     TripListFilterTypes
   >({
-    syncWithLocation: true,
+    defaultSetFilterBehavior: 'replace',
     onSearch: (params) => {
       const filters: CrudFilters = []
       const {
@@ -121,10 +121,14 @@ export const TripList: React.FC<IResourceComponentsProps<TripType>> = () => {
     }
   }
 
+  const resetFilters = () => {
+    setFilters([])
+  }
+
   return (
     <List title={t('pageTitles.trips')}>
       <Space direction='vertical' size={20}>
-        <TripListFilter formProps={searchFormProps} />
+        <TripListFilter formProps={searchFormProps} resetFilters={resetFilters} />
         <Space align='end' direction='vertical'>
           <ExportTableDropdown
             tableId='trip-list-table'
