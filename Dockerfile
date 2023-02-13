@@ -1,5 +1,7 @@
 FROM node:16 as builder
 
+ENV REACT_APP_BACKEND_URL=https://api.afetlojistik.com
+
 # Create app directory
 WORKDIR /usr/src/app
 # Install app dependencies
