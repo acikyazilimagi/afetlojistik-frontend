@@ -2,7 +2,7 @@
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
-    <img src="https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png" style="height: 150px;"/>
+    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
     </a>
 </div>
 <br/>
