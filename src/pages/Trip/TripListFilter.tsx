@@ -12,12 +12,17 @@ import { Spinner } from 'components/Spinner'
 const { RangePicker } = DatePicker
 const { Panel } = Collapse
 
+type TripListFilterType = {
+  formProps: FormProps
+  resetFilters: () => void
+}
+
 export interface ICategory {
   id: number
   title: string
 }
 
-export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }) => {
+export const TripListFilter: React.FC<TripListFilterType> = ({ formProps, resetFilters }) => {
   const { t } = useTranslation()
 
   const [isLoading, setIsLoading] = useState(true)
@@ -39,6 +44,16 @@ export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }
   const handleToCityChange = (cityId: string) => {
     setToCity(cityId)
   }
+
+  const handleFormClear = () => {
+    resetFilters()
+    formProps.form?.resetFields()
+  }
+
+  useEffect(() => {
+    resetFilters()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (isLoading) {
     return <Spinner />
@@ -89,11 +104,14 @@ export const TripListFilter: React.FC<{ formProps: FormProps }> = ({ formProps }
               </Form.Item>
             </div>
           </div>
-          <Form.Item>
-            <Button htmlType='submit' type='primary'>
-              {t('filter')}
-            </Button>
-          </Form.Item>
+          <div className='flex flex-sb'>
+            <Button onClick={handleFormClear}>{t('clear')}</Button>
+            <Form.Item>
+              <Button htmlType='submit' type='primary'>
+                {t('filter')}
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       </Panel>
     </Collapse>
