@@ -1,6 +1,6 @@
 # Afet Lojistik - Frontend
 
-<div align="center" style="margin: 30px;">
+<div align="center" style="margin: 30px; height: 30px;">
     <a href="https://refine.dev">
     <img src="https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png"  align="center" />
     </a>
