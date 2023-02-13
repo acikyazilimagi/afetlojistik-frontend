@@ -1,43 +1,29 @@
-# afet-tms
+# Afet Lojistik - Frontend
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
-    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
+    <img src="https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png"  align="center" />
     </a>
 </div>
 <br/>
 
-This [refine](https://github.com/pankod/refine) project was generated with [superplate](https://github.com/pankod/refine).
+Bu [refine](https://github.com/pankod/refine) projesi [superplate](https://github.com/pankod/refine) ile kurulmuştur.
 
-## Getting Started
+## Kurulum
 
-**refine** is a React-based framework for building data-intensive applications in no time ✨
-
-Refine offers lots of out-of-the box functionality for rapid development, without compromising extreme customizability. Use-cases include, but are not limited to admin panels, B2B applications and dashboards.
-
-## Available Scripts
-
-### Running the development server.
+### Development sunucusunu çalıştırma
 
 ```bash
-    npm run dev
+    npm install
 ```
-
-### Building for production.
 
 ```bash
-    npm run build
+    npm start
 ```
 
-### Running the production server.
+## Refine Dokümantasyonu
 
-```bash
-    npm run start
-```
-
-## Learn More
-
-To learn more about **refine**, please check out the [Documentation](https://refine.dev/docs)
+[Documentation](https://refine.dev/docs)
 
 - **REST Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
 - **Ant Design** [Docs](https://refine.dev/docs/ui-frameworks/antd/tutorial/)
@@ -48,6 +34,9 @@ To learn more about **refine**, please check out the [Documentation](https://ref
 - **Custom Auth Provider** [Docs](https://refine.dev/docs/core/providers/auth-provider/)
 - **i18n** [Docs](https://refine.dev/docs/core/providers/i18n-provider/)
 
+## Contribution
+
+Eğer projeye katkıda bulunmak istiyorsanız, Issues başlığındaki görevleri inceleyip, çözüm için PR açabilirsiniz. Yeni bir feature öneriniz var ise, lütfen Issues'a entry girip onay için bekleyiniz.
 
 ## License
 
